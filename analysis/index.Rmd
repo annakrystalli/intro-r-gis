@@ -1,9 +1,13 @@
 ---
-title: "Home"
+title: "Introduction to GIS in R"
 site: workflowr::wflow_site
 output:
   workflowr::wflow_html:
     toc: false
 ---
 
-Welcome to my research website.
+### Workshop for the [Programming for Evolutionary Biology 2018 Conference](http://pebconference.info/)
+
+####  2-6 Sept. 2018 | Buttermere, Lake District, UK
+
+
