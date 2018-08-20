@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>setup</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/simplex.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-5.0.13/css/fa-svg-with-js.css" rel="stylesheet" />
+<script src="site_libs/font-awesome-5.0.13/js/fontawesome-all.min.js"></script>
+<script src="site_libs/font-awesome-5.0.13/js/fa-v4-shims.min.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+  padding-left: 25px;
+  text-indent: 0;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">intro-r-gis</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="setup.html">Setup</a>
+</li>
+<li>
+  <a href="license.html">License</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="https://github.com/annakrystalli/intro-r-gis">
+    <span class="fa fa-github"></span>
+     
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<!-- Add a small amount of space between sections. -->
+<style type="text/css">
+div.section {
+  padding-top: 12px;
+}
+</style>
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">setup</h1>
+
+</div>
+
+
+<p><strong>Last updated:</strong> 2018-08-20</p>
+<strong>workflowr checks:</strong> <small>(Click a bullet for more information)</small>
+<ul>
+<li>
+<p><details> <summary> <strong style="color:blue;">✔</strong> <strong>R Markdown file:</strong> up-to-date </summary></p>
+<p>Great! Since the R Markdown file has been committed to the Git repository, you know the exact version of the code that produced these results.</p>
+</details>
+</li>
+<li>
+<p><details> <summary> <strong style="color:blue;">✔</strong> <strong>Environment:</strong> empty </summary></p>
+<p>Great job! The global environment was empty. Objects defined in the global environment can affect the analysis in your R Markdown file in unknown ways. For reproduciblity it’s best to always run the code in an empty environment.</p>
+</details>
+</li>
+<li>
+<p><details> <summary> <strong style="color:blue;">✔</strong> <strong>Seed:</strong> <code>set.seed(20180820)</code> </summary></p>
+<p>The command <code>set.seed(20180820)</code> was run prior to running the code in the R Markdown file. Setting a seed ensures that any results that rely on randomness, e.g. subsampling or permutations, are reproducible.</p>
+</details>
+</li>
+<li>
+<p><details> <summary> <strong style="color:blue;">✔</strong> <strong>Session information:</strong> recorded </summary></p>
+<p>Great job! Recording the operating system, R version, and package versions is critical for reproducibility.</p>
+</details>
+</li>
+<li>
+<p><details> <summary> <strong style="color:blue;">✔</strong> <strong>Repository version:</strong> <a href="https://github.com/annakrystalli/intro-r-gis/tree/1163a5e04f84c0d607636562770621053d30e0dd" target="_blank">1163a5e</a> </summary></p>
+Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility. The version displayed above was the version of the Git repository at the time these results were generated. <br><br> Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
+<pre><code>
+Ignored files:
+    Ignored:    .Rhistory
+    Ignored:    .Rproj.user/
+
+Untracked files:
+    Untracked:  .DS_Store
+    Untracked:  .Rbuildignore
+    Untracked:  analysis/gis.Rmd
+    Untracked:  analysis/intro.Rmd
+    Untracked:  analysis/raster.Rmd
+    Untracked:  analysis/vector.Rmd
+    Untracked:  assets/
+    Untracked:  data-raw/
+    Untracked:  data/.DS_Store
+    Untracked:  data/raster/
+
+Unstaged changes:
+    Modified:   README.md
+    Modified:   analysis/_site.yml
+
+</code></pre>
+Note that any generated files, e.g. HTML, png, CSS, etc., are not included in this status report because it is ok for generated content to have uncommitted changes. </details>
+</li>
+</ul>
+<details> <summary> <small><strong>Expand here to see past versions:</strong></small> </summary>
+<ul>
+<table style="border-collapse:separate; border-spacing:5px;">
+<thead>
+<tr>
+<th style="text-align:left;">
+File
+</th>
+<th style="text-align:left;">
+Version
+</th>
+<th style="text-align:left;">
+Author
+</th>
+<th style="text-align:left;">
+Date
+</th>
+<th style="text-align:left;">
+Message
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Rmd
+</td>
+<td style="text-align:left;">
+<a href="https://github.com/annakrystalli/intro-r-gis/blob/1163a5e04f84c0d607636562770621053d30e0dd/analysis/setup.Rmd" target="_blank">1163a5e</a>
+</td>
+<td style="text-align:left;">
+annakrystalli
+</td>
+<td style="text-align:left;">
+2018-08-20
+</td>
+<td style="text-align:left;">
+workflowr::wflow_publish(c(“analysis/index.Rmd”,
+</td>
+</tr>
+</tbody>
+</table>
+</ul>
+<p></details></p>
+<hr />
+<div id="overview" class="section level2">
+<h2>Overview</h2>
+<p>This workshop is designed to be run on your local machine. To do this, you will need to install all of the software used in the workshop and obtain copies of the datasets.</p>
+</div>
+<div id="data" class="section level2">
+<h2>Data</h2>
+<p>We’ll be working in an Rstudio project which is all setup with all the data you will need for the workshop. You can download the project directory by clicking <a href="https://github.com/annakrystalli/gis-workshop/archive/master.zip">this download link</a>. Clicking the download link will automatically download all of the files to your default download directory as a single compressed (<code>.zip</code>) file. To expand this file, double click the folder icon in your file navigator application (for Macs, this is the Finder application).</p>
+</div>
+<div id="software" class="section level2">
+<h2>Software</h2>
+<table style="width:76%;">
+<colgroup>
+<col width="12%" />
+<col width="18%" />
+<col width="9%" />
+<col width="19%" />
+<col width="16%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Software</th>
+<th>Install</th>
+<th>Manual</th>
+<th>Available for</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><a href="http://www.gdal.org">GDAL</a></td>
+<td><a href="http://www.gdal.org/usergroup0.html">Link</a></td>
+<td><a href="http://www.gdal.org">Link</a></td>
+<td>Linux, MacOS, Windows</td>
+<td>Geospatial model for reading and writing a variety of formats</td>
+</tr>
+<tr class="even">
+<td><a href="https://trac.osgeo.org/geos">GEOS</a></td>
+<td><a href="https://trac.osgeo.org/geos">Link</a></td>
+<td><a href="http://geos.osgeo.org/doxygen/">Link</a></td>
+<td>Linux, MacOS, Windows</td>
+<td>Geometry models and operations</td>
+</tr>
+<tr class="odd">
+<td><a href="http://proj4.org">PROJ.4</a></td>
+<td><a href="http://proj4.org/install.html">Link</a></td>
+<td><a href="http://proj4.org/index.html">Link</a></td>
+<td>Linux, MacOS, Windows</td>
+<td>Coordinate reference system transformations</td>
+</tr>
+<tr class="even">
+<td><a href="https://www.r-project.org">R</a></td>
+<td><a href="https://cloud.r-project.org">Link</a></td>
+<td><a href="https://cloud.r-project.org">Link</a></td>
+<td>Linux, MacOS, Windows</td>
+<td>Software environment for statistical and scientific computing</td>
+</tr>
+<tr class="odd">
+<td><a href="https://www.rstudio.com">RStudio</a></td>
+<td><a href="https://www.rstudio.com/products/rstudio/download/#download">Link</a></td>
+<td></td>
+<td>Linux, MacOS, Windows</td>
+<td>GUI for R</td>
+</tr>
+<tr class="even">
+<td><a href="https://www.unidata.ucar.edu/software/udunits/">UDUNITS</a></td>
+<td><a href="https://www.unidata.ucar.edu/downloads/udunits/index.jsp">Link</a></td>
+<td><a href="https://www.unidata.ucar.edu/software/udunits/#documentation">Link</a></td>
+<td>Linux, MacOS, Windows</td>
+<td>Unit conversions</td>
+</tr>
+</tbody>
+</table>
+<div id="quickstart-software-installation-instructions" class="section level3">
+<h3>QuickStart Software Installation Instructions</h3>
+<p>These are the QuickStart installation instructions. At points, they assume familiarity with the command line and with installation in general. As there are different operating systems and many different versions of operating systems and environments, these may not work on your computer. If an installation doesn’t work for you, please refer to the installation instructions for that software, listed in the table above.</p>
+</div>
+<div id="r" class="section level3">
+<h3>R</h3>
+<p>Participants who do not already have <code>R</code> installed should download and install it.</p>
+<blockquote>
+<h4 id="windows">Windows</h4>
+<p>To install <code>R</code>, Windows users should select “Download R for Windows” from RStudio and CRAN’s <a href="https://cloud.r-project.org">cloud download page</a>, which will automatically detect a CRAN mirror for you to use. Select the <code>base</code> subdirectory after choosing the Windows download page. A <code>.exe</code> executable file containing the necessary components of base R can be downloaded by clicking on “Download R 3.x.x for Windows”.</p>
+</blockquote>
+<blockquote>
+<h4 id="macos">macOS</h4>
+<p>To install <code>R</code>, macOS users should select “Download R for (Mac) OS X” from RStudio and CRAN’s <a href="https://cloud.r-project.org">cloud download page</a>, which will automatically detect a CRAN mirror for you to use. A <code>.pkg</code> file containing the necessary components of base R can be downloaded by clicking on the first available link (this will be the most recent), which will read <code>R-3.x.x.pkg</code>.</p>
+</blockquote>
+<blockquote>
+<h4 id="linux">Linux</h4>
+<p>To install <code>R</code>, Linux users should select “Download R for Linux” from RStudio and CRAN’s <a href="https://cloud.r-project.org">cloud download page</a>, which will automatically detect a CRAN mirror for you to use. Instructions for a number of different Linux operating systems are available.</p>
+</blockquote>
+</div>
+<div id="rstudio" class="section level3">
+<h3>RStudio</h3>
+<p>RStudio is an GUI for using R that is available for Windows, macOS, and various Linux operating systems. It can be downloaded <a href="https://www.rstudio.com/products/rstudio/download/">here</a>. You will need the <strong>free</strong> Desktop version for your computer.</p>
+</div>
+<div id="gdal-geos-and-proj.4" class="section level3">
+<h3>GDAL, GEOS, and PROJ.4</h3>
+<p>The installation of the geospatial libraries GDAL, GEOS, and PROJ.4 varies significantly based on operating system. These are all dependencies for <code>sf</code>, the <code>R</code> package that we will be using for spatial data operations throughout this workshop.</p>
+<blockquote>
+<h4 id="windows-1">Windows</h4>
+<p>To install the geospatial libraries, install the latest version <a href="https://cran.r-project.org/bin/windows/Rtools/">RTools</a></p>
+</blockquote>
+<blockquote>
+<h4 id="macos-1">macOS</h4>
+<p>For participants who do not already have <a href="https://brew.sh">homebrew</a> installed, and who may be less comfortable with the command line, the easiest was to obtain the geospatial libraries is to install the latest version of <a href="http://www.kyngchaos.com/software/frameworks">Kyng Chaos’s pre-built package</a> for GDAL Complete. Be aware that several other libraries are also installed, including the UnixImageIO, SQLite3, and <code>NumPy</code>.</p>
+<p>After downloading the package in the link above, you will need to double-click the cardbord box icon to complete the installation. Depending on your security settings, you may get an error message about “unidentified developers”. You can enable the installation by following <a href="https://kb.wisc.edu/page.php?id=25443">these instructions</a> for installing programs from unidentified developers.</p>
+<p>Alternatively, participants who are comfortable with the command line can install the geospatial libraries individually using <a href="https://brew.sh">homebrew</a>:</p>
+<pre><code>$ brew tap osgeo/osgeo4mac &amp;&amp; brew tap --repair
+$ brew install proj
+$ brew install geos
+$ brew install gdal2 --with-armadillo --with-complete --with-libkml --with-unsupported
+$ brew link --force gdal2</code></pre>
+</blockquote>
+<blockquote>
+<h4 id="linux-1">Linux</h4>
+<p>Steps for installing the geospatial libraries will vary based on which form of Linux you are using. These instructions are adapted from the <a href="https://github.com/r-spatial/sf"><code>sf</code> package’s <code>README</code></a>.</p>
+<p>For <strong>Ubuntu</strong>:</p>
+<pre><code>$ sudo add-apt-repository ppa:ubuntugis
+$ sudo apt-get update
+$ sudo apt-get install libgdal-dev libgeos-dev libproj-dev</code></pre>
+<p>For <strong>Fedora</strong>:</p>
+<pre><code>$ sudo dnf install gdal-devel proj-devel proj-epsg proj-nad geos-devel</code></pre>
+<p>For <strong>Arch</strong>:</p>
+<pre><code>$ pacman -S gdal proj geos</code></pre>
+<p>For <strong>Debian</strong>: The <a href="https://github.com/rocker-org/geospatial">rocker geospatial</a> Dockerfiles may be helpful. Ubuntu Dockerfiles are found <a href="https://github.com/r-spatial/sf/tree/master/inst/docker">here</a>.</p>
+</blockquote>
+</div>
+<div id="udunits" class="section level3">
+<h3>UDUNITS</h3>
+<p>Linux users will have to install UDUNITS separately. Like the geospatial libraries discussed above, this is a dependency for the <code>R</code> package <code>sf</code>. Due to conflicts, it does not install properly on Linux machines when installed as part of the <code>sf</code> installation process. It is therefore necessary to install it using the command line ahead of time.</p>
+<blockquote>
+<h4 id="linux-2">Linux</h4>
+<p>Steps for installing the geospatial will vary based on which form of Linux you are using. These instructions are adapted from the <a href="https://github.com/r-spatial/sf"><code>sf</code> package’s <code>README</code></a>.</p>
+<p>For <strong>Ubuntu</strong>:</p>
+<pre><code>$ sudo apt-get install libudunits2-dev</code></pre>
+<p>For <strong>Fedora</strong>:</p>
+<pre><code>$ sudo dnf install udunits2-devel</code></pre>
+<p>For <strong>Arch</strong>:</p>
+<pre><code>$ pacaur/yaourt/whatever -S udunits</code></pre>
+<p>For <strong>Debian</strong>:</p>
+<pre><code>$ sudo apt-get install -y libudunits2-dev</code></pre>
+</blockquote>
+</div>
+<div id="r-packages" class="section level3">
+<h3>R Packages</h3>
+<p>The following <code>R</code> packages are used in the various geospatial lessons.</p>
+<ul>
+<li><a href="https://cran.r-project.org/package=dplyr"><code>dplyr</code></a></li>
+<li><a href="https://cran.r-project.org/package=ggplot2"><code>ggplot2</code></a></li>
+<li><a href="https://cran.r-project.org/package=readr"><code>readr</code></a></li>
+<li><a href="https://cran.r-project.org/package=sf"><code>sf</code></a></li>
+<li><a href="https://cran.r-project.org/package=raster"><code>raster</code></a></li>
+<li><a href="https://cran.r-project.org/package=rgdal"><code>rgdal</code></a></li>
+<li><a href="https://cran.r-project.org/package=tmap"><code>tmap</code></a></li>
+<li><a href="https://cran.r-project.org/package=rasterVis"><code>rasterVis</code></a></li>
+<li><a href="https://cran.r-project.org/package=ggmap"><code>ggmap</code></a></li>
+<li><a href="https://cran.r-project.org/package=leaflet"><code>leaflet</code></a></li>
+<li><a href="https://cran.r-project.org/package=spData"><code>spData</code></a></li>
+</ul>
+<p>To install these packages in RStudio, do the following:<br />
+1. Open RStudio by double-clicking the RStudio application icon. You should see something like this:</p>
+<div class="figure">
+<img src="../assets/01-rstudio.png" alt="RStudio layout" />
+<p class="caption">RStudio layout</p>
+</div>
+<ol start="2" style="list-style-type: decimal">
+<li>Type (or even better, copy and paste) the following into the console and hit enter.</li>
+</ol>
+<pre class="r"><code>install.packages(c(
+    #data science
+    &quot;dplyr&quot;, &quot;ggplot2&quot;, &quot;readr&quot;,
+    #geospatial
+    &quot;sf&quot;, &quot;raster&quot;, &quot;rgdal&quot;, &quot;geosphere&quot;,
+    # mapping / plotting
+    &quot;tmap&quot;, &quot;rasterVis&quot;, &quot;ggmap&quot;, &quot;leaflet&quot;,  
+    #data
+    &quot;spData&quot;))</code></pre>
+<p>You will need <code>ggplot2</code> version <strong>&gt;= 0.0.3</strong></p>
+<p>You should see a status message starting with:</p>
+<pre><code>trying URL &#39;https://cran.rstudio.com/bin/macosx/el-capitan/contrib/3.5/dplyr_0.7.6.tgz&#39;
+Content type &#39;application/x-gzip&#39; length 5686536 bytes (5.4 MB)
+==================================================
+downloaded 5.4 MB
+
+trying URL &#39;https://cran.rstudio.com/bin/macosx/el-capitan/contrib/3.5/ggplot2_3.0.0.tgz&#39;
+Content type &#39;application/x-gzip&#39; length 3577658 bytes (3.4 MB)
+==================================================
+downloaded 3.4 MB</code></pre>
+<p>When the installation is complete, you will see a status message like:</p>
+<pre><code>The downloaded binary packages are in
+/var/folders/7g/r8_n81y534z0vy5hxc6dx1t00000gn/T//RtmpJECKXM/downloaded_packages</code></pre>
+<p>You are now ready for the workshop!</p>
+<p><br></p>
+<hr />
+<p>Setup instructions modified from <strong>Data Carpentry Geospatial Workshop. June 2018</strong>: <a href="https://github.com/datacarpentry/geospatial-workshop" class="uri">https://github.com/datacarpentry/geospatial-workshop</a></p>
+<hr />
+</div>
+</div>
+<div id="session-information" class="section level2">
+<h2>Session information</h2>
+<pre class="r"><code>sessionInfo()</code></pre>
+<pre><code>R version 3.4.4 (2018-03-15)
+Platform: x86_64-apple-darwin15.6.0 (64-bit)
+Running under: macOS High Sierra 10.13.3
+
+Matrix products: default
+BLAS: /Library/Frameworks/R.framework/Versions/3.4/Resources/lib/libRblas.0.dylib
+LAPACK: /Library/Frameworks/R.framework/Versions/3.4/Resources/lib/libRlapack.dylib
+
+locale:
+[1] en_GB.UTF-8/en_GB.UTF-8/en_GB.UTF-8/C/en_GB.UTF-8/en_GB.UTF-8
+
+attached base packages:
+[1] stats     graphics  grDevices utils     datasets  methods   base     
+
+loaded via a namespace (and not attached):
+ [1] workflowr_1.0.1   Rcpp_0.12.18      digest_0.6.15    
+ [4] rprojroot_1.3-2   R.methodsS3_1.7.1 backports_1.1.2  
+ [7] git2r_0.21.0      magrittr_1.5      evaluate_0.11    
+[10] stringi_1.2.4     whisker_0.3-2     R.oo_1.21.0      
+[13] R.utils_2.6.0     rmarkdown_1.10    tools_3.4.4      
+[16] stringr_1.3.1     yaml_2.1.19       compiler_3.4.4   
+[19] htmltools_0.3.6   knitr_1.20       </code></pre>
+</div>
+
+<!-- Adjust MathJax settings so that all math formulae are shown using
+TeX fonts only; see
+http://docs.mathjax.org/en/latest/configuration.html.  This will make
+the presentation more consistent at the cost of the webpage sometimes
+taking slightly longer to load. Note that this only works because the
+footer is added to webpages before the MathJax javascript. -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    "HTML-CSS": { availableFonts: ["TeX"] }
+  });
+</script>
+
+<hr>
+<p>
+  This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a>
+  analysis was created with
+  <a href="https://github.com/jdblischak/workflowr">workflowr</a> 1.0.1
+</p>
+<hr>
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
