@@ -198,7 +198,7 @@ install.packages(c(
     #data
     "spData"))
 ```
- You will need `ggplot2` version **>= 0.0.3**
+ You will need `ggplot2` version **>= 3.0.0**
 
 You should see a status message starting with:
 
