@@ -168,6 +168,7 @@ The following `R` packages are used in the various geospatial lessons.
 * [`ggplot2`](https://cran.r-project.org/package=ggplot2)
 * [`readr`](https://cran.r-project.org/package=readr)
 * [`purrr`](https://cran.r-project.org/package=purrr)
+* [`here`](https://cran.r-project.org/package=here)
 * [`sf`](https://cran.r-project.org/package=sf)
 * [`raster`](https://cran.r-project.org/package=raster)
 * [`rgdal`](https://cran.r-project.org/package=rgdal)
@@ -189,7 +190,7 @@ something like this:
 ```{r, eval=FALSE}
 install.packages(c(
     #data science
-    "dplyr", "ggplot2", "readr", "purrr"
+    "dplyr", "ggplot2", "readr", "purrr", "here",
     #geospatial
     "sf", "raster", "rgdal", "geosphere",
     # mapping / plotting
