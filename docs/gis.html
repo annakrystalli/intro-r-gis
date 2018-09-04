@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>GIS basics</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/simplex.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-5.0.13/css/fa-svg-with-js.css" rel="stylesheet" />
+<script src="site_libs/font-awesome-5.0.13/js/fontawesome-all.min.js"></script>
+<script src="site_libs/font-awesome-5.0.13/js/fa-v4-shims.min.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+  padding-left: 25px;
+  text-indent: 0;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">intro-r-gis</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="setup.html">Setup</a>
+</li>
+<li>
+  <a href="license.html">License</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="https://github.com/annakrystalli/intro-r-gis">
+    <span class="fa fa-github"></span>
+     
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<!-- Add a small amount of space between sections. -->
+<style type="text/css">
+div.section {
+  padding-top: 12px;
+}
+</style>
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">GIS basics</h1>
+
+</div>
+
+
+<p><strong>Last updated:</strong> 2018-09-04</p>
+<strong>workflowr checks:</strong> <small>(Click a bullet for more information)</small>
+<ul>
+<li>
+<p><details> <summary> <strong style="color:blue;">✔</strong> <strong>R Markdown file:</strong> up-to-date </summary></p>
+<p>Great! Since the R Markdown file has been committed to the Git repository, you know the exact version of the code that produced these results.</p>
+</details>
+</li>
+<li>
+<p><details> <summary> <strong style="color:blue;">✔</strong> <strong>Environment:</strong> empty </summary></p>
+<p>Great job! The global environment was empty. Objects defined in the global environment can affect the analysis in your R Markdown file in unknown ways. For reproduciblity it’s best to always run the code in an empty environment.</p>
+</details>
+</li>
+<li>
+<p><details> <summary> <strong style="color:blue;">✔</strong> <strong>Seed:</strong> <code>set.seed(20180820)</code> </summary></p>
+<p>The command <code>set.seed(20180820)</code> was run prior to running the code in the R Markdown file. Setting a seed ensures that any results that rely on randomness, e.g. subsampling or permutations, are reproducible.</p>
+</details>
+</li>
+<li>
+<p><details> <summary> <strong style="color:blue;">✔</strong> <strong>Session information:</strong> recorded </summary></p>
+<p>Great job! Recording the operating system, R version, and package versions is critical for reproducibility.</p>
+</details>
+</li>
+<li>
+<p><details> <summary> <strong style="color:blue;">✔</strong> <strong>Repository version:</strong> <a href="https://github.com/annakrystalli/intro-r-gis/tree/1a58bc55705301bb4854f92c5ec05239080a5477" target="_blank">1a58bc5</a> </summary></p>
+Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility. The version displayed above was the version of the Git repository at the time these results were generated. <br><br> Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
+<pre><code>
+Ignored files:
+    Ignored:    .DS_Store
+    Ignored:    .Rhistory
+    Ignored:    .Rproj.user/
+    Ignored:    data/.DS_Store
+
+Untracked files:
+    Untracked:  .Rbuildignore
+    Untracked:  analysis/mapping.Rmd
+    Untracked:  data-raw/
+    Untracked:  data/csv/
+    Untracked:  data/raster/
+    Untracked:  data/sf/
+
+Unstaged changes:
+    Modified:   analysis/exercise_solutions.Rmd
+    Modified:   analysis/index.Rmd
+    Modified:   analysis/raster.Rmd
+    Modified:   analysis/vector.Rmd
+
+</code></pre>
+Note that any generated files, e.g. HTML, png, CSS, etc., are not included in this status report because it is ok for generated content to have uncommitted changes. </details>
+</li>
+</ul>
+<details> <summary> <small><strong>Expand here to see past versions:</strong></small> </summary>
+<ul>
+<table style="border-collapse:separate; border-spacing:5px;">
+<thead>
+<tr>
+<th style="text-align:left;">
+File
+</th>
+<th style="text-align:left;">
+Version
+</th>
+<th style="text-align:left;">
+Author
+</th>
+<th style="text-align:left;">
+Date
+</th>
+<th style="text-align:left;">
+Message
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Rmd
+</td>
+<td style="text-align:left;">
+<a href="https://github.com/annakrystalli/intro-r-gis/blob/1a58bc55705301bb4854f92c5ec05239080a5477/analysis/gis.Rmd" target="_blank">1a58bc5</a>
+</td>
+<td style="text-align:left;">
+annakrystalli
+</td>
+<td style="text-align:left;">
+2018-09-04
+</td>
+<td style="text-align:left;">
+workflowr::wflow_publish(“analysis/gis.Rmd”)
+</td>
+</tr>
+</tbody>
+</table>
+</ul>
+<p></details></p>
+<hr />
+<div id="geographic-information-systems" class="section level1">
+<h1>Geographic Information Systems</h1>
+<blockquote>
+<p><strong>Geographic Information Systems (GIS)</strong>: computer based systems used to:</p>
+</blockquote>
+<blockquote>
+<ul>
+<li>collect</li>
+<li>store</li>
+<li>manage<br />
+</li>
+<li>analyse</li>
+<li>display spatial or geographic data</li>
+</ul>
+</blockquote>
+<p>In science, GIS allow us to examine spatial realationships, patterns and processes.</p>
+<p>Applied to a broad range of phenomena: from physical, biological to cultural and demographic.</p>
+</div>
+<div id="spatial-data-types" class="section level1">
+<h1>spatial data types</h1>
+<p>Most common spatial data types:</p>
+<ul>
+<li><strong>raster:</strong> gridded data</li>
+<li><strong>vector:</strong> geographical feautures
+<ul>
+<li>points</li>
+<li>lines</li>
+<li>polygons</li>
+</ul></li>
+</ul>
+<p>Vector data tends to dominate the social sciences because human settlements tend to have discrete borders.</p>
+<p>Raster often dominates in environmental sciences because of the reliance on remote sensing data.</p>
+<p>There is much overlap in some fields and raster and vector datasets can be used side-by-side: ecologists and demographers, for example, commonly use both vector and raster data.</p>
+<div id="data-spatial-metadata" class="section level2">
+<h2>data + spatial metadata</h2>
+<p>Ultimately they are just <strong>data with geographic metadata attached</strong> to it in a structured way that both locates the data and also makes it interoperable. One of the most important aspects of this georgraphic metadata is the <strong>Coordinate Reference System</strong> being used.</p>
+<hr />
+</div>
+</div>
+<div id="coordinate-reference-systems" class="section level1">
+<h1>Coordinate Reference Systems</h1>
+<p>Coordinate reference systems (GCS) use a <strong>spheroid</strong> to approximate the surface of the earth and define locations on it.</p>
+<p>A spheroid is a three-dimensional shape created from a two-dimensional ellipse. The ellipse is an oval, with a major axis (the longer axis) and a minor axis (the shorter axis). Spheroid are used to and distinguished from another by the lengths of these two axes.</p>
+<div class="figure">
+<img src="http://www.geo.hunter.cuny.edu/~jochen/gtech201/lectures/lec6concepts/04%20-%20Understanding%20spheroids_files/image001.gif" />
+
+</div>
+<p><em>Image source: <a href="http://www.geo.hunter.cuny.edu/~jochen/gtech201/lectures/lec6concepts/04%20-%20Understanding%20spheroids_files/image001.gif">http://www.geo.hunter.cuny.edu/~jochen/gtech201/lectures/lec6concepts/04%20-%20Understanding%20spheroids_files/image001.gif</a></em></p>
+<div id="types-of-common-coordinate-systems" class="section level2">
+<h2>Types of common coordinate systems</h2>
+<p>There are two types of Coordinate Reference Systems:</p>
+<ul>
+<li><strong>Geographic coordinate system (GCS)</strong>: A global or spherical coordinate system such as latitude-longitude.</li>
+<li><strong>Projected coordinate systems (PCS)</strong>: A projected coordinate system provide various mechanisms to project maps of the earth’s spherical surface onto a two-dimensional Cartesian coordinate plane. Projected coordinate systems are referred to as map projections.</li>
+</ul>
+<p>Coordinate systems (both geographic and projected) provide a framework for defining real-world locations.</p>
+</div>
+<div id="geographic-coordinate-system" class="section level2">
+<h2>Geographic Coordinate System</h2>
+<p>Geographic Coordinate Systems are defined by a <strong>Datum</strong></p>
+<p>A <strong>Datum</strong> is a particular model of the shape of the earth.</p>
+<p>It has:</p>
+<ul>
+<li><strong>angular units (eg. degrees)</strong></li>
+<li>defines a <strong>starting point</strong> (i.e. where is (0,0) in particular which longitude is defined to be 0°?), so the angles reference a meaningful spot on the earth.</li>
+<li>defines the <strong>position of the spheroid relative to the center</strong> of the earth and therefore the origin and orientation of latitude and longitude lines.</li>
+</ul>
+<p><strong>A point is referenced by its longitude and latitude values.</strong> Longitude and latitude are angles measured from the earth’s center to a point on the earth’s surface.</p>
+<div class="figure">
+<img src="https://www.ibm.com/support/knowledgecenter/SSEPEK_11.0.0/spatl/src/art/0sbp5004.gif" />
+
+</div>
+<p><em>Image source: <a href="https://datacarpentry.org/r-raster-vector-geospatial/images/map_usa_different_projections.jpg" class="uri">https://datacarpentry.org/r-raster-vector-geospatial/images/map_usa_different_projections.jpg</a></em></p>
+<div id="the-right-datum-for-the-right-job" class="section level3">
+<h3>The right datum for the right job</h3>
+<p>A particular datum can be selected for use in a specific geographic area, because it does a good job of modelling the surface of the earth in that part of the world.</p>
+<div class="figure">
+<img src="http://desktop.arcgis.com/en/arcmap/10.3/guide-books/map-projections/GUID-E94B3A5F-D997-4E6F-B400-BC15C4B0DCDC-web.gif" />
+
+</div>
+<p><em>Image source: <a href="http://desktop.arcgis.com/en/arcmap/10.3/guide-books/map-projections/GUID-E94B3A5F-D997-4E6F-B400-BC15C4B0DCDC-web.gif" class="uri">http://desktop.arcgis.com/en/arcmap/10.3/guide-books/map-projections/GUID-E94B3A5F-D997-4E6F-B400-BC15C4B0DCDC-web.gif</a></em></p>
+<blockquote>
+<p>Orange Peel Analogy: a datum is your choice of fruit to use in the orange peel analogy. Is the earth an orange, a lemon, a lime, a grapefruit?</p>
+</blockquote>
+<div class="figure">
+<img src="https://farm3.staticflickr.com/2260/2508805118_500f5bba28_n.jpg" alt="Citrus fruit on display at the market" />
+<p class="caption">Citrus fruit on display at the market</p>
+</div>
+<p><em>Image source: <a href="https://farm3.staticflickr.com/2260/2508805118_500f5bba28_n.jpg" class="uri">https://farm3.staticflickr.com/2260/2508805118_500f5bba28_n.jpg</a></em></p>
+</div>
+<div id="common-datums" class="section level3">
+<h3>Common Datums</h3>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/World_Geodetic_System"><strong>WGS 84 - the World Geodetic System of 1984:</strong></a> The WGS 84 datum is the only world referencing system in place today. WGS 84 is the default standard datum for coordinates stored in recreational and commercial GPS units.</li>
+<li><a href="https://en.wikipedia.org/wiki/North_American_Datum"><strong>NAD 83 - The North American Datum of 1983:</strong></a> is the datum now used to define the geodetic network in North America</li>
+</ul>
+<div id="geographic-datum-transformations" class="section level4">
+<h4>Geographic (datum) transformations</h4>
+<p>To change between geographic coordinate system, you may need to perform a <strong>geographic (datum) transformation</strong>. This is a well-defined mathematical method to convert coordinates between two geographic coordinate systems.</p>
+</div>
+</div>
+</div>
+<div id="projected-coordinate-systems-pcs" class="section level2">
+<h2>Projected coordinate systems (PCS)</h2>
+<p>Projected coordinate systems include <strong>a projection</strong></p>
+<p>A Projection is a mathematical transformation of the angular measurements on a round earth to a flat surface (i.e. paper or a computer screen).</p>
+<p>Units of measurement are linear, usually meters.</p>
+<blockquote>
+<p>Orange Peel Analogy: a projection is how you peel your orange and then flatten the peel.</p>
+</blockquote>
+<div class="figure">
+<img src="http://blogs.lincoln.ac.nz/gis/wp-content/uploads/sites/16/2017/03/laranjoide_1.jpg" />
+
+</div>
+<p><em>Image source: <a href="http://blogs.lincoln.ac.nz/gis/2017/03/29/where-on-earth-are-we/" class="uri">http://blogs.lincoln.ac.nz/gis/2017/03/29/where-on-earth-are-we/</a></em></p>
+<p><br></p>
+<div id="common-projected-coordinate-systems" class="section level3">
+<h3>Common projected coordinate systems:</h3>
+<p>-<a href="https://en.wikipedia.org/wiki/Mercator_projection"><strong>Mercator projection:</strong></a> a cylindrical map projection presented by the Flemish geographer and cartographer Gerardus Mercator in 1569. It became the standard map projection for nautical purposes because of its ability to represent lines of constant course as straight segments that conserve the angles with the meridians.</p>
+<ul>
+<li><p><a href="https://en.wikipedia.org/wiki/Universal_Transverse_Mercator_coordinate_system"><strong>Universal Transverse Mercator (UTM) system</strong></a>: The UTM system is not a single map projection. The system instead divides the Earth into <strong>sixty zones</strong>, each being a <strong>six-degree band of longitude</strong>, and uses a secant transverse Mercator projection in each zone.</p></li>
+<li><p><a href="https://en.wikipedia.org/wiki/Albers_projection"><strong>Albers Equal Area</strong></a>: a conic, equal area map projection that uses two standard parallels. Although scale and shape are not preserved, distortion is minimal between the standard parallels.</p></li>
+</ul>
+<div class="figure">
+<img src="https://datacarpentry.org/r-raster-vector-geospatial/images/map_usa_different_projections.jpg" />
+
+</div>
+<p><em>Image source: <a href="https://datacarpentry.org/r-raster-vector-geospatial/images/map_usa_different_projections.jpg" class="uri">https://datacarpentry.org/r-raster-vector-geospatial/images/map_usa_different_projections.jpg</a></em></p>
+<p><br></p>
+<div id="q-why-is-wgs-84-so-different-to-other-three-projected-maps" class="section level4">
+<h4>Q: Why is WGS 84 so different to other three projected maps?</h4>
+<p>Latitude lines are concentric circles that become smaller near the poles. They form a single point at the poles.</p>
+<p>When a lat/lon crs is flattened, it does not take this into accout, resulting in increasing distortion of features as one approaches the poles.</p>
+<div class="figure">
+<img src="https://www.ibm.com/support/knowledgecenter/SSEPEK_11.0.0/spatl/src/art/0sbp5003.gif" />
+
+</div>
+</div>
+<div id="q-why-do-the-three-projected-maps-differ-from-each-other" class="section level4">
+<h4>Q: Why do the three projected maps differ from each other?</h4>
+<p>Going back to the orange peel analogy, different projections use a different starting point and method to peel the earth’s surface into a flat surface.</p>
+<p><br></p>
+</div>
+<div id="map-reprojections" class="section level4">
+<h4>Map reprojections</h4>
+<p>To change between projected CRSs you need to <strong>reproject</strong> your data. This often involves unprojecting back to lat/lon, transforming the unprojected coordinates and then reprojecting. ___</p>
+</div>
+</div>
+</div>
+</div>
+<div id="notation-for-coordinate-reference-systems-in-r" class="section level1">
+<h1>Notation for Coordinate Reference Systems in R</h1>
+<p>You have two options for identifying a CRS in most R commands. The documentation for a command that requires projection information will tell you which is required. Often you can choose between the two options.</p>
+<div id="epsg-code" class="section level2">
+<h2>EPSG Code</h2>
+<p>An EPSG (European Petroleum Survey Group) Code is an ID that has been assigned to most common projections to make reference to a particular projection easy. An EPSG Code is also called an SRID (Spatial Reference Identifier). Technically, EPSG is the authority that assigns SRIDs, but you will hear these terms used interchangibly.</p>
+<div id="proscons" class="section level3">
+<h3>pros/cons</h3>
+<p>The main advantages to using this method of specifying a projection are that it is standardized and ensures you have the same parameters every time.</p>
+<p>The disadvantage is that if you need to know the parameters used by the projection or it’s name, you have to look them up, but that’s fairly easy to to at <a href="http://spatialreference.org/ref/epsg/">spatialreference.org</a>. Also, you can’t customize the parameters if you use an EPSG code.</p>
+</div>
+</div>
+<div id="proj.4-string" class="section level2">
+<h2>PROJ.4 String</h2>
+<p>PROJ.4 is an open source library for defining and converting between coordinate reference systems. It defines a standard way to write projection parameters.</p>
+<p>For example, the proj.4 string: <code>+proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0</code> encodes:</p>
+<ul>
+<li><strong>proj=longlat:</strong> the data are in a geographic (latitude and longitude) coordinate system</li>
+<li><strong>datum=WGS84:</strong> the datum WGS84 (the datum refers to the 0,0 reference for the coordinate system used in the projection)</li>
+<li><strong>ellps=WGS84:</strong> the ellipsoid (how the earth’s roundness is calculated) is WGS84</li>
+</ul>
+<p><em>Note that there are no specified units above. This is because this geographic coordinate reference system is in latitude and longitude which is most often recorded in decimal degrees.</em></p>
+<div id="proscons-1" class="section level3">
+<h3>pros/cons</h3>
+<p>Two important advantages to using this option are:</p>
+<ol style="list-style-type: decimal">
+<li>the parameters are human-readable and immediately transparent</li>
+<li>the strings are easily customized.</li>
+</ol>
+<p>The main disadvantage to this option is that it’s easy to make a mistake when you reproduce the string, accidentally changing parameters.</p>
+<p>For more, check out <a href="http://proj.maptools.org/faq.html">Proj4 FAQs</a></p>
+</div>
+<div id="the-most-common-mistake-to-beware-of" class="section level3">
+<h3>The most common mistake to beware of:</h3>
+<p>You may find yourself in a situatation were you’ll need to tell your GIS (in our case R) what the projection/CRS of your data should be. In these cases, the GIS needs to know what the projection/CRS <strong>currently</strong> is, not what you would like it to be. If you need to change a projection, you need to go through a different process, often called Re-project or Transform.</p>
+</div>
+</div>
+<div id="a-motivating-example" class="section level2">
+<h2>A motivating example</h2>
+<div id="from-geocomputation-in-r-section-2.1" class="section level4">
+<h4>(from Geocomputation in R, <a href="https://geocompr.robinlovelace.net/spatial-class.html#vector-data">Section 2.1</a>):</h4>
+<p>The city of London can be represented by the coordinates c(-0.1, 51.5). This means that its location is <strong>-0.1 degrees east</strong> and <strong>51.5 degrees north</strong> of the <strong>origin</strong>. The origin in this case is at 0 degrees longitude (the Prime Meridian) and 0 degree latitude (the Equator) in a geographic (‘lon/lat’) coordinate system (GCS).</p>
+<div class="figure">
+<img src="https://geocompr.robinlovelace.net/figures/vector_lonlat.png" />
+
+</div>
+<p>The same point could also be approximated in a <strong>PCS</strong> with <strong>‘Easting/Northing’ values of c(530000, 180000)</strong> in the <strong>British National Grid (BNG)</strong>, meaning that London is located 530 km East and 180 km North of the origin of the CRS (right panel).</p>
+<p>The location of BNG’s origin, in the sea beyond South West Peninsular, ensures that most locations in the UK have positive Easting and Northing values.</p>
+<div class="figure">
+<img src="https://geocompr.robinlovelace.net/figures/vector_projected.png" />
+
+</div>
+</div>
+<div id="more-advice-from-twitter-experts" class="section level3">
+<h3>more advice from twitter experts</h3>
+<blockquote class="twitter-tweet" data-lang="en">
+<p lang="en" dir="ltr">
+What's the one thing you want people who are learning to handle projections for spatial data in <a href="https://twitter.com/hashtag/rstats?src=hash&amp;ref_src=twsrc%5Etfw">#rstats</a> (or in general) to know? <a href="https://twitter.com/hashtag/gistribe?src=hash&amp;ref_src=twsrc%5Etfw">#gistribe</a>
+</p>
+— Dr. Michele M Tobias (<span class="citation">@MicheleTobias</span>) <a href="https://twitter.com/MicheleTobias/status/955861280174174208?ref_src=twsrc%5Etfw">January 23, 2018</a>
+</blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<p>Source for this section:</p>
+</div>
+</div>
+<div id="session-information" class="section level2">
+<h2>Session information</h2>
+<pre class="r"><code>sessionInfo()</code></pre>
+<pre><code>R version 3.4.4 (2018-03-15)
+Platform: x86_64-apple-darwin15.6.0 (64-bit)
+Running under: macOS High Sierra 10.13.3
+
+Matrix products: default
+BLAS: /Library/Frameworks/R.framework/Versions/3.4/Resources/lib/libRblas.0.dylib
+LAPACK: /Library/Frameworks/R.framework/Versions/3.4/Resources/lib/libRlapack.dylib
+
+locale:
+[1] en_GB.UTF-8/en_GB.UTF-8/en_GB.UTF-8/C/en_GB.UTF-8/en_GB.UTF-8
+
+attached base packages:
+[1] stats     graphics  grDevices utils     datasets  methods   base     
+
+loaded via a namespace (and not attached):
+ [1] workflowr_1.0.1   Rcpp_0.12.18      digest_0.6.15    
+ [4] rprojroot_1.3-2   R.methodsS3_1.7.1 backports_1.1.2  
+ [7] git2r_0.21.0      magrittr_1.5      evaluate_0.11    
+[10] stringi_1.2.4     whisker_0.3-2     R.oo_1.21.0      
+[13] R.utils_2.6.0     rmarkdown_1.10    tools_3.4.4      
+[16] stringr_1.3.1     yaml_2.1.19       compiler_3.4.4   
+[19] htmltools_0.3.6   knitr_1.20       </code></pre>
+</div>
+</div>
+
+<!-- Adjust MathJax settings so that all math formulae are shown using
+TeX fonts only; see
+http://docs.mathjax.org/en/latest/configuration.html.  This will make
+the presentation more consistent at the cost of the webpage sometimes
+taking slightly longer to load. Note that this only works because the
+footer is added to webpages before the MathJax javascript. -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    "HTML-CSS": { availableFonts: ["TeX"] }
+  });
+</script>
+
+<hr>
+<p>
+  This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a>
+  analysis was created with
+  <a href="https://github.com/jdblischak/workflowr">workflowr</a> 1.0.1
+</p>
+<hr>
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
