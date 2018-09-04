@@ -328,7 +328,7 @@ div.section {
 </details>
 </li>
 <li>
-<p><details> <summary> <strong style="color:blue;">✔</strong> <strong>Repository version:</strong> <a href="https://github.com/annakrystalli/intro-r-gis/tree/ed98c23d29b24587c7a8fac69fe77f03c3df2666" target="_blank">ed98c23</a> </summary></p>
+<p><details> <summary> <strong style="color:blue;">✔</strong> <strong>Repository version:</strong> <a href="https://github.com/annakrystalli/intro-r-gis/tree/8d22686b18d54d936834da4ca8c71a3e5928b2ea" target="_blank">8d22686</a> </summary></p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility. The version displayed above was the version of the Git repository at the time these results were generated. <br><br> Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
 <pre><code>
 Ignored files:
@@ -347,6 +347,7 @@ Untracked files:
 
 Unstaged changes:
     Modified:   analysis/index.Rmd
+    Modified:   analysis/intro.Rmd
     Modified:   analysis/vector.Rmd
 
 </code></pre>
@@ -376,6 +377,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td style="text-align:left;">
+Rmd
+</td>
+<td style="text-align:left;">
+<a href="https://github.com/annakrystalli/intro-r-gis/blob/8d22686b18d54d936834da4ca8c71a3e5928b2ea/analysis/further_resources.Rmd" target="_blank">8d22686</a>
+</td>
+<td style="text-align:left;">
+annakrystalli
+</td>
+<td style="text-align:left;">
+2018-09-04
+</td>
+<td style="text-align:left;">
+workflowr::wflow_publish(“analysis/further_resources.Rmd”)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+html
+</td>
+<td style="text-align:left;">
+<a href="https://cdn.rawgit.com/annakrystalli/intro-r-gis/98b3ac7ecf1b0b966dc96834f481da06cf65f5d0/docs/further_resources.html" target="_blank">98b3ac7</a>
+</td>
+<td style="text-align:left;">
+annakrystalli
+</td>
+<td style="text-align:left;">
+2018-09-04
+</td>
+<td style="text-align:left;">
+Build site.
+</td>
+</tr>
 <tr>
 <td style="text-align:left;">
 html
@@ -443,16 +478,38 @@ workflowr::wflow_publish(c(“analysis/further_resources.Rmd”))
 <li><a href="https://www.neonscience.org/primer-raster-data-r">Primer on Raster Data in R</a></li>
 <li><a href="https://www.neonscience.org/vector-data-series">Intro to Vector Data in R</a></li>
 </ul></li>
-<li><a href="https://github.com/MicheleTobias/R-Projections-Workshop">R Projections Workshop</a> by Michele Tobias</li>
+<li><a href="https://datacarpentry.org/geospatial-workshop/"><strong>Data Carpentry Geospatial Workshop</strong></a>
+<ul>
+<li><a href="https://datacarpentry.org/organization-geospatial/">Introduction to Geospatial Concepts</a></li>
+<li><a href="https://datacarpentry.org/r-intro-geospatial/">Introduction to R for Geospatial Data</a></li>
+<li><a href="https://datacarpentry.org/r-raster-vector-geospatial/">Introduction to Geospatial Raster and Vector Data with R</a></li>
+</ul></li>
 </ul>
+<div id="projections" class="section level3">
+<h3>Projections</h3>
+<ul>
+<li><a href="https://github.com/MicheleTobias/R-Projections-Workshop">R Projections Workshop</a> by Michele Tobias</li>
+<li><a href="https://www.earthdatascience.org/courses/earth-analytics/spatial-data-r/understand-epsg-wkt-and-other-crs-definition-file-types/">Lesson 5. GIS in R: Understand EPSG, WKT and other CRS definition styles</a>: University of Colorado, Earth Data Analytics Online certificate.</li>
+<li><a href="http://www.nickeubank.com/wp-content/uploads/2018/02/CoordinateSystems_And_Projections.pdf">How Computers Relate x-y Coordinates to Real Locations on Earth</a>: by Nick Eubank</li>
+</ul>
+</div>
 </div>
 <div id="papers" class="section level2">
 <h2>papers</h2>
 <ul>
-<li>Pebesma, Edzer. 2018. <a href="">“Simple Features for R: Standardized Support for Spatial Vector Data.” The R Journal.</a></li>
+<li>Pebesma, Edzer. 2018. <a href="https://journal.r-project.org/archive/2018/RJ-2018-009/RJ-2018-009.pdf">“Simple Features for R: Standardized Support for Spatial Vector Data.” The R Journal.</a></li>
 </ul>
-<div id="web" class="section level3">
-<h3>web</h3>
+<div id="blog-posts" class="section level3">
+<h3>Blog posts</h3>
+<ul>
+<li><a href="https://www.jessesadler.com/post/gis-with-r-intro/">Introduction to GIS with R</a>: by Jesse Sadler</li>
+<li><a href="https://statnmap.com/2018-07-14-introduction-to-mapping-with-sf-and-co/">Introduction to mapping with <code>sf</code> &amp; Co</a>: by Sébastien Rochette</li>
+<li><a href="http://strimas.com/r/tidy-sf/">Tidy spatial data in R: using dplyr, tidyr, and ggplot2 with sf</a> by Matt Strimas-Mackey</li>
+<li><a href="http://www.nickeubank.com/gis-in-r/">GIS in R</a>: by Nick Eubank</li>
+</ul>
+</div>
+<div id="vignettes-reference-guides" class="section level3">
+<h3>Vignettes / reference guides</h3>
 <ul>
 <li><a href="https://cran.r-project.org/web/packages/sf/vignettes/sf1.html"><code>sf</code> vignettes</a></li>
 <li><a href="https://r-spatial.github.io/sf/reference/index.html"><code>sf</code> function guide</a></li>
@@ -460,24 +517,21 @@ workflowr::wflow_publish(c(“analysis/further_resources.Rmd”))
 <li><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">Visualise <code>sf</code> objects with <code>ggplot2</code></a></li>
 </ul>
 </div>
-<div id="video" class="section level3">
-<h3>video</h3>
 </div>
-</div>
-<div id="wikis" class="section level2">
-<h2>wikis</h2>
+<div id="wiki" class="section level2">
+<h2>wiki</h2>
 <ul>
 <li><a href="http://wiki.gis.com/wiki/index.php/Main_Page">Wiki.GIS.com - The GIS Encyclopedia</a></li>
 </ul>
 </div>
-</div>
-<div id="r-markdown" class="section level1">
-<h1>R markdown</h1>
+<div id="r-markdown" class="section level2">
+<h2>R markdown</h2>
 <ul>
 <li><a href="https://rmarkdown.rstudio.com/">R markdown introductory material</a></li>
 <li><a href="https://bookdown.org/yihui/rmarkdown/">R markdown: the Definitive Guide</a></li>
 <li><a href="http://annakrystalli.me/literate-programming/">Tutorial on literate programming using R markdown</a></li>
 </ul>
+</div>
 </div>
 
 <!-- Adjust MathJax settings so that all math formulae are shown using
