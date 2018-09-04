@@ -343,7 +343,7 @@ div.section {
 </details>
 </li>
 <li>
-<p><details> <summary> <strong style="color:blue;">✔</strong> <strong>Repository version:</strong> <a href="https://github.com/annakrystalli/intro-r-gis/tree/ae1fd63ac1f3d8a9f4792305b81ddcd208c5b515" target="_blank">ae1fd63</a> </summary></p>
+<p><details> <summary> <strong style="color:blue;">✔</strong> <strong>Repository version:</strong> <a href="https://github.com/annakrystalli/intro-r-gis/tree/8f5c11c5f7dbbb8751e64903a53e815ba3dd7870" target="_blank">8f5c11c</a> </summary></p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility. The version displayed above was the version of the Git repository at the time these results were generated. <br><br> Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
 <pre><code>
 Ignored files:
@@ -354,15 +354,16 @@ Ignored files:
 
 Untracked files:
     Untracked:  .Rbuildignore
-    Untracked:  analysis/exercise_solutions.Rmd
-    Untracked:  analysis/further_resources.Rmd
-    Untracked:  analysis/gis.Rmd
     Untracked:  analysis/mapping.Rmd
     Untracked:  data-raw/
     Untracked:  data/csv/
     Untracked:  data/raster/
     Untracked:  data/sf/
-    Untracked:  docs/figure/exercise_solutions.Rmd/
+
+Unstaged changes:
+    Modified:   analysis/exercise_solutions.Rmd
+    Modified:   analysis/index.Rmd
+    Modified:   analysis/vector.Rmd
 
 </code></pre>
 Note that any generated files, e.g. HTML, png, CSS, etc., are not included in this status report because it is ok for generated content to have uncommitted changes. </details>
@@ -391,6 +392,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td style="text-align:left;">
+Rmd
+</td>
+<td style="text-align:left;">
+<a href="https://github.com/annakrystalli/intro-r-gis/blob/8f5c11c5f7dbbb8751e64903a53e815ba3dd7870/analysis/raster.Rmd" target="_blank">8f5c11c</a>
+</td>
+<td style="text-align:left;">
+annakrystalli
+</td>
+<td style="text-align:left;">
+2018-09-04
+</td>
+<td style="text-align:left;">
+workflowr::wflow_publish(“analysis/raster.Rmd”)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+html
+</td>
+<td style="text-align:left;">
+<a href="https://cdn.rawgit.com/annakrystalli/intro-r-gis/f94df5ce59f87379087af9763c9e1b64f7e9c0f3/docs/raster.html" target="_blank">f94df5c</a>
+</td>
+<td style="text-align:left;">
+annakrystalli
+</td>
+<td style="text-align:left;">
+2018-09-04
+</td>
+<td style="text-align:left;">
+Build site.
+</td>
+</tr>
 <tr>
 <td style="text-align:left;">
 Rmd
@@ -480,6 +515,36 @@ coord. ref. : +proj=longlat +datum=WGS84 +ellps=WGS84 +towgs84=0,0,0 </code></pr
 <pre class="r"><code>myRaster1[] &lt;-1:16
 plot(myRaster1)</code></pre>
 <p><img src="figure/raster.Rmd/unnamed-chunk-3-1.png" width="672" style="display: block; margin: auto;" /></p>
+<details> <summary><em>Expand here to see past versions of unnamed-chunk-3-1.png:</em></summary>
+<table style="border-collapse:separate; border-spacing:5px;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Version
+</th>
+<th style="text-align:left;">
+Author
+</th>
+<th style="text-align:left;">
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<a href="https://github.com/annakrystalli/intro-r-gis/blob/f94df5ce59f87379087af9763c9e1b64f7e9c0f3/docs/figure/raster.Rmd/unnamed-chunk-3-1.png" target="_blank">f94df5c</a>
+</td>
+<td style="text-align:left;">
+annakrystalli
+</td>
+<td style="text-align:left;">
+2018-09-04
+</td>
+</tr>
+</tbody>
+</table>
+<p></details></p>
 </div>
 <div id="reading-raster-files" class="section level2">
 <h2>Reading raster files</h2>
@@ -559,7 +624,7 @@ names       : mx.bio_5
 values      : 54, 427  (min, max)</code></pre>
 <p>This creates a <code>RasterLayer</code> object.</p>
 <p>By having a look at the summary of the raster file when we simply print the object, straight away it looks like something funny is going on. It’s showing a <strong>range of values between 54 and 427</strong>. Now, Mexico can get hot…but not that hot! By checking the <a href="http://www.worldclim.org/formats1">documentation</a> for the WorldClim data, we can see that the data is stored as <strong>degrees C x 10</strong>. This is for storage efficiency (files are much smaller if numbers can be stored as integers) but it means we need to transform the data back to degrees C.</p>
-<p>Lukily we can easily manipulate rasters, just like any other matrix in R.</p>
+<p>Luckily we can easily manipulate rasters, just like any other matrix in R.</p>
 <pre class="r"><code>bio5 &lt;- bio5/10
 bio5</code></pre>
 <pre><code>class       : RasterLayer 
@@ -578,12 +643,102 @@ values      : 5.4, 42.7  (min, max)</code></pre>
 <p>The <code>raster</code> pkg has native plotting functions which are again, ok for a quick check of the data.</p>
 <pre class="r"><code>plot(bio5)</code></pre>
 <p><img src="figure/raster.Rmd/unnamed-chunk-7-1.png" width="672" style="display: block; margin: auto;" /></p>
+<details> <summary><em>Expand here to see past versions of unnamed-chunk-7-1.png:</em></summary>
+<table style="border-collapse:separate; border-spacing:5px;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Version
+</th>
+<th style="text-align:left;">
+Author
+</th>
+<th style="text-align:left;">
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<a href="https://github.com/annakrystalli/intro-r-gis/blob/f94df5ce59f87379087af9763c9e1b64f7e9c0f3/docs/figure/raster.Rmd/unnamed-chunk-7-1.png" target="_blank">f94df5c</a>
+</td>
+<td style="text-align:left;">
+annakrystalli
+</td>
+<td style="text-align:left;">
+2018-09-04
+</td>
+</tr>
+</tbody>
+</table>
+<p></details></p>
 <p>Package <code>rasterVis</code> offers much nicer options for plotting raster data, including much better colour palletes which are pretty, better represent data, are easier to read by those with colorblindness, and print well in grey scale. by default.</p>
 <pre class="r"><code>levelplot(bio5)</code></pre>
 <p><img src="figure/raster.Rmd/unnamed-chunk-8-1.png" width="672" style="display: block; margin: auto;" /></p>
+<details> <summary><em>Expand here to see past versions of unnamed-chunk-8-1.png:</em></summary>
+<table style="border-collapse:separate; border-spacing:5px;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Version
+</th>
+<th style="text-align:left;">
+Author
+</th>
+<th style="text-align:left;">
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<a href="https://github.com/annakrystalli/intro-r-gis/blob/f94df5ce59f87379087af9763c9e1b64f7e9c0f3/docs/figure/raster.Rmd/unnamed-chunk-8-1.png" target="_blank">f94df5c</a>
+</td>
+<td style="text-align:left;">
+annakrystalli
+</td>
+<td style="text-align:left;">
+2018-09-04
+</td>
+</tr>
+</tbody>
+</table>
+<p></details></p>
 <p>For numeric data it plots the distribution of the data along each axis in the plot margins. We can suppress that default behaviour by using argument <code>margin=FALSE</code>.</p>
 <pre class="r"><code>levelplot(bio5, margin=FALSE)</code></pre>
 <p><img src="figure/raster.Rmd/unnamed-chunk-9-1.png" width="672" style="display: block; margin: auto;" /></p>
+<details> <summary><em>Expand here to see past versions of unnamed-chunk-9-1.png:</em></summary>
+<table style="border-collapse:separate; border-spacing:5px;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Version
+</th>
+<th style="text-align:left;">
+Author
+</th>
+<th style="text-align:left;">
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<a href="https://github.com/annakrystalli/intro-r-gis/blob/f94df5ce59f87379087af9763c9e1b64f7e9c0f3/docs/figure/raster.Rmd/unnamed-chunk-9-1.png" target="_blank">f94df5c</a>
+</td>
+<td style="text-align:left;">
+annakrystalli
+</td>
+<td style="text-align:left;">
+2018-09-04
+</td>
+</tr>
+</tbody>
+</table>
+<p></details></p>
 <p>Now this is great for individual layers, but if we have multiple layers to work with, it can be much more efficient to <strong>stack</strong> them into a <code>rasterStack</code>.</p>
 </div>
 <div id="raster-stacks" class="section level3">
@@ -634,8 +789,68 @@ values      : 54, 427  (min, max)</code></pre>
 <p>Both the native <code>plot</code> method and <code>rasterVis::levelplot</code> can handle <code>rasterStack</code>s</p>
 <pre class="r"><code>plot(st)</code></pre>
 <p><img src="figure/raster.Rmd/unnamed-chunk-14-1.png" width="672" style="display: block; margin: auto;" /></p>
+<details> <summary><em>Expand here to see past versions of unnamed-chunk-14-1.png:</em></summary>
+<table style="border-collapse:separate; border-spacing:5px;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Version
+</th>
+<th style="text-align:left;">
+Author
+</th>
+<th style="text-align:left;">
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<a href="https://github.com/annakrystalli/intro-r-gis/blob/f94df5ce59f87379087af9763c9e1b64f7e9c0f3/docs/figure/raster.Rmd/unnamed-chunk-14-1.png" target="_blank">f94df5c</a>
+</td>
+<td style="text-align:left;">
+annakrystalli
+</td>
+<td style="text-align:left;">
+2018-09-04
+</td>
+</tr>
+</tbody>
+</table>
+<p></details></p>
 <pre class="r"><code>levelplot(st)</code></pre>
 <p><img src="figure/raster.Rmd/unnamed-chunk-15-1.png" width="672" style="display: block; margin: auto;" /></p>
+<details> <summary><em>Expand here to see past versions of unnamed-chunk-15-1.png:</em></summary>
+<table style="border-collapse:separate; border-spacing:5px;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Version
+</th>
+<th style="text-align:left;">
+Author
+</th>
+<th style="text-align:left;">
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<a href="https://github.com/annakrystalli/intro-r-gis/blob/f94df5ce59f87379087af9763c9e1b64f7e9c0f3/docs/figure/raster.Rmd/unnamed-chunk-15-1.png" target="_blank">f94df5c</a>
+</td>
+<td style="text-align:left;">
+annakrystalli
+</td>
+<td style="text-align:left;">
+2018-09-04
+</td>
+</tr>
+</tbody>
+</table>
+<p></details></p>
 <p>For a quick scan of a <code>rasterStack</code>, <code>plot()</code> is more useful because <code>levelplot()</code> function plot all panels on the same scale but there are ways of plotting with separate scales which we will link to later.</p>
 </div>
 <div id="landcover-data" class="section level3">
@@ -656,6 +871,36 @@ values      : 1, 22  (min, max)</code></pre>
 <p>Let’s plot this again to have a look at it.</p>
 <pre class="r"><code>levelplot(lc)</code></pre>
 <p><img src="figure/raster.Rmd/unnamed-chunk-18-1.png" width="672" style="display: block; margin: auto;" /></p>
+<details> <summary><em>Expand here to see past versions of unnamed-chunk-18-1.png:</em></summary>
+<table style="border-collapse:separate; border-spacing:5px;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Version
+</th>
+<th style="text-align:left;">
+Author
+</th>
+<th style="text-align:left;">
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<a href="https://github.com/annakrystalli/intro-r-gis/blob/f94df5ce59f87379087af9763c9e1b64f7e9c0f3/docs/figure/raster.Rmd/unnamed-chunk-18-1.png" target="_blank">f94df5c</a>
+</td>
+<td style="text-align:left;">
+annakrystalli
+</td>
+<td style="text-align:left;">
+2018-09-04
+</td>
+</tr>
+</tbody>
+</table>
+<p></details></p>
 <p>This raster contains categorical data, so the scales used as well as the inclusion of distributions along the margins do not see appropriate. Such data can be better defined using the <code>rasteVis::ratify</code> function.</p>
 <pre class="r"><code>lc &lt;- ratify(lc)
 lc</code></pre>
@@ -726,59 +971,119 @@ attributes  :
 <p>Let’s plot again</p>
 <pre class="r"><code>levelplot(lc)</code></pre>
 <p><img src="figure/raster.Rmd/unnamed-chunk-25-1.png" width="672" style="display: block; margin: auto;" /></p>
+<details> <summary><em>Expand here to see past versions of unnamed-chunk-25-1.png:</em></summary>
+<table style="border-collapse:separate; border-spacing:5px;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Version
+</th>
+<th style="text-align:left;">
+Author
+</th>
+<th style="text-align:left;">
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<a href="https://github.com/annakrystalli/intro-r-gis/blob/f94df5ce59f87379087af9763c9e1b64f7e9c0f3/docs/figure/raster.Rmd/unnamed-chunk-25-1.png" target="_blank">f94df5c</a>
+</td>
+<td style="text-align:left;">
+annakrystalli
+</td>
+<td style="text-align:left;">
+2018-09-04
+</td>
+</tr>
+</tbody>
+</table>
+<p></details></p>
 <p>Success!</p>
 <p>And seeing as we’re dealing with primarily vegetation, let’s create a new map theme (colour palette) using function <code>rasterVis::rasterTheme</code> and <a href="http://colorbrewer2.org/#type=sequential&amp;scheme=YlGn&amp;n=9">colour brewer palette Yellow &amp; Greens (“YlGn”)</a>.</p>
 <pre class="r"><code>mapTheme &lt;- rasterTheme(region = rev(brewer.pal(9,&quot;YlGn&quot;)))
 levelplot(lc, par.settings = mapTheme)</code></pre>
 <p><img src="figure/raster.Rmd/unnamed-chunk-26-1.png" width="672" style="display: block; margin: auto;" /></p>
+<details> <summary><em>Expand here to see past versions of unnamed-chunk-26-1.png:</em></summary>
+<table style="border-collapse:separate; border-spacing:5px;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Version
+</th>
+<th style="text-align:left;">
+Author
+</th>
+<th style="text-align:left;">
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<a href="https://github.com/annakrystalli/intro-r-gis/blob/f94df5ce59f87379087af9763c9e1b64f7e9c0f3/docs/figure/raster.Rmd/unnamed-chunk-26-1.png" target="_blank">f94df5c</a>
+</td>
+<td style="text-align:left;">
+annakrystalli
+</td>
+<td style="text-align:left;">
+2018-09-04
+</td>
+</tr>
+</tbody>
+</table>
+<p></details></p>
 <p>The function takes a vector of colours to produce a colour gradient that is then mapped to raster values. It has a numer of in-built colour vectors to choose from and you can even provide your own custom vectors of functions (which is what we would probably want to do in our case to make the colour more reflective of the vegetation type).</p>
 </div>
 </div>
-<div id="stack-everything-up" class="section level2">
-<h2>stack everything up</h2>
+<div id="stacking-rasterlayers" class="section level2">
+<h2>stacking <code>rasterLayers</code></h2>
 <pre class="r"><code>stack(st, lc)</code></pre>
 <pre><code>Error in compareRaster(x): different extent</code></pre>
 <p>This doesn’t work, notifying us that there is a problem with mismatching extents. We don’t really need the whole extent of data anyways so let’s try croping everything to the same extent, that of the study area bounding box we defined in our vector workflow</p>
-<p>We can read in the study bounding box into an <code>sf</code> using function <code>sf::read_sf</code>.</p>
-<pre class="r"><code>study_bbox &lt;- read_sf(here::here(&quot;data&quot;, &quot;sf&quot;, &quot;study_bbox.geojson&quot;))
-study_bbox</code></pre>
-<pre><code>Simple feature collection with 1 feature and 0 fields
-geometry type:  POLYGON
-dimension:      XY
-bbox:           xmin: -99.84806 ymin: 18.94194 xmax: -97.09056 ymax: 19.63083
-epsg (SRID):    4326
-proj4string:    +proj=longlat +datum=WGS84 +no_defs
-                        geometry
-1 POLYGON ((-99.84806 18.9419...</code></pre>
-<p>This bounding box we originally defined is really tight around our data points. To ensure our raster data contain the locations of all our data points, let’s give it some space around our points by using function <code>sf::st_buffer</code>.</p>
+<p>So let’s load the molecular data that we have converted to an <code>sf</code> using function <code>sf::read_sf</code> and recreate a bounding box.</p>
+<pre class="r"><code>mol_sf &lt;- read_sf(here::here(&quot;data&quot;, &quot;sf&quot;, &quot;salamander.geojson&quot;))
+study_bbox &lt;- mol_sf %&gt;% st_bbox() %&gt;% st_as_sfc()</code></pre>
+<p>This bounding box is really tight around our data points. To ensure our raster data contain the locations of all our data points, let’s give this extraction bounding box some space around our points using function <code>sf::st_buffer</code>.</p>
 <p><em>Looking at the help file for this function using <code>?st_buffer</code> gives us information on a whole suite of useful functions to perform geometric operations on simple feature geometry sets.</em></p>
 <pre class="r"><code>extract_bbox &lt;- study_bbox %&gt;% st_buffer(dist = 1)</code></pre>
-<pre><code>Warning in st_buffer.sfc(st_geometry(x), dist, nQuadSegs): st_buffer does
-not correctly buffer longitude/latitude data</code></pre>
+<pre><code>Warning in st_buffer.sfc(., dist = 1): st_buffer does not correctly buffer
+longitude/latitude data</code></pre>
 <pre class="r"><code>extract_bbox</code></pre>
-<pre><code>Simple feature collection with 1 feature and 0 fields
+<pre><code>Geometry set for 1 feature 
 geometry type:  POLYGON
 dimension:      XY
 bbox:           xmin: -100.8481 ymin: 17.94194 xmax: -96.09056 ymax: 20.63083
 epsg (SRID):    4326
-proj4string:    +proj=longlat +datum=WGS84 +no_defs
-                        geometry
-1 POLYGON ((-100.8481 18.9419...</code></pre>
+proj4string:    +proj=longlat +datum=WGS84 +no_defs</code></pre>
 <p>To crop a raster we use function <code>raster::crop</code> which will returns a geographic subset of the raster as specified either by an <code>Extent</code> object or an object from which an extent object can be extracted/created.</p>
-<p>In our case, we’ll use the <code>study_bbox</code> <code>sf</code>. So let’s try and crop <code>lc</code> first.</p>
+<p>In our case, we’ll use the <code>extract_bbox</code> <code>sf</code> we just created. So let’s try and crop <code>lc</code> first.</p>
 <pre class="r"><code>crop(lc, extract_bbox)</code></pre>
-<pre><code>Error in methods::validObject(y): invalid class &quot;Extent&quot; object: TRUE</code></pre>
+<pre><code>Error in .local(x, y, ...): Cannot get an Extent object from argument y</code></pre>
 <p>Ooops! That throws an error! That’s because of current <code>sf</code> and <code>raster</code> compatibility issues. All we need to do though is convert our <code>sf</code> to an <code>sp</code> spatial class object which <code>raster</code> is designed to work with. We can do this with function <code>sf::as_Spatial</code>.</p>
 <pre class="r"><code>sp_extract_bbox &lt;- as_Spatial(extract_bbox)
 sp_extract_bbox</code></pre>
-<pre><code>class       : SpatialPolygonsDataFrame 
+<pre><code>class       : SpatialPolygons 
 features    : 1 
 extent      : -100.8481, -96.09056, 17.94194, 20.63083  (xmin, xmax, ymin, ymax)
-coord. ref. : +proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0 
-variables   : 0</code></pre>
+coord. ref. : +proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0 </code></pre>
 <p>Let’s try now.</p>
-<pre class="r"><code>crop(lc, sp_study_bbox)</code></pre>
-<pre><code>Error in .local(x, y, ...): Cannot get an Extent object from argument y</code></pre>
+<pre class="r"><code>crop(lc, sp_extract_bbox)</code></pre>
+<pre><code>class       : RasterLayer 
+dimensions  : 323, 571, 184433  (nrow, ncol, ncell)
+resolution  : 0.008333333, 0.008333333  (x, y)
+extent      : -100.85, -96.09167, 17.94167, 20.63333  (xmin, xmax, ymin, ymax)
+coord. ref. : +proj=longlat +ellps=WGS84 
+data source : in memory
+names       : MEX_msk_cov 
+values      : 1, 22  (min, max)
+attributes  :
+       ID                                    descr
+ from:  1       Tree Cover, broadleaved, evergreen
+ to  : 22 Artificial surfaces and associated areas</code></pre>
 <p>Success! This works.</p>
 <p>So let’s stack and crop all in one go:</p>
 <pre class="r"><code>full_stack &lt;- stack(
@@ -844,6 +1149,36 @@ max values  :       27.2,           3387.0,            117.0,       22.0 </code>
 <p>We can still extract and plot individual layers though.</p>
 <pre class="r"><code>levelplot(env_stack, layers = &quot;temp_seasonality&quot;)</code></pre>
 <p><img src="figure/raster.Rmd/unnamed-chunk-37-1.png" width="672" style="display: block; margin: auto;" /></p>
+<details> <summary><em>Expand here to see past versions of unnamed-chunk-37-1.png:</em></summary>
+<table style="border-collapse:separate; border-spacing:5px;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Version
+</th>
+<th style="text-align:left;">
+Author
+</th>
+<th style="text-align:left;">
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<a href="https://github.com/annakrystalli/intro-r-gis/blob/f94df5ce59f87379087af9763c9e1b64f7e9c0f3/docs/figure/raster.Rmd/unnamed-chunk-37-1.png" target="_blank">f94df5c</a>
+</td>
+<td style="text-align:left;">
+annakrystalli
+</td>
+<td style="text-align:left;">
+2018-09-04
+</td>
+</tr>
+</tbody>
+</table>
+<p></details></p>
 <p>For more details on how to plot several <code>rasterLayers</code> with different legends (including different data types) in the <code>rasterVis</code> package <a href="https://oscarperpinan.github.io/rastervis/FAQ.html#several_rasters">FAQs</a>. It would also solve the problem we had earlier with plotting multiple layers using the same scale.</p>
 </div>
 <div id="save-rasterstack" class="section level3">
@@ -876,9 +1211,8 @@ max values  :                 22.0,                      117.0,                 
 <div id="extracting-points" class="section level3">
 <h3>extracting points</h3>
 <p>We can extract data underlying an <code>sf</code> from a raster using function <code>raster::extract()</code>. The output in the case of points is a single value for each point. This is returned as a vector for a single layer or a matrix for multiple layers, as is our case.</p>
-<p>Firsts, let’s load the molecular data that we have converted to an <code>sf</code>.</p>
-<pre class="r"><code>mol_sf &lt;- read_sf(here::here(&quot;data&quot;, &quot;sf&quot;, &quot;salamander.geojson&quot;))
-mol_sf</code></pre>
+<p>Let’s have a look at our data again</p>
+<pre class="r"><code>mol_sf</code></pre>
 <pre><code>Simple feature collection with 15 features and 9 fields
 geometry type:  POINT
 dimension:      XY
@@ -939,22 +1273,76 @@ proj4string:    +proj=longlat +datum=WGS84 +no_defs
 <pre class="r"><code>ggplot(mol_env_sf, aes(x = temp_range, y = na, colour = region)) +
     geom_point()</code></pre>
 <p><img src="figure/raster.Rmd/unnamed-chunk-43-1.png" width="672" style="display: block; margin: auto;" /></p>
+<details> <summary><em>Expand here to see past versions of unnamed-chunk-43-1.png:</em></summary>
+<table style="border-collapse:separate; border-spacing:5px;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Version
+</th>
+<th style="text-align:left;">
+Author
+</th>
+<th style="text-align:left;">
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<a href="https://github.com/annakrystalli/intro-r-gis/blob/f94df5ce59f87379087af9763c9e1b64f7e9c0f3/docs/figure/raster.Rmd/unnamed-chunk-43-1.png" target="_blank">f94df5c</a>
+</td>
+<td style="text-align:left;">
+annakrystalli
+</td>
+<td style="text-align:left;">
+2018-09-04
+</td>
+</tr>
+</tbody>
+</table>
+<p></details></p>
 </div>
 <div id="extracting-and-summarising-raster-data-using-polygons" class="section level3">
 <h3>extracting and summarising raster data using polygons</h3>
+<p>We can also extract and summarise data over an area represented by a polygon using using the <code>raster::extract()</code> function. If we want a summarising function to be applied to the pixel values returned by the extraction, we can supply it to argument <code>fun</code>. Let’s calculate the <strong>mean <code>temp_range</code> across the <code>study_bbox</code> area</strong>.</p>
 <pre class="r"><code>mean_temp_range &lt;- extract(env_stack[[&quot;temp_range&quot;]], 
                 as_Spatial(study_bbox),
                 fun = mean,
-                na.rm = T)</code></pre>
-<pre><code>Error in `[.data.frame`(x@data, i, j, ..., drop = FALSE): undefined columns selected</code></pre>
-<pre class="r"><code>mean_temp_range</code></pre>
-<pre><code>Error in eval(expr, envir, enclos): object &#39;mean_temp_range&#39; not found</code></pre>
-<p>Let’s use this to calculate the deviation of our datapoints from the study box mean. We can use <code>dplyr::mutate</code> to manipulate attribute data in our <code>sf</code> just like any other data.frame.</p>
+                na.rm = T)
+
+mean_temp_range</code></pre>
+<pre><code>         [,1]
+[1,] 22.21228</code></pre>
+<p>Let’s use this to calculate the deviation of each of our data points from the study box mean we just calculated. We can use <code>dplyr::mutate</code> to manipulate attribute data in our <code>sf</code> just like any other data.frame.</p>
 <pre class="r"><code>mol_env_sf &lt;- mol_env_sf %&gt;% 
     mutate(dev_temp_range = temp_range - as.vector(mean_temp_range))</code></pre>
-<pre><code>Error in mutate_impl(.data, dots): Evaluation error: object &#39;mean_temp_range&#39; not found.</code></pre>
 <pre class="r"><code>mol_env_sf %&gt;% select(locality, dev_temp_range)</code></pre>
-<pre><code>Error in .f(.x[[i]], ...): object &#39;dev_temp_range&#39; not found</code></pre>
+<pre><code>Simple feature collection with 15 features and 2 fields
+geometry type:  POINT
+dimension:      XY
+bbox:           xmin: -99.84806 ymin: 18.94194 xmax: -97.09056 ymax: 19.63083
+epsg (SRID):    4326
+proj4string:    +proj=longlat +datum=WGS84 +no_defs
+# A tibble: 15 x 3
+   locality               dev_temp_range             geometry
+   &lt;chr&gt;                           &lt;dbl&gt;          &lt;POINT [°]&gt;
+ 1 Nevado de Toluca               -3.01  (-99.84806 19.19361)
+ 2 Texcalyacac                     0.188     (-99.5 19.12056)
+ 3 Desierto de los Leones         -2.11  (-99.30056 19.26667)
+ 4 Ajusco                         -3.11      (-99.3 19.18278)
+ 5 Calpan                         -2.81  (-98.59167 19.13139)
+ 6 Atzompa                        -1.11  (-98.55972 19.18056)
+ 7 Llano Grande                   -1.41  (-98.72056 19.33889)
+ 8 Rio Frio                       -2.01  (-98.69472 19.36611)
+ 9 Nanacamilpa                     0.288 (-98.59611 19.48028)
+10 MalincheS                      -1.71  (-98.02194 19.18722)
+11 MalincheW                      -0.112   (-98.095 19.25778)
+12 MalincheE                      -0.912      (-97.975 19.23)
+13 Texmalaquilla                  -2.21     (-97.29 18.94194)
+14 Xometla                        -1.31    (-97.19056 18.975)
+15 Vigas                          -3.51  (-97.09056 19.63083)</code></pre>
 <p>Let’s save our final <code>sf</code> now containing the environmental data we extracted</p>
 <pre class="r"><code>write_sf(mol_env_sf, here::here(&quot;data&quot;, &quot;sf&quot;, &quot;env_salamander.geojson&quot;))</code></pre>
 <pre><code>Dataset /Users/Anna/Documents/workflows/workshops/intro-r-gis/data/sf/env_salamander.geojson already exists: remove first, use update=TRUE to append,
@@ -963,23 +1351,22 @@ delete_layer=TRUE to delete layer, or delete_dsn=TRUE to remove the entire data 
 </div>
 <div id="exercise-1" class="section level3">
 <h3>Exercise</h3>
-<p><strong>2) Calculate mean precipitation seasonality for the study bounding box area. What is the value?</strong></p>
-<pre class="r"><code>mean_prec_seasonality &lt;- raster::extract(env_stack[[&quot;prec_seasonality&quot;]], 
-                study_bbox,
-                fun = mean,
-                na.rm = T)</code></pre>
-<pre><code>Error in `[.data.frame`(x@data, i, j, ..., drop = FALSE): undefined columns selected</code></pre>
-<pre class="r"><code>mean_prec_seasonality</code></pre>
-<pre><code>Error in eval(expr, envir, enclos): object &#39;mean_prec_seasonality&#39; not found</code></pre>
-<p><strong>3) Add a column indicating whether data points are greater than (<code>TRUE</code>) or less than (<code>FALSE</code>) study area mean precipipation seasonality.</strong></p>
+<div id="calculate-mean-precipitation-seasonality-for-the-extraction-bounding-box-area.-what-is-the-value" class="section level4">
+<h4>2) Calculate mean precipitation seasonality for the <strong>extraction bounding box area</strong>. What is the value?</h4>
+</div>
+<div id="add-a-column-indicating-whether-data-points-are-greater-than-true-or-less-than-false-extraction-area-mean-precipitation-seasonality." class="section level4">
+<h4>3) Add a column indicating whether data points are greater than (<code>TRUE</code>) or less than (<code>FALSE</code>) extraction area mean precipitation seasonality.</h4>
+<p><br></p>
+<hr />
+</div>
 </div>
 <div id="other-useful-raster-functions-you-should-know-about" class="section level3">
 <h3>Other useful <code>raster</code> functions you should know about:</h3>
 <p><a href="http://rspatial.org/spatial/rst/8-rastermanip.html" class="uri">http://rspatial.org/spatial/rst/8-rastermanip.html</a></p>
 <ul>
-<li><code>merge</code>: merge</li>
-<li><code>trim</code> (remove outer <code>NA</code> rows and columns)</li>
-<li><code>extend</code></li>
+<li><code>merge</code>: merge <code>rasterLayers</code></li>
+<li><code>trim</code>: remove outer <code>NA</code> rows and columns</li>
+<li><code>extend</code>: expand margins with <code>NA</code>.</li>
 <li><code>projectRaster</code>: Project the values of a Raster* object to a new Raster* object with another projection (coordinate reference system, (CRS)).</li>
 </ul>
 </div>
