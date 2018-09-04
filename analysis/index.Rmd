@@ -30,4 +30,4 @@ output:
 
 Data: <https://github.com/annakrystalli/gis-workshop>
 
-Handouts: <http://annakrystalli.me/intro-r-gis/intro.html>
+Handouts: <http://annakrystalli.me/intro-r-gis/>
