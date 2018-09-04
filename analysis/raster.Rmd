@@ -146,7 +146,7 @@ This creates a `RasterLayer` object.
 
 By having a look at the summary of the raster file when we simply print the object, straight away it looks like something funny is going on. It's showing a **range of values between 54 and 427**. Now, Mexico can get hot...but not that hot! By checking the [documentation](http://www.worldclim.org/formats1) for the WorldClim data, we can see that the data is stored as **degrees C x 10**. This is for storage efficiency (files are much smaller if numbers can be stored as integers) but it means we need to transform the data back to degrees C.
 
-Lukily we can easily manipulate rasters, just like any other matrix in R.
+Luckily we can easily manipulate rasters, just like any other matrix in R.
 
 ```{r}
 bio5 <- bio5/10
@@ -308,22 +308,22 @@ levelplot(lc, par.settings = mapTheme)
 
 The function takes a vector of colours to produce a colour gradient that is then mapped to raster values. It has a numer of in-built colour vectors to choose from and you can even provide your own custom vectors of functions (which is what we would probably want to do in our case to make the colour more reflective of the vegetation type).  
 
-## stack everything up
+## stacking `rasterLayers`
 ```{r}
 stack(st, lc)
 ```
 
 This doesn't work, notifying us that there is a problem with mismatching extents. We don't really need the whole extent of data anyways so let's try croping everything to the same extent, that of the study area bounding box we defined in our vector workflow
 
-We can read in the study bounding box into an `sf` using function `sf::read_sf`. 
+So let's load the molecular data that we have converted to an `sf` using function `sf::read_sf` and recreate a bounding box.
 
 ```{r}
-study_bbox <- read_sf(here::here("data", "sf", "study_bbox.geojson"))
-study_bbox
+mol_sf <- read_sf(here::here("data", "sf", "salamander.geojson"))
+study_bbox <- mol_sf %>% st_bbox() %>% st_as_sfc()
 ```
 
 
-This bounding box we originally defined is really tight around our data points. To ensure our raster data contain the locations of all our data points, let's give it some space around our points by using function `sf::st_buffer`. 
+This bounding box is really tight around our data points. To ensure our raster data contain the locations of all our data points, let's give this extraction bounding box some space around our points using function `sf::st_buffer`. 
 
 *Looking at the help file for this function using `?st_buffer` gives us information on a whole suite of useful functions to perform geometric operations on simple feature geometry sets.*
 
@@ -335,7 +335,7 @@ extract_bbox
 
 To crop a raster we use function `raster::crop` which will returns a geographic subset of the raster as specified either by an `Extent` object or an object from which an extent object can be extracted/created. 
 
-In our case, we'll use the `study_bbox` `sf`. So let's try and crop `lc` first.
+In our case, we'll use the `extract_bbox` `sf` we just created. So let's try and crop `lc` first.
 
 ```{r}
 crop(lc, extract_bbox)
@@ -352,7 +352,7 @@ sp_extract_bbox
 Let's try now.
 
 ```{r}
-crop(lc, sp_study_bbox)
+crop(lc, sp_extract_bbox)
 ```
 
 Success! This works.
@@ -449,10 +449,8 @@ stack(list.files(here::here("data", "raster" , "processed"),
 
 We can extract data underlying an `sf` from a raster using function `raster::extract()`. The output in the case of points is a single value for each point. This is returned as a vector for a single layer or a matrix for multiple layers, as is our case. 
 
-Firsts, let's load the molecular data that we have converted to an `sf`.
-
+Let's have a look at our data again
 ```{r}
-mol_sf <- read_sf(here::here("data", "sf", "salamander.geojson"))
 mol_sf
 ```
 
@@ -475,6 +473,8 @@ ggplot(mol_env_sf, aes(x = temp_range, y = na, colour = region)) +
 
 ### extracting and summarising raster data using polygons
 
+We can also extract and summarise data over an area represented by a polygon using using the `raster::extract()` function. If we want a summarising function to be applied to the pixel values returned by the extraction, we can supply it to argument `fun`. Let's calculate the **mean `temp_range` across the `study_bbox` area**.
+
 ```{r}
 mean_temp_range <- extract(env_stack[["temp_range"]], 
                 as_Spatial(study_bbox),
@@ -484,7 +484,7 @@ mean_temp_range <- extract(env_stack[["temp_range"]],
 mean_temp_range
 ```
 
-Let's use this to calculate the deviation of our datapoints from the study box mean. We can use `dplyr::mutate` to manipulate attribute data in our `sf` just like any other data.frame.
+Let's use this to calculate the deviation of each of our data points from the study box mean we just calculated. We can use `dplyr::mutate` to manipulate attribute data in our `sf` just like any other data.frame.
 
 ```{r}
 mol_env_sf <- mol_env_sf %>% 
@@ -503,29 +503,22 @@ write_sf(mol_env_sf, here::here("data", "sf", "env_salamander.geojson"))
 ```
 
 
-
-
 ### Exercise
 
-**2) Calculate mean precipitation seasonality for the study bounding box area. What is the value?**
+#### 2) Calculate mean precipitation seasonality for the **extraction bounding box area**. What is the value?
 
-```{r}
-mean_prec_seasonality <- raster::extract(env_stack[["prec_seasonality"]], 
-                study_bbox,
-                fun = mean,
-                na.rm = T)
+#### 3) Add a column indicating whether data points are greater than (`TRUE`) or less than (`FALSE`) extraction area mean precipitation seasonality.
 
-mean_prec_seasonality
-```
 
-**3) Add a column indicating whether data points are greater than (`TRUE`) or less than (`FALSE`) study area mean precipipation seasonality.**
+<br>
 
+***
 
 ### Other useful `raster` functions you should know about:
 
 http://rspatial.org/spatial/rst/8-rastermanip.html
 
-- `merge`: merge 
-- `trim` (remove outer `NA` rows and columns)
-- `extend`
+- `merge`: merge `rasterLayers`
+- `trim`: remove outer `NA` rows and columns
+- `extend`: expand margins with `NA`.
 - `projectRaster`: Project the values of a Raster* object to a new Raster* object with another projection (coordinate reference system, (CRS)).
