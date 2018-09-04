@@ -343,7 +343,7 @@ div.section {
 </details>
 </li>
 <li>
-<p><details> <summary> <strong style="color:blue;">✔</strong> <strong>Repository version:</strong> <a href="https://github.com/annakrystalli/intro-r-gis/tree/a08639f3c087557546e710802ef74a946015d023" target="_blank">a08639f</a> </summary></p>
+<p><details> <summary> <strong style="color:blue;">✔</strong> <strong>Repository version:</strong> <a href="https://github.com/annakrystalli/intro-r-gis/tree/82b5b1c092def80031f84fe934f91897103cad80" target="_blank">82b5b1c</a> </summary></p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility. The version displayed above was the version of the Git repository at the time these results were generated. <br><br> Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
 <pre><code>
 Ignored files:
@@ -361,9 +361,8 @@ Untracked files:
     Untracked:  data/sf/
 
 Unstaged changes:
-    Modified:   analysis/exercise_solutions.Rmd
     Modified:   analysis/index.Rmd
-    Modified:   analysis/raster.Rmd
+    Modified:   analysis/intro.Rmd
 
 </code></pre>
 Note that any generated files, e.g. HTML, png, CSS, etc., are not included in this status report because it is ok for generated content to have uncommitted changes. </details>
@@ -392,6 +391,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td style="text-align:left;">
+Rmd
+</td>
+<td style="text-align:left;">
+<a href="https://github.com/annakrystalli/intro-r-gis/blob/82b5b1c092def80031f84fe934f91897103cad80/analysis/vector.Rmd" target="_blank">82b5b1c</a>
+</td>
+<td style="text-align:left;">
+annakrystalli
+</td>
+<td style="text-align:left;">
+2018-09-04
+</td>
+<td style="text-align:left;">
+workflowr::wflow_publish(“analysis/vector.Rmd”)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+html
+</td>
+<td style="text-align:left;">
+<a href="https://cdn.rawgit.com/annakrystalli/intro-r-gis/48814f0796420500240638731346e1eb7b955c82/docs/vector.html" target="_blank">48814f0</a>
+</td>
+<td style="text-align:left;">
+annakrystalli
+</td>
+<td style="text-align:left;">
+2018-09-04
+</td>
+<td style="text-align:left;">
+Build site.
+</td>
+</tr>
 <tr>
 <td style="text-align:left;">
 html
@@ -1254,7 +1287,10 @@ annakrystalli
 14    18 Xometla       16 Pico de Orizaba  South…     19.0     -97.2  9.11
 15    19 Vigas         48 Cofre de Perote  North…     19.6     -97.1 11.8 
 # ... with 3 more variables: he &lt;dbl&gt;, ar &lt;dbl&gt;, par &lt;dbl&gt;</code></pre>
-<p>It contains geographical data in lat/lot decimal degrees. We can convert the sampling locations to <code>sf</code> geographic points using function <code>sf::st_as_sf()</code>. We can also assign a CRS, in this case WGS 84 which corresponds to epsg:4326.</p>
+</div>
+<div id="converting-latlon-data-to-simple-features" class="section level2">
+<h2>Converting lat/lon data to simple features</h2>
+<p>Our data contains geographical coordinates in lat/lot decimal degrees. We can convert these sampling locations to <code>sf</code> geographic points using function <code>sf::st_as_sf()</code>. We can also assign a CRS, in this case we’ll assign WGS 84 which corresponds to epsg:4326.</p>
 <pre class="r"><code>mol_sf &lt;- sf::st_as_sf(mol_df, coords = c(&quot;longitude&quot;, &quot;latitude&quot;), 
                        crs = 4326)</code></pre>
 <pre class="r"><code>mol_sf</code></pre>
@@ -1284,9 +1320,8 @@ proj4string:    +proj=longlat +datum=WGS84 +no_defs
 15    19 Vigas         48 Cofre de Perote  North… 11.8  0.660  5.75 1.31  
 # ... with 1 more variable: geometry &lt;POINT [°]&gt;</code></pre>
 </div>
-</div>
-<div id="plotting-sf-with-ggplot2" class="section level1">
-<h1>Plotting <code>sf</code> with <code>ggplot2</code></h1>
+<div id="plotting-sf-with-ggplot2" class="section level2">
+<h2>Plotting <code>sf</code> with <code>ggplot2</code></h2>
 <p>Another great new feature of <code>sf</code> is that <code>ggplot2</code> provides a dedicated function, <code>ggplot2::geom_sf()</code>, for mapping <code>sf</code>.</p>
 <div id="plotting-sampling-locations" class="section level3">
 <h3>Plotting sampling locations</h3>
@@ -1428,9 +1463,11 @@ annakrystalli
 </table>
 <p></details></p>
 </div>
-<div id="plotting-the-study-area-location" class="section level3">
-<h3>Plotting the study area location</h3>
+<div id="locating-the-study-area" class="section level3">
+<h3>Locating the study area</h3>
 <p>We might also want to include a plot of the study area, and located in the context of the whole country.</p>
+<div id="country-polygon" class="section level4">
+<h4>Country polygon</h4>
 <p>We can source country boundaries for Mexico from the <code>spData::world</code> <code>sf</code>.</p>
 <pre class="r"><code>mx &lt;- world %&gt;% filter(name_long == &quot;Mexico&quot;)
 mx</code></pre>
@@ -1446,8 +1483,9 @@ proj4string:    +proj=longlat +datum=WGS84 +no_defs
 1 Sovereign country  1969480 124221600  76.753   16622.6
                             geom
 1 MULTIPOLYGON (((-117.1278 3...</code></pre>
-<div id="bounding-box" class="section level4">
-<h4>bounding box</h4>
+</div>
+<div id="study-area-bounding-box" class="section level4">
+<h4>Study area bounding box</h4>
 <p>Now, we also need to get the bounding box of our study area. We can use <code>sf::st_bbox()</code></p>
 <pre class="r"><code>study_bbox &lt;- mol_sf %&gt;% sf::st_bbox()
 study_bbox</code></pre>
@@ -1462,7 +1500,7 @@ dimension:      XY
 bbox:           xmin: -99.84806 ymin: 18.94194 xmax: -97.09056 ymax: 19.63083
 epsg (SRID):    4326
 proj4string:    +proj=longlat +datum=WGS84 +no_defs</code></pre>
-<p>Let’s plot all this together</p>
+<p>Let’s plot all this together:</p>
 <pre class="r"><code>ggplot() + 
     geom_sf(data = mx, colour = &quot;black&quot;, fill = &quot;lightgrey&quot;) +
     geom_sf(data = study_bbox, colour = &quot;black&quot;, fill = &quot;white&quot;)</code></pre>
@@ -1690,6 +1728,7 @@ annakrystalli
 </table>
 <p></details></p>
 <p>Also, the axis units… yuk!</p>
+</div>
 </div>
 </div>
 <div id="saving-sf-objects" class="section level2">
