@@ -1,0 +1,607 @@
+---
+title: "Vector spatial data"
+output:
+  html_document:
+    df_print: paged
+editor_options:
+  chunk_output_type: inline
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, error = TRUE, message = F)
+```
+
+## setup
+
+### Open Notebook
+
+Open a new **R Notebook** to work in.
+
+> File > New File > R Notebook
+
+Name (eg. `Vectors`) and save it
+
+### Load libraries
+
+Load the libraries we'll be using for this section of the workshop
+
+```{r}
+library(sf)
+library(ggplot2)
+library(dplyr)
+library(spData)
+```
+
+# Vector data:
+
+Geographic vector data model is based on **points**, usually located within a coordinate reference system (CRS). 
+  
+Most point geometries contain only two dimensions $x$ & $y$ but 3 dimensional CRSs contain an additional $z$ value -> height above sea level. 
+
+Coordinates consist of two numbers representing distance from an **origin** in the $x$ & $y$ dimensions.
+
+## simple features
+
+The [**Simple Features data model**](https://en.wikipedia.org/wiki/Simple_Features) is a widely supported model that underlies vector data structures in many GIS applications.
+
+It is a **hierarchical model** that represents a **wide range of geometry types**. 
+
+- **single points** -> self-standing features (e.g. sampling location) 
+- Points can be linked together to form more complex geometries:
+    + **lines** 
+    + **polygons** 
+- **‘multi’ versions** of each represent **groups** of features of the **same type** into a single feature. 
+- **geometry collections**, which can contain **multiple geometry types** in a single object.
+
+![](https://geocompr.robinlovelace.net/figures/sf-classes.png)
+
+*Figure 2.2: The subset of the Simple Features class hierarchy supported by sf. Image source: https://geocompr.robinlovelace.net/figures/sf-classes.png*
+
+
+<div class="alert alert-success">
+Of 68 geometry types supported by the specification, **only 7 are used in the vast majority of geographic research**</div>
+
+
+
+## package `sf`
+
+`sf` is an R package **providing a class system** for geographic vector data using the **simple features data model**.
+
+Supercedes and combines the functionality of three previously used packages:
+- `sp` for the class system, 
+- `rgdal` for reading and writing data, 
+- `rgeos` for spatial operations undertaken by GEOS
+in a single, cohesive whole. 
+
+#### Benefits of `sf` vs `sp` classes
+
+- Fast reading and writing of data
+- Enhanced plotting performance
+- `sf` objects can be treated as data frames in most operations
+- `sf` functions can be combined using the pipe (`%>%`) operator and works well with the tidyverse collection of R packages
+- `sf` function names are relatively consistent and intuitive (all begin with st_)
+- geometry a list in `geometry` column regardless of geometry type but can easily be transformed to a `Spatial` class used in `sp` using function `as_Spatial()`.    
+  
+
+## simple feature anatomy
+
+Simple feature objects are hierarchically organised as follows:
+
+- `sf`: **simple feature**, data.frame with **spatial list-column** (`geom` or `geometry`) as well as additional data associated with the spatial geometries.
+
+`sfc`: **simple feature column**. A list-column containing **multiple geometries** + information about the coordinate reference system.
+
+`sfg`: **simple feature geometry**. a single simple feature geometry
+
+
+## creating vector data
+
+`sf` provides a number of function for creating simple feature geometries, bringing multiple geometries together in a simple feature column.
+
+### a single point feature
+
+To create **single points**, we can use function `sf::st_point()` and supply a **vector of x & y coordinates** as argument `x`
+
+```{r}
+st_point(x = c(0,0))
+```
+
+### multiple point feature
+
+For **multiple points in a single geometry**, we can use function `sf::st_multipoint()` and supply a **two column numeric matrix** with **x & y coordinates of points in rows**.
+
+```{r}
+st_multipoint(x = matrix(c(0, 0, 1, 0), ncol = 2, byrow = T))
+```
+
+Let's assign this to an object.
+
+```{r}
+points <- st_multipoint(x = matrix(c(0, 0, 2, 0), ncol = 2, byrow = T))
+```
+
+We can check the class of the points we just created:
+
+```{r}
+class(points)
+```
+
+
+And we can also quickly plot geometries to inspect them:
+
+```{r}
+plot(points)
+```
+
+### line feature
+
+Similarly, we can create **line features** using function `sf::st_linestring()` and supplying a **two column numeric matrix** with **x & y coordinates of points in rows**.
+
+```{r}
+line <- st_linestring(x = matrix(c(-1, -2, -0.5, -3, 2.5, -3, 3, -2), 
+                                 ncol = 2, byrow = T))
+
+line
+```
+
+```{r}
+plot(line)
+```
+
+### Combining `sfg`s into an `sfc`
+
+We can then combine our geometries into an **simple feature list-column** (`sfc`).
+
+```{r}
+sfc <- st_sfc(points, line)
+```
+
+```{r}
+class(sfc)
+```
+
+
+```{r}
+plot(sfc)
+```
+
+### Creating an `sf` and adding attribute data
+
+We can now add some attribute data, eg names for the shapes we created, and create a **simple feature** (`sf`).
+
+```{r}
+sf <- st_sf(shape = c("eyes", "mouth"), geom = sfc)
+sf
+```
+
+```{r}
+class(sf)
+```
+
+```{r}
+plot(sf)
+```
+
+
+### Exercise 
+
+#### 1) add a nose!
+
+Create a nose geometry, combine all the shapes into a single `sf` and then plot the face.
+
+# Working with simple feature vector data
+
+## `world` dataset in pkg `spData`
+
+Package [`spData`](https://github.com/Nowosad/spData) provides spatial datasets in a variety of formats, including a number of `sf` data. 
+
+One of these is the `world` data set, containing the current boundaries of countries and including additional demographic, geographic **attribute** data 
+
+```{r}
+library(spData)
+```
+```{r}
+world
+```
+
+
+Country polygons from the `world` dataset
+
+
+We can get more information on the data containing through r help
+
+```{r}
+?world
+```
+
+## Manipulating `sf` objects
+
+As discussed the data is effectively a `data.frame`, with an additional `geom` column containing the geographic data. As such it can be manipulated as any other data.frame.
+
+### getting attribute information
+
+```{r}
+names(world)
+```
+
+
+### indexing
+
+We can index `sf` objects like any other data.frame.
+
+E.g. we can index columns using the `$` notation:
+
+```{r}
+world$iso_a2
+
+```
+
+Or by using `[,]` indexing, in this case, by supplying a vector of column names to the second argument of the square brackets.
+
+```{r}
+
+world[, c("iso_a2", "name_long")]
+
+```
+
+
+Note that although we selected only two columns, the `geom` column is still retained.
+
+And we can index rows by supplying eg the row number(s) required to the first argument of the square brackets.
+
+```{r}
+world[1,]
+```
+
+
+### `dplyr` functions and piping
+
+But even nicer is that we can use `dplyr` functions with `sf`s. Especially exciting is the **ability to set up pipelines using the `dplyr` pipe (`%>%`).** 
+
+### selecting
+
+
+
+We can pipe the `spData::world` `sf` into function `dplyr::select()` to select specific columns. Note that in `dplyr` functions, you can use column names **bare** (ie without `"..."`).
+
+```{r}
+world %>% select(iso_a2, name_long)
+```
+
+
+### filtering
+
+We can also filter rows using function `dplyr::filter()`. Let's try and get the row for Greece, which is represented by iso code `"GR"`:
+
+```{r}
+world %>% filter(iso_a2 == "GR")
+```
+
+
+### summarising
+
+We can even summarise our attribute data using, for example, function `base::summary()`.
+
+```{r}
+summary(world)
+```
+
+
+### extracting geometries
+
+
+We can extract the geometry list-column from an `sf` with function `sf::st_geometry`. 
+
+
+```{r}
+st_geometry(world) 
+```
+### extracting coordinates
+
+We can also extract a matrix of coordinates of an `sf` possibly followed by integer indicators L1,...,L3 that point out to which structure the coordinate belongs:
+
+- for `POINT` this is absent (each coordinate is a feature)
+- for `LINESTRING` L1 refers to the feature 
+- for `MULTIPOLYGON` 
+    + L1 refers to the main ring or holes 
+    + L2 to the ring id in the MULTIPOLYGON, 
+    + and L3 to the simple feature.
+
+```{r}
+world %>% filter(iso_a2 == "GR") %>% st_coordinates()
+```
+
+### extracting crs
+
+We can also retrieve the coordinate reference system from `sf` or `sfc` object with function `sf::st_crs()`
+
+```{r}
+world %>% st_crs()
+```
+
+### transforming CRSs
+
+We can transform the CRS of an `sf` by using function `sf::st_transform()`. Let's transform the world CRS from WGS 84 to the **Mercator projection (epsg:3785).**
+
+```{r}
+world_merc <- world %>% st_transform(crs = 3785)
+world_merc
+```
+
+
+## Plotting `sf`
+
+`sf` has reasonable native plotting behaviour which can be useful for quick checks of your data.
+
+```{r}
+world %>% plot()
+```
+
+```{r}
+world_merc %>% plot()
+```
+
+We can easily select and plot information for a single variable
+
+```{r}
+world %>% select(lifeExp) %>% plot()
+```
+
+We can also extract and just plot out the geometries.
+
+
+```{r}
+world %>% st_geometry() %>% plot()
+```
+
+
+### Exercises
+
+**2) What are the coordinates for the 10th point in the Mexico polygon?**
+
+
+**3) How about in CRS [Mexico ITRF92 / UTM zone 15N](https://epsg.io/4488)
+
+
+**4) Are these coordinates projected or not? Can you tell by just looking at the spatial information in the transformed `sf` object?**
+
+
+
+## A working example
+### Molecular data on salamanders
+
+The data we will work with are from the paper: _Tracking climate change in a dispersal‐limited species: reduced spatial and genetic connectivity in a montane salamander (2013)_ <https://doi.org/10.1111/mec.12310>
+
+The researchers where interested in examining how **climate and landscape features in montane regions affect population genetic structure of montane salamander** ***Pseudoeurycea leprosa.***
+
+To address this they used ecological niche modelling (ENM) and measured spatial connectivity and gene flow across extant populations of P. leprosa in the Trans‐Mexican Volcanic Belt (TVB). 
+
+To do this they had to **combine their molecular data with environmental data**. This is what we will try and reproduce during this workshop.
+
+I've created a `.csv` of the published data containing the following fields, and saved it in file `data/csv/salamander_mol.csv`. 
+
+
+```{r echo=FALSE}
+readr::read_csv(here::here("data-raw", "sal_meta.csv")) %>% knitr::kable()
+```
+
+
+
+
+Let's read it in using function `readr::read_csv()`. I'm also using function `here::here()` to specify the paths in a way that is both portable and will work across different systems.
+
+
+```{r}
+mol_df <- readr::read_csv(here::here("data", "csv", "salamander_mol.csv"))
+```
+
+
+Note also the use of `::`. This allows to call a function without loading the library (so long as the package has been installed).
+
+Now, let's have a look at the data we just loaded.
+
+```{r}
+mol_df
+```
+
+It contains geographical data in lat/lot decimal degrees. We can convert the sampling locations to `sf` geographic points using function `sf::st_as_sf()`. We can also assign a CRS, in this case WGS 84 which corresponds to epsg:4326.
+
+```{r}
+mol_sf <- sf::st_as_sf(mol_df, coords = c("longitude", "latitude"), 
+                       crs = 4326)
+```
+
+```{r}
+mol_sf
+```
+
+## Plotting `sf` with `ggplot2`
+
+Another great new feature of `sf` is that `ggplot2` provides a dedicated function, `ggplot2::geom_sf()`, for mapping `sf`.
+
+### Plotting sampling locations
+
+Let's plot the sampling points we just specified.
+
+```{r}
+mol_sf %>% ggplot() +
+  geom_sf() 
+```
+
+Although this doesn't look AMAZING (yet), the coordinates are positioned correctly in space. And it also means we have the full power of `ggplot2` to add more information and customise the look of our maps.
+
+For example, maybe we want to colour the points according to the number of alleles in the population.
+
+```{r}
+mol_sf %>% ggplot() +
+  geom_sf(aes(colour = na)) 
+```
+
+Or maybe we want to identify points by region
+
+```{r}
+mol_sf %>% ggplot() +
+  geom_sf(aes(colour = region)) 
+```
+
+The default `geom_sf()` assumes we are plotting polygons, hence the odd legend displaying both a `colour` (outline) and a `fill` key. To get it to plot an appropriate legend for points we need to include `show.legend = "point"` in `geom_sf`.
+
+```{r}
+mol_sf %>% ggplot() +
+  geom_sf(aes(colour = region), show.legend = "point") 
+```
+
+### Plotting the study area location
+
+We might also want to include a plot of the study area, and located in the context of the whole country.
+
+We can source country boundaries for Mexico from the `spData::world` `sf`.
+
+```{r}
+mx <- world %>% filter(name_long == "Mexico")
+mx
+```
+
+#### bounding box
+
+Now, we also need to get the bounding box of our study area. We can use `sf::st_bbox()`
+
+```{r}
+study_bbox <- mol_sf %>% sf::st_bbox()
+study_bbox
+```
+
+
+This just returns the coordinates specifying the boundaries of our `sf` in each dimension. We can turn this into a rectangular polygon in an `sfc` with function `sf::st_as_sfc`.
+
+```{r}
+study_bbox <- study_bbox %>% st_as_sfc()
+study_bbox
+```
+
+Let's plot all this together
+
+```{r}
+ggplot() + 
+    geom_sf(data = mx, colour = "black", fill = "lightgrey") +
+    geom_sf(data = study_bbox, colour = "black", fill = "white")
+```
+
+Still kinda ugly. Let's try making the panel background a light blue.
+
+```{r}
+p <- ggplot() + 
+    theme(panel.background = 
+              element_rect(fill = "lightblue"))
+p
+```
+
+
+```{r}
+p + 
+    geom_sf(data = mx, colour = "black", fill = "lightgrey") +
+    geom_sf(data = study_bbox, colour = "black", fill = "white") 
+
+```
+
+ in CRS [Mexico ITRF92 / UTM zone 15N](https://epsg.io/4488)
+
+```{r}
+mx_utm15 <- st_transform(mx, crs = 4488)
+
+p + 
+    geom_sf(data = mx_utm15, colour = "black", fill = "lightgrey") +
+    geom_sf(data = study_bbox, colour = "black", fill = "white") 
+```
+
+
+```{r}
+mx_coords <- st_coordinates(mx) %>% as.data.frame()
+bbox_coords <- st_coordinates(study_bbox) %>% as.data.frame()
+
+p + 
+    geom_polygon(data = mx_coords, aes(x = X, y = Y), colour = "black", fill = "lightgrey") +
+    geom_polygon(data = bbox_coords, aes(x = X, y = Y), colour = "black", fill = "white") +
+    coord_quickmap()
+
+```
+
+
+```{r}
+mx_utm15_coords <- st_coordinates(mx_utm15) %>% as.data.frame()
+bbox_coords <- st_coordinates(study_bbox) %>% as.data.frame()
+
+p + 
+    geom_polygon(data = mx_utm15_coords, aes(x = X, y = Y), colour = "black", fill = "lightgrey") +
+    geom_polygon(data = bbox_coords, aes(x = X, y = Y), colour = "black", fill = "white") +
+    coord_quickmap()
+
+```
+
+
+
+### `geom_sf` vs `geom_polygon` summary
+
+
+- When using `geom_sf` ggplot2 **automatically converts all objects in a plot to the CRS of the first plot layes**. This is **not the case with `geom_polygon`** so need to make sure coordinates of data from different sources are in the same CRS.
+- Without `coord_quickmap()`, ggplot will not automatically adjust the window to reflect the mapped geography allowing for potential distortion.
+
+
+
+## Saving `sf` objects
+
+Let's first create a new folder to save our `sf`.
+
+```{r}
+dir.create(here::here("data", "sf"))
+```
+
+Let's now save our file in the most popular geospatial vector data format, the [shapefile(`.shp`)](https://en.wikipedia.org/wiki/Shapefile). It is developed and regulated by Esri as a (mostly) open specification for data interoperability among Esri and other GIS software products. 
+
+```{r}
+write_sf(mol_sf, here::here("data", "sf", "salamander.shp"))
+```
+
+Hmmmmm, that's a bit of a worrying warning...but let's have a quick look at what we just wrote out anyways.
+
+
+If you look in the `sf/` folder, you will see that **four files have been created** for each `sf` we wrote. Here's what each file contains:
+
+- **`.shp`:** This file contains the geometry of each feature.
+
+- **`.dbf`:** This is a dBase file which contains the attribute data for all of the features in the dataset. The dBase file is very similar to a sheet in a spreadsheet and can even be opened in Excel.
+
+- **`.shx`:** The .shx is the spatial index, it allows GIS systems to find features within the `.shp` file more quickly.
+
+- **`.prj`:** The .prj is the projection file. It contains information about the “projection” and “coordinate system” of the data.
+
+All of them are required to fully recreate our `sf` but when to read the data in, you **only specify the path to the `.shp` file**
+
+Now, as noted, I really didn't like the look of that previous warning, so let's read in the file and have a look at it.
+```{r}
+read_sf(here::here("data", "sf", "salamander.shp"))
+```
+
+
+Gah!! What's happened to the column names?! This is in fact a well known problem with the shapefile format which cannot handle field (column) names longer than 7 characters. When your column names are longer than that, `write_sf()` quietly runs `base::abbreviate()` on them before writing the files out. This does not sit well with me in terms of good data provenance tracking and reproducibility. So let's try a different format instead.
+
+
+[GeoJSON](https://en.wikipedia.org/wiki/GeoJSON) is an open standard format designed for representing simple geographical features, along with their non-spatial attributes. It differs from other GIS standards in that it was written and is maintained not by a formal standards organization, but by an Internet working group of developers. As such, it does not play well with Esri products like ArcGIS (although they can be converted to formats that will). However, if you are not planning to use your data with Esri products, this format is fine. 
+
+```{r}
+write_sf(mol_sf, here::here("data", "sf", "salamander.geojson"))
+```
+
+Let's read it back in and check it:
+```{r}
+read_sf(here::here("data", "sf", "salamander.geojson"))
+```
+
+Beautiful! The file is accurately reproduced with all column names intact `r emo::ji("muscle")`, so no need to go updating your data README or attribute metadata table.
+
+
+Let's also write out our study bounding box for use in the next section.
+
+```{r}
+write_sf(study_bbox, here::here("data", "sf", "study_bbox.geojson"))
+```
