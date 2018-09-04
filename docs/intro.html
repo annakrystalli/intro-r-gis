@@ -11,7 +11,7 @@
 
 
 
-<title>Introduction to GIS in R</title>
+<title>intro</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -19,6 +19,9 @@
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
@@ -169,6 +172,101 @@ $(document).ready(function () {
 
 
 
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+  padding-left: 25px;
+  text-indent: 0;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
 
 
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
@@ -216,7 +314,7 @@ div.section {
 
 
 
-<h1 class="title toc-ignore">Introduction to GIS in R</h1>
+<h1 class="title toc-ignore">intro</h1>
 
 </div>
 
@@ -227,6 +325,21 @@ div.section {
 <li>
 <p><details> <summary> <strong style="color:blue;">✔</strong> <strong>R Markdown file:</strong> up-to-date </summary></p>
 <p>Great! Since the R Markdown file has been committed to the Git repository, you know the exact version of the code that produced these results.</p>
+</details>
+</li>
+<li>
+<p><details> <summary> <strong style="color:blue;">✔</strong> <strong>Environment:</strong> empty </summary></p>
+<p>Great job! The global environment was empty. Objects defined in the global environment can affect the analysis in your R Markdown file in unknown ways. For reproduciblity it’s best to always run the code in an empty environment.</p>
+</details>
+</li>
+<li>
+<p><details> <summary> <strong style="color:blue;">✔</strong> <strong>Seed:</strong> <code>set.seed(20180820)</code> </summary></p>
+<p>The command <code>set.seed(20180820)</code> was run prior to running the code in the R Markdown file. Setting a seed ensures that any results that rely on randomness, e.g. subsampling or permutations, are reproducible.</p>
+</details>
+</li>
+<li>
+<p><details> <summary> <strong style="color:blue;">✔</strong> <strong>Session information:</strong> recorded </summary></p>
+<p>Great job! Recording the operating system, R version, and package versions is critical for reproducibility.</p>
 </details>
 </li>
 <li>
@@ -285,7 +398,7 @@ Message
 Rmd
 </td>
 <td style="text-align:left;">
-<a href="https://github.com/annakrystalli/intro-r-gis/blob/e410fc8336e20c829263e6020197f8dbac1b0eba/analysis/index.Rmd" target="_blank">e410fc8</a>
+<a href="https://github.com/annakrystalli/intro-r-gis/blob/e410fc8336e20c829263e6020197f8dbac1b0eba/analysis/intro.Rmd" target="_blank">e410fc8</a>
 </td>
 <td style="text-align:left;">
 annakrystalli
@@ -297,87 +410,110 @@ annakrystalli
 workflowr::wflow_publish(c(“analysis/index.Rmd”,
 </td>
 </tr>
-<tr>
-<td style="text-align:left;">
-html
-</td>
-<td style="text-align:left;">
-<a href="https://cdn.rawgit.com/annakrystalli/intro-r-gis/009303253df71d0bfeb1d30f586fa84023596879/docs/index.html" target="_blank">0093032</a>
-</td>
-<td style="text-align:left;">
-annakrystalli
-</td>
-<td style="text-align:left;">
-2018-08-20
-</td>
-<td style="text-align:left;">
-Build site.
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Rmd
-</td>
-<td style="text-align:left;">
-<a href="https://github.com/annakrystalli/intro-r-gis/blob/1163a5e04f84c0d607636562770621053d30e0dd/analysis/index.Rmd" target="_blank">1163a5e</a>
-</td>
-<td style="text-align:left;">
-annakrystalli
-</td>
-<td style="text-align:left;">
-2018-08-20
-</td>
-<td style="text-align:left;">
-workflowr::wflow_publish(c(“analysis/index.Rmd”,
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Rmd
-</td>
-<td style="text-align:left;">
-<a href="https://github.com/annakrystalli/intro-r-gis/blob/b7110b9e47810f13f845b74fb8c7e2ed89d52493/analysis/index.Rmd" target="_blank">b7110b9</a>
-</td>
-<td style="text-align:left;">
-annakrystalli
-</td>
-<td style="text-align:left;">
-2018-08-20
-</td>
-<td style="text-align:left;">
-Start workflowr project.
-</td>
-</tr>
 </tbody>
 </table>
 </ul>
 <p></details></p>
 <hr />
-<div id="workshop-for-the-programming-for-evolutionary-biology-2018-conference" class="section level3">
-<h3>Workshop for the <a href="http://pebconference.info/">Programming for Evolutionary Biology 2018 Conference</a></h3>
-<div id="sept.-2018-buttermere-lake-district-uk" class="section level4">
-<h4>2-6 Sept. 2018 | Buttermere, Lake District, UK</h4>
+<div id="hello-and-welcome" class="section level1">
+<h1>👋 Hello and welcome</h1>
+<div id="me-dr-anna-krystalli" class="section level3">
+<h3>me: Dr Anna Krystalli</h3>
+<ul>
+<li><strong>Research Software Engineer</strong>, <em>University of Sheffield</em>
+<ul>
+<li>twitter <strong><span class="citation">@annakrystalli</span></strong></li>
+<li>github <strong><span class="citation">@annakrystalli</span></strong></li>
+<li>email <strong>a.krystalli[at]sheffield.ac.uk</strong></li>
+</ul></li>
+<li>Not a GIS expert! but
+<ul>
+<li>have used a lot of GIS in my work</li>
+<li>❤️ GIS in R!</li>
+</ul></li>
+</ul>
 <hr />
-<p><br></p>
-</div>
-</div>
-<div id="workshop-outline" class="section level2">
-<h2><strong>Workshop Outline</strong></h2>
-<ul>
-<li><h3 id="welcome"><a href="https://annakrystalli.me/intro-r-gis/intro.html"><strong>Welcome</strong></a></h3></li>
-<li><h3 id="intro-to-gis"><a href="https://annakrystalli.me/intro-r-gis/gis.html"><strong>Intro to GIS</strong></a></h3></li>
-<li><h3 id="working-with-vector-data"><a href="https://annakrystalli.me/intro-r-gis/vector.html"><strong>Working with Vector data</strong></a></h3></li>
-<li><h3 id="working-with-raster-data"><a href="https://annakrystalli.me/intro-r-gis/raster.html"><strong>Working with Raster data</strong></a></h3></li>
-</ul>
-<p><br></p>
-<ul>
-<li><h4 id="exercise-solutions"><a href="https://annakrystalli.me/intro-r-gis/exercise_solutions.html"><strong>Exercise solutions</strong></a></h4></li>
-<li><h4 id="further-resources"><a href="https://annakrystalli.me/intro-r-gis/further_resources.html"><strong>Further resources</strong></a></h4></li>
-</ul>
 </div>
 <div id="workshop-materials" class="section level2">
-<h2><strong>Workshop Materials</strong></h2>
-<p>Data: <a href="https://github.com/annakrystalli/gis-workshop" class="uri">https://github.com/annakrystalli/gis-workshop</a> Handouts: <a href="http://annakrystalli.me/intro-r-gis/intro.html" class="uri">http://annakrystalli.me/intro-r-gis/intro.html</a></p>
+<h2>Workshop materials</h2>
+<div id="data" class="section level3">
+<h3>Data</h3>
+<p>On github: <a href="https://github.com/annakrystalli/gis-workshop" class="uri">https://github.com/annakrystalli/gis-workshop</a> + click on <strong>Clone or download</strong> + click on <strong>Download ZIP</strong> + Unzip the file</p>
+</div>
+<div id="handouts" class="section level3">
+<h3>Handouts:</h3>
+<p><a href="http://annakrystalli.me/intro-r-gis/intro.html" class="uri">http://annakrystalli.me/intro-r-gis/intro.html</a></p>
+<hr />
+</div>
+</div>
+<div id="workshop-approach" class="section level2">
+<h2>Workshop approach</h2>
+<div id="rstudio" class="section level3">
+<h3>Rstudio</h3>
+<p>We will be working in an Rstudio project. I recommend this workflow for all your projects because it keeps your work portable and self contained</p>
+<p>We will also be using Rmd notebooks. I like them because you can see the outputs of code as you write. You can also make notes around your code using markdown. <em>See further resources for more details.</em></p>
+</div>
+<div id="live-coding" class="section level3">
+<h3>Live coding</h3>
+<p>The majority of the workshop I will be live coding 😨 so that you can follow along. You will get a lot more out of the workshop if you do.</p>
+<hr />
+</div>
+</div>
+<div id="workshop-aims-and-objectives" class="section level2">
+<h2>Workshop aims and objectives</h2>
+<ul>
+<li>Understand the basics of GIS</li>
+<li>Understand spatial data types and formats</li>
+<li>Be able to work with, manipulate, combine and extract spatial data</li>
+<li>Be able to plot spatial</li>
+</ul>
+<div id="lets-dive-in" class="section level3">
+<h3>Let’s dive in!</h3>
+</div>
+</div>
+</div>
+<div id="spatial-data-in-r" class="section level1">
+<h1>spatial data in R</h1>
+<p>Packages:</p>
+<ul>
+<li><code>sf</code>: for vector data</li>
+<li><code>raster</code>: raster data</li>
+</ul>
+<p>Data:</p>
+<ul>
+<li><code>spData</code>: great package with many useful datasets</li>
+<li><code>spDataLarge</code>: larger datasets</li>
+<li><code>maps</code> :</li>
+</ul>
+<div id="session-information" class="section level2">
+<h2>Session information</h2>
+<pre class="r"><code>sessionInfo()</code></pre>
+<pre><code>R version 3.4.4 (2018-03-15)
+Platform: x86_64-apple-darwin15.6.0 (64-bit)
+Running under: macOS High Sierra 10.13.3
+
+Matrix products: default
+BLAS: /Library/Frameworks/R.framework/Versions/3.4/Resources/lib/libRblas.0.dylib
+LAPACK: /Library/Frameworks/R.framework/Versions/3.4/Resources/lib/libRlapack.dylib
+
+locale:
+[1] en_GB.UTF-8/en_GB.UTF-8/en_GB.UTF-8/C/en_GB.UTF-8/en_GB.UTF-8
+
+attached base packages:
+[1] stats     graphics  grDevices utils     datasets  methods   base     
+
+loaded via a namespace (and not attached):
+ [1] Rcpp_0.12.18      rstudioapi_0.7    knitr_1.20       
+ [4] whisker_0.3-2     magrittr_1.5      workflowr_1.0.1  
+ [7] rlang_0.2.1       stringr_1.3.1     tools_3.4.4      
+[10] R.oo_1.21.0       git2r_0.21.0      htmltools_0.3.6  
+[13] yaml_2.1.19       rprojroot_1.3-2   digest_0.6.15    
+[16] assertthat_0.2.0  crayon_1.3.4      purrr_0.2.5      
+[19] R.utils_2.6.0     glue_1.2.0.9000   evaluate_0.11    
+[22] rmarkdown_1.10    emo_0.0.0.9000    stringi_1.2.4    
+[25] compiler_3.4.4    backports_1.1.2   R.methodsS3_1.7.1
+[28] lubridate_1.7.4  </code></pre>
+</div>
 </div>
 
 <!-- Adjust MathJax settings so that all math formulae are shown using
@@ -401,6 +537,8 @@ footer is added to webpages before the MathJax javascript. -->
 <hr>
 
 
+</div>
+</div>
 
 </div>
 
