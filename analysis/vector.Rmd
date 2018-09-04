@@ -367,7 +367,7 @@ world %>% st_geometry() %>% plot()
 
 
 
-## A working example
+# A working example
 ### Molecular data on salamanders
 
 The data we will work with are from the paper: _Tracking climate change in a dispersal‐limited species: reduced spatial and genetic connectivity in a montane salamander (2013)_ <https://doi.org/10.1111/mec.12310>
@@ -415,7 +415,7 @@ mol_sf <- sf::st_as_sf(mol_df, coords = c("longitude", "latitude"),
 mol_sf
 ```
 
-## Plotting `sf` with `ggplot2`
+# Plotting `sf` with `ggplot2`
 
 Another great new feature of `sf` is that `ggplot2` provides a dedicated function, `ggplot2::geom_sf()`, for mapping `sf`.
 
@@ -450,6 +450,9 @@ The default `geom_sf()` assumes we are plotting polygons, hence the odd legend d
 mol_sf %>% ggplot() +
   geom_sf(aes(colour = region), show.legend = "point") 
 ```
+
+
+
 
 ### Plotting the study area location
 
@@ -515,36 +518,42 @@ p +
 ```
 
 
+Before `sf_geom`, we could still plot geographic data. However, it took a lot more code to do so. Here's what we'd need to code the first Mexico plot: 
 ```{r}
 mx_coords <- st_coordinates(mx) %>% as.data.frame()
 bbox_coords <- st_coordinates(study_bbox) %>% as.data.frame()
 
 p + 
-    geom_polygon(data = mx_coords, aes(x = X, y = Y), colour = "black", fill = "lightgrey") +
-    geom_polygon(data = bbox_coords, aes(x = X, y = Y), colour = "black", fill = "white") +
+    geom_polygon(data = mx_coords, aes(x = X, y = Y), 
+                 colour = "black", fill = "lightgrey") +
+    geom_polygon(data = bbox_coords, aes(x = X, y = Y), 
+                 colour = "black", fill = "white") +
     coord_quickmap()
 
 ```
 
+So, firstly we needed our data to be in a data.frame with a column for each of the x and y coordinates. Then we would need to use the appropriate `geom_*()` function according to the shape we are trying to plot (in this case `geom_polygon()`. If we wanted to plot points we would use `geom_point()`). We need to specify the columns that contain the x & y coordinates and finally, we also need to include `coord_quickmap()` which projects our points geographically.
+
+That's a lot more work that's handled automatically by `geom_sf`. Most importantly, when overlaying shapes, **`ggplot2` has no idea about projections!** 
+
+If you remember, in our previous UTM 15 example, we only transformed the first layer we plotted (ie `mx` to `mx_utm15`). When `study_bbox` was plotted subsequently, it's CRS was automatically transformed to that of the `mx_utm15`. 
+
+If we try the same with `geom_polygon`, the coordinates for the two layers are now in completely different CRSs and the study bounding box does not even show up on the map!
 
 ```{r}
 mx_utm15_coords <- st_coordinates(mx_utm15) %>% as.data.frame()
 bbox_coords <- st_coordinates(study_bbox) %>% as.data.frame()
 
 p + 
-    geom_polygon(data = mx_utm15_coords, aes(x = X, y = Y), colour = "black", fill = "lightgrey") +
-    geom_polygon(data = bbox_coords, aes(x = X, y = Y), colour = "black", fill = "white") +
+    geom_polygon(data = mx_utm15_coords, 
+                 aes(x = X, y = Y), colour = "black", fill = "lightgrey") +
+    geom_polygon(data = bbox_coords, 
+                 aes(x = X, y = Y), colour = "black", fill = "white") +
     coord_quickmap()
 
 ```
 
-
-
-### `geom_sf` vs `geom_polygon` summary
-
-
-- When using `geom_sf` ggplot2 **automatically converts all objects in a plot to the CRS of the first plot layes**. This is **not the case with `geom_polygon`** so need to make sure coordinates of data from different sources are in the same CRS.
-- Without `coord_quickmap()`, ggplot will not automatically adjust the window to reflect the mapped geography allowing for potential distortion.
+Also, the axis units... yuk!
 
 
 
@@ -552,7 +561,7 @@ p +
 
 Let's first create a new folder to save our `sf`.
 
-```{r}
+```{r, eval = F}
 dir.create(here::here("data", "sf"))
 ```
 
@@ -578,6 +587,7 @@ If you look in the `sf/` folder, you will see that **four files have been create
 All of them are required to fully recreate our `sf` but when to read the data in, you **only specify the path to the `.shp` file**
 
 Now, as noted, I really didn't like the look of that previous warning, so let's read in the file and have a look at it.
+
 ```{r}
 read_sf(here::here("data", "sf", "salamander.shp"))
 ```
@@ -588,7 +598,7 @@ Gah!! What's happened to the column names?! This is in fact a well known problem
 
 [GeoJSON](https://en.wikipedia.org/wiki/GeoJSON) is an open standard format designed for representing simple geographical features, along with their non-spatial attributes. It differs from other GIS standards in that it was written and is maintained not by a formal standards organization, but by an Internet working group of developers. As such, it does not play well with Esri products like ArcGIS (although they can be converted to formats that will). However, if you are not planning to use your data with Esri products, this format is fine. 
 
-```{r}
+```{r, eval=FALSE}
 write_sf(mol_sf, here::here("data", "sf", "salamander.geojson"))
 ```
 
@@ -598,10 +608,3 @@ read_sf(here::here("data", "sf", "salamander.geojson"))
 ```
 
 Beautiful! The file is accurately reproduced with all column names intact `r emo::ji("muscle")`, so no need to go updating your data README or attribute metadata table.
-
-
-Let's also write out our study bounding box for use in the next section.
-
-```{r}
-write_sf(study_bbox, here::here("data", "sf", "study_bbox.geojson"))
-```
