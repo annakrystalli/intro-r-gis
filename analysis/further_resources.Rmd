@@ -26,30 +26,41 @@ output: html_document
     + [Primer on Raster Data in R](https://www.neonscience.org/primer-raster-data-r)
     + [Intro to Vector Data in R](https://www.neonscience.org/vector-data-series)
 
+- [**Data Carpentry Geospatial Workshop**](https://datacarpentry.org/geospatial-workshop/)
+    + [Introduction to Geospatial Concepts](https://datacarpentry.org/organization-geospatial/)
+    + [Introduction to R for Geospatial Data](https://datacarpentry.org/r-intro-geospatial/)
+    + [Introduction to Geospatial Raster and Vector Data with R](https://datacarpentry.org/r-raster-vector-geospatial/)
+
+### Projections
+
 - [R Projections Workshop](https://github.com/MicheleTobias/R-Projections-Workshop) by Michele Tobias
+- [Lesson 5. GIS in R: Understand EPSG, WKT and other CRS definition styles](https://www.earthdatascience.org/courses/earth-analytics/spatial-data-r/understand-epsg-wkt-and-other-crs-definition-file-types/): University of Colorado, Earth Data Analytics Online certificate.
+- [How Computers Relate x-y Coordinates to Real Locations on Earth](http://www.nickeubank.com/wp-content/uploads/2018/02/CoordinateSystems_And_Projections.pdf): by Nick Eubank
 
 ## papers
 
-- Pebesma, Edzer. 2018. [“Simple Features for R: Standardized Support for Spatial Vector Data.” The R Journal.]()
+- Pebesma, Edzer. 2018. [“Simple Features for R: Standardized Support for Spatial Vector Data.” The R Journal.](https://journal.r-project.org/archive/2018/RJ-2018-009/RJ-2018-009.pdf)
 
+### Blog posts
 
+- [Introduction to GIS with R](https://www.jessesadler.com/post/gis-with-r-intro/): by Jesse Sadler
+- [Introduction to mapping with `sf` & Co](https://statnmap.com/2018-07-14-introduction-to-mapping-with-sf-and-co/): by Sébastien Rochette
+- [Tidy spatial data in R: using dplyr, tidyr, and ggplot2 with sf](http://strimas.com/r/tidy-sf/) by Matt Strimas-Mackey
+- [GIS in R](http://www.nickeubank.com/gis-in-r/): by Nick Eubank
 
-### web
+### Vignettes / reference guides
 
 - [`sf` vignettes](https://cran.r-project.org/web/packages/sf/vignettes/sf1.html)
 - [`sf` function guide](https://r-spatial.github.io/sf/reference/index.html)
 - [`rasterVis` vignette](https://oscarperpinan.github.io/rastervis/)
 - [Visualise `sf` objects with `ggplot2`](https://ggplot2.tidyverse.org/reference/ggsf.html)
 
-### video
 
-
-
-## wikis
+## wiki
 
 - [Wiki.GIS.com - The GIS Encyclopedia](http://wiki.gis.com/wiki/index.php/Main_Page)
 
-# R markdown
+## R markdown
 
 - [R markdown introductory material](https://rmarkdown.rstudio.com/)
 - [R markdown: the Definitive Guide](https://bookdown.org/yihui/rmarkdown/)
