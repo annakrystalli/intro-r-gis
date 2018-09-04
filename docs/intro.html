@@ -343,7 +343,7 @@ div.section {
 </details>
 </li>
 <li>
-<p><details> <summary> <strong style="color:blue;">✔</strong> <strong>Repository version:</strong> <a href="https://github.com/annakrystalli/intro-r-gis/tree/b1c122312f44936d6d626da50e373f2cddb959a3" target="_blank">b1c1223</a> </summary></p>
+<p><details> <summary> <strong style="color:blue;">✔</strong> <strong>Repository version:</strong> <a href="https://github.com/annakrystalli/intro-r-gis/tree/37ee1066edbfbb44dbda10b0451da4df77df3651" target="_blank">37ee106</a> </summary></p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility. The version displayed above was the version of the Git repository at the time these results were generated. <br><br> Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
 <pre><code>
 Ignored files:
@@ -354,17 +354,11 @@ Ignored files:
 
 Untracked files:
     Untracked:  .Rbuildignore
-    Untracked:  analysis/exercise_solutions.Rmd
-    Untracked:  analysis/further_resources.Rmd
-    Untracked:  analysis/gis.Rmd
     Untracked:  analysis/mapping.Rmd
-    Untracked:  analysis/raster.Rmd
-    Untracked:  analysis/vector.Rmd
     Untracked:  data-raw/
     Untracked:  data/csv/
     Untracked:  data/raster/
     Untracked:  data/sf/
-    Untracked:  docs/figure/
 
 </code></pre>
 Note that any generated files, e.g. HTML, png, CSS, etc., are not included in this status report because it is ok for generated content to have uncommitted changes. </details>
@@ -393,6 +387,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td style="text-align:left;">
+Rmd
+</td>
+<td style="text-align:left;">
+<a href="https://github.com/annakrystalli/intro-r-gis/blob/37ee1066edbfbb44dbda10b0451da4df77df3651/analysis/intro.Rmd" target="_blank">37ee106</a>
+</td>
+<td style="text-align:left;">
+annakrystalli
+</td>
+<td style="text-align:left;">
+2018-09-04
+</td>
+<td style="text-align:left;">
+workflowr::wflow_publish(“analysis/intro.Rmd”)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+html
+</td>
+<td style="text-align:left;">
+<a href="https://cdn.rawgit.com/annakrystalli/intro-r-gis/aacbdfcac0dcaf911ee88db15e11372210d0ae40/docs/intro.html" target="_blank">aacbdfc</a>
+</td>
+<td style="text-align:left;">
+annakrystalli
+</td>
+<td style="text-align:left;">
+2018-09-04
+</td>
+<td style="text-align:left;">
+Build site.
+</td>
+</tr>
 <tr>
 <td style="text-align:left;">
 html
@@ -481,27 +509,22 @@ workflowr::wflow_publish(c(“analysis/index.Rmd”,
 <ul>
 <li>Understand the basics of GIS</li>
 <li>Understand spatial data types and formats</li>
-<li>Be able to work with, manipulate, combine and extract spatial data</li>
+<li>Be able to work with, manipulate, combine and extract spatial data in R</li>
 <li>Be able to plot spatial</li>
 </ul>
+</div>
+<div id="why-gis-in-r" class="section level2">
+<h2>Why GIS in R</h2>
+<ol style="list-style-type: decimal">
+<li>It’s free</li>
+<li>It’s powerful especially in terms of spatial analysis and statistics</li>
+<li>It’s a scripted language so encourages reusable, reproducible workflows</li>
+<li>Recent additions to the R geospatial ecosystem (in particular package <code>sf</code>) have drastically simplified spatial data classes and workflows.</li>
+</ol>
 <div id="lets-dive-in" class="section level3">
 <h3>Let’s dive in!</h3>
 </div>
 </div>
-</div>
-<div id="spatial-data-in-r" class="section level1">
-<h1>spatial data in R</h1>
-<p>Packages:</p>
-<ul>
-<li><code>sf</code>: for vector data</li>
-<li><code>raster</code>: raster data</li>
-</ul>
-<p>Data:</p>
-<ul>
-<li><code>spData</code>: great package with many useful datasets</li>
-<li><code>spDataLarge</code>: larger datasets</li>
-<li><code>maps</code> :</li>
-</ul>
 <div id="session-information" class="section level2">
 <h2>Session information</h2>
 <pre class="r"><code>sessionInfo()</code></pre>
