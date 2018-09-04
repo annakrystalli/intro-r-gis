@@ -1,0 +1,531 @@
+---
+title: "raster"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, error = TRUE, message = F)
+```
+
+## setup
+
+### Open Notebook
+
+Open a new **R Notebook** to work in.
+
+> File > New File > R Notebook
+
+Name (eg. `Rasters`) and save it
+
+### Load libraries
+
+Load the libraries we'll be using for this section of the workshop
+
+```{r}
+library(raster)  
+library(rasterVis)
+library(sf)
+library(dplyr)
+library(ggplot2)
+```
+
+# Elements of raster data
+
+Gridded data. Each grid cell represented by pixels in the raster. Pixels represent an area of space on the Earth's surface
+
+3 core metadata elements:
+- Coordinate Reference System (CRS)
+- extent
+- resolution
+
+See ["Raster resolution and extent"](https://www.neonscience.org/raster-res-extent-pixels-r)
+
+## Resolution
+
+The spatial resolution of a raster refers the size of each cell in meters. This size in turn relates to the area on the ground that the pixel represents.
+
+![](https://www.neonscience.org/sites/default/files/images/hyperspectral/pixelDetail.png)
+
+
+The higher the resolution for the same extent the crisper the image (and the larger the file size)
+![](https://www.neonscience.org/sites/default/files/images/spatialData/raster1.png)
+
+## extent 
+
+$x_{min} + (resolution_{x} \times n_{pixels}_{x})$
+
+![](https://www.neonscience.org/sites/default/files/images/hyperspectral/sat_image_corners.png)
+
+
+Unlike vector data, the raster data model stores the coordinate of the grid cell only indirectly: There is a less clear distinction between attribute and spatial information in raster data. Say, we are in the 3rd row and the 4th column of a raster matrix. To derive the corresponding coordinate, we have to move from the origin three cells in x-direction and four cells in y-direction with the cell resolution defining the distance for each x- and y-step.
+
+# Working with rasters
+
+## Create rasters
+
+Rasters can be thought of as matrices appended with additional environmental metadata.
+
+```{r}
+myRaster1 <- raster(nrow=4, ncol=4)
+myRaster1
+```
+ Let's have a look at it. Note that when creating a raster, if not specified the CRS falls back to the defaults of:
+ 
+ - CRS: `+proj=longlat +datum=WGS84 +ellps=WGS84 +towgs84=0,0,0`
+ - extent: `-180, 180, -90, 90  (xmin, xmax, ymin, ymax)`
+ - resolution: `90, 45  (x, y)`
+ 
+Q: What's been defined?
+
+Let's give it some values
+
+```{r}
+myRaster1[] <-1:16
+plot(myRaster1)
+```
+
+
+## Reading raster files
+
+### Data
+
+#### [WorldClim](http://www.worldclim.org/) data
+
+- A great resource of global environmental data in raster format. 
+- Used extensively in species distribution modelling.
+- Version 2.0 available but not yet licensed under Creative Commons license (needed to redistribute this data for the workshop).
+- Was used in the Velo-Antón _et al_ 2013 montane salamander paper!
+
+
+#### [Bioclimatic variables](http://www.worldclim.org/bioclim)
+
+Bioclimatic variables are derived from the monthly temperature and rainfall values in order to generate more biologically meaningful variables. The bioclimatic variables represent annual trends, seasonality, and extreme or limiting environmental factors 
+
+- BIO1 = Annual Mean Temperature  
+- BIO2 = Mean Diurnal Range (Mean of monthly (max temp - min temp))  
+- BIO3 = Isothermality (BIO2/BIO7) (* 100)  
+- **BIO4 = Temperature Seasonality (standard deviation \*100)**  
+- **BIO5 = Max Temperature of Warmest Month**  
+- **BIO6 = Min Temperature of Coldest Month**  
+- BIO7 = Temperature Annual Range (BIO5-BIO6)  
+- BIO8 = Mean Temperature of Wettest Quarter  
+- BIO9 = Mean Temperature of Driest Quarter  
+- BIO10 = Mean Temperature of Warmest Quarter  
+- BIO11 = Mean Temperature of Coldest Quarter  
+- BIO12 = Annual Precipitation  
+- BIO13 = Precipitation of Wettest Month  
+- BIO14 = Precipitation of Driest Month  
+- **BIO15 = Precipitation Seasonality (Coefficient of Variation)**  
+- BIO16 = Precipitation of Wettest Quarter  
+- BIO17 = Precipitation of Driest Quarter  
+- BIO18 = Precipitation of Warmest Quarter  
+- BIO19 = Precipitation of Coldest Quarter
+
+
+I've selected a few of the variables used in the original paper to fit a Species Distribution Model. 
+
+
+The data is in the `data/raster/mx-worldclim_30s` folder.
+
+```{r}
+wc_files <- list.files(here::here("data", "raster", "mx-worldclim_30s"),
+                       full.names = T)
+wc_files
+```
+
+These files are in [GeoTIFF format](https://en.wikipedia.org/wiki/GeoTIFF), a public domain metadata standard which allows georeferencing information to be embedded within a TIFF file. 
+
+Let's start with a single raster file, `mx.bio_5.tif` which corresponds to **bioclimatic variable 5: Max Temperature of Warmest Month**.
+
+```{r}
+bio5 <- raster(wc_files[3])
+bio5
+```
+
+This creates a `RasterLayer` object.
+
+By having a look at the summary of the raster file when we simply print the object, straight away it looks like something funny is going on. It's showing a **range of values between 54 and 427**. Now, Mexico can get hot...but not that hot! By checking the [documentation](http://www.worldclim.org/formats1) for the WorldClim data, we can see that the data is stored as **degrees C x 10**. This is for storage efficiency (files are much smaller if numbers can be stored as integers) but it means we need to transform the data back to degrees C.
+
+Lukily we can easily manipulate rasters, just like any other matrix in R.
+
+```{r}
+bio5 <- bio5/10
+bio5
+```
+
+That's better!
+
+### Plotting rasters
+
+The `raster` pkg has native plotting functions which are again, ok for a quick check of the data.
+
+```{r}
+plot(bio5)
+```
+
+Package `rasterVis` offers much nicer options for plotting raster data, including much better colour palletes which are pretty, better represent data, are easier to read by those with colorblindness, and print well in grey scale. by default.
+
+```{r}
+levelplot(bio5)
+```
+
+For numeric data it plots the distribution of the data along each axis in the plot margins. We can suppress that default behaviour by using argument `margin=FALSE`.
+
+```{r}
+levelplot(bio5, margin=FALSE)
+```
+
+Now this is great for individual layers, but if we have multiple layers to work with, it can be much more efficient to **stack** them into a `rasterStack`. 
+
+### Raster Stacks
+
+A `RasterStack` is a **collection of RasterLayer objects with the same spatial extent and resolution**. A RasterStack can be created from `RasterLayer` objects, or from raster files, or both.
+
+We can read and stack raster files in one go using function `raster::stack`! And this is where the list of file names comes in handy.
+
+```{r}
+st <- stack(wc_files) 
+
+st
+```
+
+We can still extract individual layers using function `raster::subset()`. 
+
+```{r}
+subset(st, "mx.bio_5")
+```
+
+Because a `rasterStack` is effectively a list, we can also subset it as we would any other list in R
+```{r}
+st[["mx.bio_5"]]
+```
+
+```{r}
+st[[3]]
+```
+
+Note that we are back to having incorrect temperature values. We will deal with the layers that need correcting a bit later so just ignore that for now.
+
+
+Both the native `plot` method and `rasterVis::levelplot` can handle `rasterStack`s
+```{r}
+plot(st)
+```
+
+
+```{r}
+levelplot(st)
+```
+
+For a quick scan of a `rasterStack`, `plot()` is more useful because `levelplot()` function plot all panels on the same scale but there are ways of plotting with separate scales which we will link to later.
+
+### Landcover data 
+
+Land cover, original data resampled onto a 30 seconds grid sourced from [DIVA GIS](http://www.diva-gis.org/gdata). DIVA-GIS is a free computer program for mapping and geographic data analysis (a geographic information system (GIS) which also provide free global spatial data.
+
+```{r}
+lc_files <- list.files(here::here("data", "raster", "MEX_msk_cov"),
+                       full.names = T)
+
+```
+
+```{r}
+lc <- raster(lc_files[1])
+lc
+```
+
+Let's plot this again to have a look at it.
+```{r}
+levelplot(lc)
+```
+
+This raster contains categorical data, so the scales used as well as the inclusion of distributions along the margins do not see appropriate. Such data can be better defined using the `rasteVis::ratify` function.
+
+```{r}
+lc <- ratify(lc)
+lc
+```
+
+Now we see that rather than a `values: 1, 22  (min, max)` we have an `attributes:` field containing a table summarising the levels with `from:` for the first and `to:` for the last entry. The actual levels are stored in what is known as a **“Raster Attribute Table” (RAT)**. This can be accessed through the `levels()` function.
+
+```{r}
+levels(lc)
+```
+
+
+Let's try and plot again.
+
+```{r}
+levelplot(lc)
+```
+
+This time, plotting fails. This is because there are no descriptions associated with the levels.
+
+We can define this defined with more informative descriptions. As I forgot to save them as `.csv` as part of the workshop materials, here is a snippet of code that can be copied and pasted to create a data.frame of factor levels and their associated descriptions.
+
+(or go to <http://bit.ly/lc_levels>, click on raw and copy the code snippet from there)
+
+```{r}
+lc_levels <- structure(list(level = 1:22, descr = c("Tree Cover, broadleaved, evergreen", 
+"Tree Cover, broadleaved, deciduous, closed", "Tree Cover, broadleaved, deciduous, open", 
+"Tree Cover, needle-leaved, evergreen", "Tree Cover, needle-leaved, deciduous", 
+"Tree Cover, mixed leaf type", "Tree Cover, regularly flooded, fresh  water", 
+"Tree Cover, regularly flooded, saline water", "Mosaic: Tree cover / Other natural vegetation", 
+"Tree Cover, burnt", "Shrub Cover, closed-open, evergreen", "Shrub Cover, closed-open, deciduous", 
+"Herbaceous Cover, closed-open", "Sparse Herbaceous or sparse Shrub Cover", 
+"Regularly flooded Shrub and/or Herbaceous Cover", "Cultivated and managed areas", 
+"Mosaic: Cropland / Tree Cover / Other natural vegetation", "Mosaic: Cropland / Shrub or Grass Cover", 
+"Bare Areas", "Water Bodies", "Snow and Ice", "Artificial surfaces and associated areas"
+)), class = "data.frame", .Names = c("level", "descr"), row.names = c(NA, 
+-22L))
+```
+
+
+```{r}
+rat <- levels(lc)[[1]]
+rat <- rat %>% left_join(lc_levels, by = c("ID" = "level"))
+levels(lc) <- rat
+```
+Let's have a look at our land cover raster
+
+```{r}
+lc
+```
+
+Let's plot again
+```{r}
+levelplot(lc)
+```
+
+Success!
+
+And seeing as we're dealing with primarily vegetation, let's create a new map theme (colour palette) using function `rasterVis::rasterTheme` and [colour brewer palette Yellow & Greens ("YlGn")](http://colorbrewer2.org/#type=sequential&scheme=YlGn&n=9). 
+
+```{r}
+mapTheme <- rasterTheme(region = rev(brewer.pal(9,"YlGn")))
+levelplot(lc, par.settings = mapTheme)
+```
+
+The function takes a vector of colours to produce a colour gradient that is then mapped to raster values. It has a numer of in-built colour vectors to choose from and you can even provide your own custom vectors of functions (which is what we would probably want to do in our case to make the colour more reflective of the vegetation type).  
+
+## stack everything up
+```{r}
+stack(st, lc)
+```
+
+This doesn't work, notifying us that there is a problem with mismatching extents. We don't really need the whole extent of data anyways so let's try croping everything to the same extent, that of the study area bounding box we defined in our vector workflow
+
+We can read in the study bounding box into an `sf` using function `sf::read_sf`. 
+
+```{r}
+study_bbox <- read_sf(here::here("data", "sf", "study_bbox.geojson"))
+study_bbox
+```
+
+
+This bounding box we originally defined is really tight around our data points. To ensure our raster data contain the locations of all our data points, let's give it some space around our points by using function `sf::st_buffer`. 
+
+*Looking at the help file for this function using `?st_buffer` gives us information on a whole suite of useful functions to perform geometric operations on simple feature geometry sets.*
+
+```{r}
+extract_bbox <- study_bbox %>% st_buffer(dist = 1)
+extract_bbox
+```
+
+
+To crop a raster we use function `raster::crop` which will returns a geographic subset of the raster as specified either by an `Extent` object or an object from which an extent object can be extracted/created. 
+
+In our case, we'll use the `study_bbox` `sf`. So let's try and crop `lc` first.
+
+```{r}
+crop(lc, extract_bbox)
+```
+
+Ooops! That throws an error! That's because of current `sf` and `raster` compatibility issues. All we need to do though is convert our `sf` to an `sp` spatial class object which `raster` is designed to work with. We can do this with function `sf::as_Spatial`.
+
+
+```{r}
+sp_extract_bbox <- as_Spatial(extract_bbox)
+sp_extract_bbox
+```
+
+Let's try now.
+
+```{r}
+crop(lc, sp_study_bbox)
+```
+
+Success! This works.
+
+So let's stack and crop all in one go:
+
+```{r}
+full_stack <- stack(
+crop(lc, sp_extract_bbox),
+crop(st, sp_extract_bbox)
+)
+
+full_stack
+```
+ Awesome! We've now got all our initial raster files in a single `rasterStack` `r emo::ji("tada")`. We're not done though. There are two things we need to address for our final `rasterStack`.
+ 
+ 1. We want the **temperature range** (ie the difference between `mx.bio_5` and `mx.bio_6`) for our SDM rather than the extremes.
+ 2. We also still need to address the fact that our **temperature data is currrently in degrees C x 10**.
+ 
+ So let's try and address this by creating a new `rasterStack` from the layers in our `full_stack`. We use function `raster::stack()` again.
+
+```{r}
+env_stack <- stack(
+    (full_stack[["mx.bio_5"]] - full_stack[["mx.bio_6"]])/10,
+    full_stack[["mx.bio_4"]], 
+    full_stack[["mx.bio_15"]],
+    full_stack[["MEX_msk_cov"]])
+
+env_stack
+```
+
+
+Let's give our layers better names. This is easily achieved with function `names()`
+
+```{r}
+names(env_stack) <- c("temp_range","temp_seasonality", 
+                     "prec_seasonality", "land_cover")
+env_stack
+```
+
+### Exercise
+
+#### **1) Create and plot a new `rasterLayer` of rough mean temperature.** 
+(rough because it would be much better to use more data at higher temporal resolution, eg at least monthly, not extremes).
+
+### plotting our `rasterStack`
+
+Let's try and plot our new environmental stack.
+```{r}
+levelplot(env_stack)
+```
+
+This doesn't work now because we are trying to mix displaying factor and numeric data. 
+
+We can still extract and plot individual layers though.
+
+```{r}
+levelplot(env_stack, layers = "temp_seasonality")
+```
+
+For more details on how to plot several `rasterLayers` with different legends (including different data types) in the `rasterVis` package [FAQs]( https://oscarperpinan.github.io/rastervis/FAQ.html#several_rasters). It would also solve the problem we had earlier with plotting multiple layers using the same scale.
+
+### Save `rasterStack`
+
+Finally, let's save our raster stack as a binary 'Native' `raster` package `.grd` file format using function `raster::writeRaster()`. We'll do that to preserve the layer names in the `rasterStack`. It also allows us to combine categorical and numeric layers in one file.
+
+```{r, eval = F}
+writeRaster(env_stack, filename = here::here("data", "raster", "env_stack.grd"))
+```
+
+However, these files are not compressed. If the size of the files is an issue, we can save each file as an individual GeoTiff file and reimport them all together into a stack later on.
+
+```{r, eval = F}
+dir.create(here::here("data", "raster", "processed"))
+
+writeRaster(env_stack, 
+            filename=here::here("data", "raster" , 
+                                "processed", "env_stack.tif"),
+            bylayer = T, suffix = names(env_stack))
+```
+
+The following code lists all the files in the `processed` folder, matching only those files that end with `.tiff` (ignoring the `env_land_cover.tif.aux.xml` file which contains the RAT and would throw an error), reads and stacks them!
+
+```{r}
+stack(list.files(here::here("data", "raster" , "processed"),
+                 pattern = ".tif$",
+                 full.names = T))
+```
+
+
+## extract environmental data
+
+### extracting points
+
+We can extract data underlying an `sf` from a raster using function `raster::extract()`. The output in the case of points is a single value for each point. This is returned as a vector for a single layer or a matrix for multiple layers, as is our case. 
+
+Firsts, let's load the molecular data that we have converted to an `sf`.
+
+```{r}
+mol_sf <- read_sf(here::here("data", "sf", "salamander.geojson"))
+mol_sf
+```
+
+
+Because we want to combine it with our previous data in `mol_sf` we'll pipe the resulting matrix into `as.data.frame` so we can easily bind our extracted environmental data to our molecular data.
+
+```{r}
+env_points <- extract(env_stack, as_Spatial(mol_sf)) %>% as.data.frame()
+
+mol_env_sf <- bind_cols(mol_sf, env_points)
+mol_env_sf
+```
+
+Our new `sf` is now ready to use for species distribution modelling. But we can also start visualising the relationships between our molecular and environmental variables
+
+```{r}
+ggplot(mol_env_sf, aes(x = temp_range, y = na, colour = region)) +
+    geom_point()
+```
+
+### extracting and summarising raster data using polygons
+
+```{r}
+mean_temp_range <- extract(env_stack[["temp_range"]], 
+                as_Spatial(study_bbox),
+                fun = mean,
+                na.rm = T)
+
+mean_temp_range
+```
+
+Let's use this to calculate the deviation of our datapoints from the study box mean. We can use `dplyr::mutate` to manipulate attribute data in our `sf` just like any other data.frame.
+
+```{r}
+mol_env_sf <- mol_env_sf %>% 
+    mutate(dev_temp_range = temp_range - as.vector(mean_temp_range))
+```
+
+```{r}
+mol_env_sf %>% select(locality, dev_temp_range)
+```
+
+
+Let's save our final `sf` now containing the environmental data we extracted
+
+```{r}
+write_sf(mol_env_sf, here::here("data", "sf", "env_salamander.geojson"))
+```
+
+
+
+
+### Exercise
+
+**2) Calculate mean precipitation seasonality for the study bounding box area. What is the value?**
+
+```{r}
+mean_prec_seasonality <- raster::extract(env_stack[["prec_seasonality"]], 
+                study_bbox,
+                fun = mean,
+                na.rm = T)
+
+mean_prec_seasonality
+```
+
+**3) Add a column indicating whether data points are greater than (`TRUE`) or less than (`FALSE`) study area mean precipipation seasonality.**
+
+
+### Other useful `raster` functions you should know about:
+
+http://rspatial.org/spatial/rst/8-rastermanip.html
+
+- `merge`: merge 
+- `trim` (remove outer `NA` rows and columns)
+- `extend`
+- `projectRaster`: Project the values of a Raster* object to a new Raster* object with another projection (coordinate reference system, (CRS)).
