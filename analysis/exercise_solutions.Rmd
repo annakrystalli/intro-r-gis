@@ -111,33 +111,34 @@ levelplot(rough_mean, margin = F)
 
 
 
-#### 2) Calculate mean precipitation seasonality for the study bounding box area. What is the value?
+#### 2) Calculate mean precipitation seasonality for the **extraction bounding box area**. What is the value?
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
 mol_env_sf <- read_sf(here::here("data", "sf", "env_salamander.geojson"))
 env_stack <- stack(here::here("data", "raster", "env_stack.grd"))
-study_bbox <- read_sf(here::here("data", "sf", "study_bbox.geojson")) %>% st_buffer(dist = 1)
-
+study_bbox <- mol_env_sf %>% st_bbox() %>% st_as_sfc()
+extract_bbox <- study_bbox %>% st_buffer(dist = 1)
 ```
 
 
 ```{r}
-mean_prec_seasonality <- raster::extract(env_stack[["prec_seasonality"]], 
-                study_bbox,
+mean_prec_seasonality <- extract(env_stack[["prec_seasonality"]], 
+                as_Spatial(extract_bbox),
                 fun = mean,
                 na.rm = T)
 
 mean_prec_seasonality
 ```
 
-#### 3) Add a column indicating whether data points are greater than (`TRUE`) or less than (`FALSE`) study area mean precipipation seasonality.
+
+#### 3) Add a column indicating whether data points are greater than (`TRUE`) or less than (`FALSE`) extraction area mean precipitation seasonality.
 
 ```{r}
 mol_env_sf <- mol_env_sf %>% 
     mutate(greater_mean_ps = 
                prec_seasonality > as.vector(mean_prec_seasonality))
 
-mol_env_sf %>% select(localty, greater_mean_ps)
+mol_env_sf %>% select(locality, greater_mean_ps)
 ```
 
 
