@@ -404,7 +404,9 @@ Now, let's have a look at the data we just loaded.
 mol_df
 ```
 
-It contains geographical data in lat/lot decimal degrees. We can convert the sampling locations to `sf` geographic points using function `sf::st_as_sf()`. We can also assign a CRS, in this case WGS 84 which corresponds to epsg:4326.
+## Converting lat/lon data to simple features
+
+Our data contains geographical coordinates in lat/lot decimal degrees. We can convert these sampling locations to `sf` geographic points using function `sf::st_as_sf()`. We can also assign a CRS, in this case we'll assign WGS 84 which corresponds to epsg:4326.
 
 ```{r}
 mol_sf <- sf::st_as_sf(mol_df, coords = c("longitude", "latitude"), 
@@ -415,7 +417,7 @@ mol_sf <- sf::st_as_sf(mol_df, coords = c("longitude", "latitude"),
 mol_sf
 ```
 
-# Plotting `sf` with `ggplot2`
+## Plotting `sf` with `ggplot2`
 
 Another great new feature of `sf` is that `ggplot2` provides a dedicated function, `ggplot2::geom_sf()`, for mapping `sf`.
 
@@ -454,9 +456,11 @@ mol_sf %>% ggplot() +
 
 
 
-### Plotting the study area location
+### Locating the study area
 
 We might also want to include a plot of the study area, and located in the context of the whole country.
+
+#### Country polygon
 
 We can source country boundaries for Mexico from the `spData::world` `sf`.
 
@@ -465,7 +469,7 @@ mx <- world %>% filter(name_long == "Mexico")
 mx
 ```
 
-#### bounding box
+#### Study area bounding box
 
 Now, we also need to get the bounding box of our study area. We can use `sf::st_bbox()`
 
@@ -482,7 +486,7 @@ study_bbox <- study_bbox %>% st_as_sfc()
 study_bbox
 ```
 
-Let's plot all this together
+Let's plot all this together:
 
 ```{r}
 ggplot() + 
