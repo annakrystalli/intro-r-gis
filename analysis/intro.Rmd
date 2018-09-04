@@ -54,24 +54,16 @@ The majority of the workshop I will be live coding `r emo::ji("fearful")` so tha
 
 - Understand the basics of GIS
 - Understand spatial data types and formats
-- Be able to work with, manipulate, combine and extract spatial data
+- Be able to work with, manipulate, combine and extract spatial data in R
 - Be able to plot spatial
 
+
+## Why GIS in R
+
+1. It's free
+2. It's powerful especially in terms of spatial analysis and statistics
+3. It's a scripted language so encourages reusable, reproducible workflows
+4. Recent additions to the R geospatial ecosystem (in particular package `sf`) have drastically simplified spatial data classes and workflows.
+
+
 ### Let's dive in!
-
-
-
-
-# spatial data in R
-
-Packages:
-
-- `sf`: for vector data
-- `raster`: raster data
-
-Data:
-
-- `spData`: great package with many useful datasets
-- `spDataLarge`: larger datasets
-- `maps` : 
-
