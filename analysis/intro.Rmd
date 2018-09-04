@@ -1,0 +1,77 @@
+---
+title: "intro"
+output: html_document
+---
+
+
+# `r emo::ji("wave")` Hello and welcome
+
+### me: Dr Anna Krystalli
+
+- **Research Software Engineer**, _University of Sheffield_
+    + twitter **@annakrystalli**
+    + github **@annakrystalli**
+    + email **a.krystalli[at]sheffield.ac.uk**
+    
+- Not a GIS expert! but
+    + have used a lot of GIS in my work
+    + `r emo::ji("heart")` GIS in R!
+    
+---
+
+
+## Workshop materials
+
+### Data
+
+On github: <https://github.com/annakrystalli/gis-workshop>
+    + click on **Clone or download**
+    + click on **Download ZIP**
+    + Unzip the file
+
+### Handouts:
+
+<http://annakrystalli.me/intro-r-gis/intro.html>
+
+---
+
+## Workshop approach
+    
+### Rstudio
+
+We will be working in an Rstudio project. I recommend this workflow for all your projects because it keeps your work portable and self contained
+
+We will also be using Rmd notebooks. I like them because you can see the outputs of code as you write. You can also make notes around your code using markdown. _See further resources for more details._ 
+
+### Live coding
+
+The majority of the workshop I will be live coding `r emo::ji("fearful")` so that you can follow along. You will get a lot more out of the workshop if you do.
+
+
+---
+
+## Workshop aims and objectives
+
+- Understand the basics of GIS
+- Understand spatial data types and formats
+- Be able to work with, manipulate, combine and extract spatial data
+- Be able to plot spatial
+
+### Let's dive in!
+
+
+
+
+# spatial data in R
+
+Packages:
+
+- `sf`: for vector data
+- `raster`: raster data
+
+Data:
+
+- `spData`: great package with many useful datasets
+- `spDataLarge`: larger datasets
+- `maps` : 
+

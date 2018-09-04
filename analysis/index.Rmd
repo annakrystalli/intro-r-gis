@@ -10,4 +10,23 @@ output:
 
 ####  2-6 Sept. 2018 | Buttermere, Lake District, UK
 
+---
 
+<br>
+
+## **Workshop Outline**
+
+- ### [**Welcome**](https://annakrystalli.me/intro-r-gis/intro.html)
+- ### [**Intro to GIS**](https://annakrystalli.me/intro-r-gis/gis.html)
+- ### [**Working with Vector data**](https://annakrystalli.me/intro-r-gis/vector.html)
+- ### [**Working with Raster data**](https://annakrystalli.me/intro-r-gis/raster.html)
+
+<br>
+
+- #### [**Exercise solutions**](https://annakrystalli.me/intro-r-gis/exercise_solutions.html)
+- #### [**Further resources**](https://annakrystalli.me/intro-r-gis/further_resources.html)
+
+## **Workshop Materials**
+
+Data: <https://github.com/annakrystalli/gis-workshop>
+Handouts: <http://annakrystalli.me/intro-r-gis/intro.html>
