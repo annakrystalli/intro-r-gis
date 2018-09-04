@@ -1,0 +1,56 @@
+---
+title: "further resources"
+output: html_document
+---
+
+# GIS
+
+## e-books
+
+- [**Geocomputation in R**](https://geocompr.robinlovelace.net/index.html)
+    Robin Lovelace, Jakub Nowosad, Jannes Muenchow
+
+## tutorials
+
+- [**Case Studies in Reproducible Research: a spring seminar at UCSC**](https://eriqande.github.io/rep-res-eeb-2017/). Eric C. Anderson, Kristen C. Ruegg, Tina Cheng, and the students of EEB 295 
+    + [**Chapter 8 Week 7: Making Simple Maps with R**](https://eriqande.github.io/rep-res-eeb-2017/map-making-in-R.html)
+    + [**Chapter 9 Plotting “Spatial” Data with ggplot**](https://eriqande.github.io/rep-res-eeb-2017/plotting-spatial-data-with-ggplot.html)
+    + [**Chapter 10 A Tidy Approach to Spatial Data: Simple Features**](https://eriqande.github.io/rep-res-eeb-2017/a-tidy-approach-to-spatial-data-simple-features.html)
+
+- [**Spatial data manipulation**](http://rspatial.org/spatial/index.html) 
+    + [3. Vector data manipulation ](http://rspatial.org/spatial/rst/7-vectmanip.html): (useful for learning about working with `sp` data classes)
+    + [8. Raster data manipulation](http://rspatial.org/spatial/rst/8-rastermanip.html)
+    
+- [**NEON Data Tutorials**](https://www.neonscience.org/resources/data-tutorials): Filter for relevant topics    
+    + [Introduction to Working with Raster Data in R](https://www.neonscience.org/resources/series/introduction-working-raster-data-r)
+    + [Primer on Raster Data in R](https://www.neonscience.org/primer-raster-data-r)
+    + [Intro to Vector Data in R](https://www.neonscience.org/vector-data-series)
+
+- [R Projections Workshop](https://github.com/MicheleTobias/R-Projections-Workshop) by Michele Tobias
+
+## papers
+
+- Pebesma, Edzer. 2018. [“Simple Features for R: Standardized Support for Spatial Vector Data.” The R Journal.]()
+
+
+
+### web
+
+- [`sf` vignettes](https://cran.r-project.org/web/packages/sf/vignettes/sf1.html)
+- [`sf` function guide](https://r-spatial.github.io/sf/reference/index.html)
+- [`rasterVis` vignette](https://oscarperpinan.github.io/rastervis/)
+- [Visualise `sf` objects with `ggplot2`](https://ggplot2.tidyverse.org/reference/ggsf.html)
+
+### video
+
+
+
+## wikis
+
+- [Wiki.GIS.com - The GIS Encyclopedia](http://wiki.gis.com/wiki/index.php/Main_Page)
+
+# R markdown
+
+- [R markdown introductory material](https://rmarkdown.rstudio.com/)
+- [R markdown: the Definitive Guide](https://bookdown.org/yihui/rmarkdown/)
+- [Tutorial on literate programming using R markdown](http://annakrystalli.me/literate-programming/)
