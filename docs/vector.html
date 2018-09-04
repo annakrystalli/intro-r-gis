@@ -343,7 +343,7 @@ div.section {
 </details>
 </li>
 <li>
-<p><details> <summary> <strong style="color:blue;">✔</strong> <strong>Repository version:</strong> <a href="https://github.com/annakrystalli/intro-r-gis/tree/aae5895c3300bdc93507234fc95d61069e217bda" target="_blank">aae5895</a> </summary></p>
+<p><details> <summary> <strong style="color:blue;">✔</strong> <strong>Repository version:</strong> <a href="https://github.com/annakrystalli/intro-r-gis/tree/a08639f3c087557546e710802ef74a946015d023" target="_blank">a08639f</a> </summary></p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility. The version displayed above was the version of the Git repository at the time these results were generated. <br><br> Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
 <pre><code>
 Ignored files:
@@ -354,16 +354,16 @@ Ignored files:
 
 Untracked files:
     Untracked:  .Rbuildignore
-    Untracked:  analysis/exercise_solutions.Rmd
-    Untracked:  analysis/further_resources.Rmd
-    Untracked:  analysis/gis.Rmd
     Untracked:  analysis/mapping.Rmd
-    Untracked:  analysis/raster.Rmd
     Untracked:  data-raw/
     Untracked:  data/csv/
     Untracked:  data/raster/
     Untracked:  data/sf/
-    Untracked:  docs/figure/
+
+Unstaged changes:
+    Modified:   analysis/exercise_solutions.Rmd
+    Modified:   analysis/index.Rmd
+    Modified:   analysis/raster.Rmd
 
 </code></pre>
 Note that any generated files, e.g. HTML, png, CSS, etc., are not included in this status report because it is ok for generated content to have uncommitted changes. </details>
@@ -392,6 +392,23 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td style="text-align:left;">
+html
+</td>
+<td style="text-align:left;">
+<a href="https://cdn.rawgit.com/annakrystalli/intro-r-gis/8a975bc813c1c2196785cb9a30ec849bb50c60dd/docs/vector.html" target="_blank">8a975bc</a>
+</td>
+<td style="text-align:left;">
+annakrystalli
+</td>
+<td style="text-align:left;">
+2018-09-04
+</td>
+<td style="text-align:left;">
+Build site.
+</td>
+</tr>
 <tr>
 <td style="text-align:left;">
 Rmd
@@ -506,6 +523,36 @@ Of 68 geometry types supported by the specification, <strong>only 7 are used in 
 <p>And we can also quickly plot geometries to inspect them:</p>
 <pre class="r"><code>plot(points)</code></pre>
 <p><img src="figure/vector.Rmd/unnamed-chunk-6-1.png" width="672" style="display: block; margin: auto;" /></p>
+<details> <summary><em>Expand here to see past versions of unnamed-chunk-6-1.png:</em></summary>
+<table style="border-collapse:separate; border-spacing:5px;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Version
+</th>
+<th style="text-align:left;">
+Author
+</th>
+<th style="text-align:left;">
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<a href="https://github.com/annakrystalli/intro-r-gis/blob/8a975bc813c1c2196785cb9a30ec849bb50c60dd/docs/figure/vector.Rmd/unnamed-chunk-6-1.png" target="_blank">8a975bc</a>
+</td>
+<td style="text-align:left;">
+annakrystalli
+</td>
+<td style="text-align:left;">
+2018-09-04
+</td>
+</tr>
+</tbody>
+</table>
+<p></details></p>
 </div>
 <div id="line-feature" class="section level3">
 <h3>line feature</h3>
@@ -516,6 +563,36 @@ Of 68 geometry types supported by the specification, <strong>only 7 are used in 
 line</code></pre>
 <pre class="r"><code>plot(line)</code></pre>
 <p><img src="figure/vector.Rmd/unnamed-chunk-8-1.png" width="672" style="display: block; margin: auto;" /></p>
+<details> <summary><em>Expand here to see past versions of unnamed-chunk-8-1.png:</em></summary>
+<table style="border-collapse:separate; border-spacing:5px;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Version
+</th>
+<th style="text-align:left;">
+Author
+</th>
+<th style="text-align:left;">
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<a href="https://github.com/annakrystalli/intro-r-gis/blob/8a975bc813c1c2196785cb9a30ec849bb50c60dd/docs/figure/vector.Rmd/unnamed-chunk-8-1.png" target="_blank">8a975bc</a>
+</td>
+<td style="text-align:left;">
+annakrystalli
+</td>
+<td style="text-align:left;">
+2018-09-04
+</td>
+</tr>
+</tbody>
+</table>
+<p></details></p>
 </div>
 <div id="combining-sfgs-into-an-sfc" class="section level3">
 <h3>Combining <code>sfg</code>s into an <code>sfc</code></h3>
@@ -525,6 +602,36 @@ line</code></pre>
 <pre><code>[1] &quot;sfc_GEOMETRY&quot; &quot;sfc&quot;         </code></pre>
 <pre class="r"><code>plot(sfc)</code></pre>
 <p><img src="figure/vector.Rmd/unnamed-chunk-11-1.png" width="672" style="display: block; margin: auto;" /></p>
+<details> <summary><em>Expand here to see past versions of unnamed-chunk-11-1.png:</em></summary>
+<table style="border-collapse:separate; border-spacing:5px;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Version
+</th>
+<th style="text-align:left;">
+Author
+</th>
+<th style="text-align:left;">
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<a href="https://github.com/annakrystalli/intro-r-gis/blob/8a975bc813c1c2196785cb9a30ec849bb50c60dd/docs/figure/vector.Rmd/unnamed-chunk-11-1.png" target="_blank">8a975bc</a>
+</td>
+<td style="text-align:left;">
+annakrystalli
+</td>
+<td style="text-align:left;">
+2018-09-04
+</td>
+</tr>
+</tbody>
+</table>
+<p></details></p>
 </div>
 <div id="creating-an-sf-and-adding-attribute-data" class="section level3">
 <h3>Creating an <code>sf</code> and adding attribute data</h3>
@@ -544,6 +651,36 @@ proj4string:    NA
 <pre><code>[1] &quot;sf&quot;         &quot;data.frame&quot;</code></pre>
 <pre class="r"><code>plot(sf)</code></pre>
 <p><img src="figure/vector.Rmd/unnamed-chunk-14-1.png" width="672" style="display: block; margin: auto;" /></p>
+<details> <summary><em>Expand here to see past versions of unnamed-chunk-14-1.png:</em></summary>
+<table style="border-collapse:separate; border-spacing:5px;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Version
+</th>
+<th style="text-align:left;">
+Author
+</th>
+<th style="text-align:left;">
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<a href="https://github.com/annakrystalli/intro-r-gis/blob/8a975bc813c1c2196785cb9a30ec849bb50c60dd/docs/figure/vector.Rmd/unnamed-chunk-14-1.png" target="_blank">8a975bc</a>
+</td>
+<td style="text-align:left;">
+annakrystalli
+</td>
+<td style="text-align:left;">
+2018-09-04
+</td>
+</tr>
+</tbody>
+</table>
+<p></details></p>
 </div>
 <div id="exercise" class="section level3">
 <h3>Exercise</h3>
@@ -892,16 +1029,136 @@ First 10 features:
 <pre><code>Warning: plotting the first 9 out of 10 attributes; use max.plot = 10 to
 plot all</code></pre>
 <p><img src="figure/vector.Rmd/unnamed-chunk-29-1.png" width="672" style="display: block; margin: auto;" /></p>
+<details> <summary><em>Expand here to see past versions of unnamed-chunk-29-1.png:</em></summary>
+<table style="border-collapse:separate; border-spacing:5px;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Version
+</th>
+<th style="text-align:left;">
+Author
+</th>
+<th style="text-align:left;">
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<a href="https://github.com/annakrystalli/intro-r-gis/blob/8a975bc813c1c2196785cb9a30ec849bb50c60dd/docs/figure/vector.Rmd/unnamed-chunk-29-1.png" target="_blank">8a975bc</a>
+</td>
+<td style="text-align:left;">
+annakrystalli
+</td>
+<td style="text-align:left;">
+2018-09-04
+</td>
+</tr>
+</tbody>
+</table>
+<p></details></p>
 <pre class="r"><code>world_merc %&gt;% plot()</code></pre>
 <pre><code>Warning: plotting the first 9 out of 10 attributes; use max.plot = 10 to
 plot all</code></pre>
 <p><img src="figure/vector.Rmd/unnamed-chunk-30-1.png" width="672" style="display: block; margin: auto;" /></p>
+<details> <summary><em>Expand here to see past versions of unnamed-chunk-30-1.png:</em></summary>
+<table style="border-collapse:separate; border-spacing:5px;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Version
+</th>
+<th style="text-align:left;">
+Author
+</th>
+<th style="text-align:left;">
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<a href="https://github.com/annakrystalli/intro-r-gis/blob/8a975bc813c1c2196785cb9a30ec849bb50c60dd/docs/figure/vector.Rmd/unnamed-chunk-30-1.png" target="_blank">8a975bc</a>
+</td>
+<td style="text-align:left;">
+annakrystalli
+</td>
+<td style="text-align:left;">
+2018-09-04
+</td>
+</tr>
+</tbody>
+</table>
+<p></details></p>
 <p>We can easily select and plot information for a single variable</p>
 <pre class="r"><code>world %&gt;% select(lifeExp) %&gt;% plot()</code></pre>
 <p><img src="figure/vector.Rmd/unnamed-chunk-31-1.png" width="672" style="display: block; margin: auto;" /></p>
+<details> <summary><em>Expand here to see past versions of unnamed-chunk-31-1.png:</em></summary>
+<table style="border-collapse:separate; border-spacing:5px;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Version
+</th>
+<th style="text-align:left;">
+Author
+</th>
+<th style="text-align:left;">
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<a href="https://github.com/annakrystalli/intro-r-gis/blob/8a975bc813c1c2196785cb9a30ec849bb50c60dd/docs/figure/vector.Rmd/unnamed-chunk-31-1.png" target="_blank">8a975bc</a>
+</td>
+<td style="text-align:left;">
+annakrystalli
+</td>
+<td style="text-align:left;">
+2018-09-04
+</td>
+</tr>
+</tbody>
+</table>
+<p></details></p>
 <p>We can also extract and just plot out the geometries.</p>
 <pre class="r"><code>world %&gt;% st_geometry() %&gt;% plot()</code></pre>
 <p><img src="figure/vector.Rmd/unnamed-chunk-32-1.png" width="672" style="display: block; margin: auto;" /></p>
+<details> <summary><em>Expand here to see past versions of unnamed-chunk-32-1.png:</em></summary>
+<table style="border-collapse:separate; border-spacing:5px;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Version
+</th>
+<th style="text-align:left;">
+Author
+</th>
+<th style="text-align:left;">
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<a href="https://github.com/annakrystalli/intro-r-gis/blob/8a975bc813c1c2196785cb9a30ec849bb50c60dd/docs/figure/vector.Rmd/unnamed-chunk-32-1.png" target="_blank">8a975bc</a>
+</td>
+<td style="text-align:left;">
+annakrystalli
+</td>
+<td style="text-align:left;">
+2018-09-04
+</td>
+</tr>
+</tbody>
+</table>
+<p></details></p>
 <div id="exercises" class="section level3">
 <h3>Exercises</h3>
 <p><strong>2) What are the coordinates for the 10th point in the Mexico polygon?</strong></p>
@@ -909,8 +1166,9 @@ plot all</code></pre>
 <p><strong>4) Are these coordinates projected or not? Can you tell by just looking at the spatial information in the transformed <code>sf</code> object?</strong></p>
 </div>
 </div>
-<div id="a-working-example" class="section level2">
-<h2>A working example</h2>
+</div>
+<div id="a-working-example" class="section level1">
+<h1>A working example</h1>
 <div id="molecular-data-on-salamanders" class="section level3">
 <h3>Molecular data on salamanders</h3>
 <p>The data we will work with are from the paper: <em>Tracking climate change in a dispersal‐limited species: reduced spatial and genetic connectivity in a montane salamander (2013)</em> <a href="https://doi.org/10.1111/mec.12310" class="uri">https://doi.org/10.1111/mec.12310</a></p>
@@ -1027,8 +1285,8 @@ proj4string:    +proj=longlat +datum=WGS84 +no_defs
 # ... with 1 more variable: geometry &lt;POINT [°]&gt;</code></pre>
 </div>
 </div>
-<div id="plotting-sf-with-ggplot2" class="section level2">
-<h2>Plotting <code>sf</code> with <code>ggplot2</code></h2>
+<div id="plotting-sf-with-ggplot2" class="section level1">
+<h1>Plotting <code>sf</code> with <code>ggplot2</code></h1>
 <p>Another great new feature of <code>sf</code> is that <code>ggplot2</code> provides a dedicated function, <code>ggplot2::geom_sf()</code>, for mapping <code>sf</code>.</p>
 <div id="plotting-sampling-locations" class="section level3">
 <h3>Plotting sampling locations</h3>
@@ -1036,19 +1294,139 @@ proj4string:    +proj=longlat +datum=WGS84 +no_defs
 <pre class="r"><code>mol_sf %&gt;% ggplot() +
   geom_sf() </code></pre>
 <p><img src="figure/vector.Rmd/unnamed-chunk-38-1.png" width="672" style="display: block; margin: auto;" /></p>
+<details> <summary><em>Expand here to see past versions of unnamed-chunk-38-1.png:</em></summary>
+<table style="border-collapse:separate; border-spacing:5px;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Version
+</th>
+<th style="text-align:left;">
+Author
+</th>
+<th style="text-align:left;">
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<a href="https://github.com/annakrystalli/intro-r-gis/blob/8a975bc813c1c2196785cb9a30ec849bb50c60dd/docs/figure/vector.Rmd/unnamed-chunk-38-1.png" target="_blank">8a975bc</a>
+</td>
+<td style="text-align:left;">
+annakrystalli
+</td>
+<td style="text-align:left;">
+2018-09-04
+</td>
+</tr>
+</tbody>
+</table>
+<p></details></p>
 <p>Although this doesn’t look AMAZING (yet), the coordinates are positioned correctly in space. And it also means we have the full power of <code>ggplot2</code> to add more information and customise the look of our maps.</p>
 <p>For example, maybe we want to colour the points according to the number of alleles in the population.</p>
 <pre class="r"><code>mol_sf %&gt;% ggplot() +
   geom_sf(aes(colour = na)) </code></pre>
 <p><img src="figure/vector.Rmd/unnamed-chunk-39-1.png" width="672" style="display: block; margin: auto;" /></p>
+<details> <summary><em>Expand here to see past versions of unnamed-chunk-39-1.png:</em></summary>
+<table style="border-collapse:separate; border-spacing:5px;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Version
+</th>
+<th style="text-align:left;">
+Author
+</th>
+<th style="text-align:left;">
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<a href="https://github.com/annakrystalli/intro-r-gis/blob/8a975bc813c1c2196785cb9a30ec849bb50c60dd/docs/figure/vector.Rmd/unnamed-chunk-39-1.png" target="_blank">8a975bc</a>
+</td>
+<td style="text-align:left;">
+annakrystalli
+</td>
+<td style="text-align:left;">
+2018-09-04
+</td>
+</tr>
+</tbody>
+</table>
+<p></details></p>
 <p>Or maybe we want to identify points by region</p>
 <pre class="r"><code>mol_sf %&gt;% ggplot() +
   geom_sf(aes(colour = region)) </code></pre>
 <p><img src="figure/vector.Rmd/unnamed-chunk-40-1.png" width="672" style="display: block; margin: auto;" /></p>
+<details> <summary><em>Expand here to see past versions of unnamed-chunk-40-1.png:</em></summary>
+<table style="border-collapse:separate; border-spacing:5px;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Version
+</th>
+<th style="text-align:left;">
+Author
+</th>
+<th style="text-align:left;">
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<a href="https://github.com/annakrystalli/intro-r-gis/blob/8a975bc813c1c2196785cb9a30ec849bb50c60dd/docs/figure/vector.Rmd/unnamed-chunk-40-1.png" target="_blank">8a975bc</a>
+</td>
+<td style="text-align:left;">
+annakrystalli
+</td>
+<td style="text-align:left;">
+2018-09-04
+</td>
+</tr>
+</tbody>
+</table>
+<p></details></p>
 <p>The default <code>geom_sf()</code> assumes we are plotting polygons, hence the odd legend displaying both a <code>colour</code> (outline) and a <code>fill</code> key. To get it to plot an appropriate legend for points we need to include <code>show.legend = &quot;point&quot;</code> in <code>geom_sf</code>.</p>
 <pre class="r"><code>mol_sf %&gt;% ggplot() +
   geom_sf(aes(colour = region), show.legend = &quot;point&quot;) </code></pre>
 <p><img src="figure/vector.Rmd/unnamed-chunk-41-1.png" width="672" style="display: block; margin: auto;" /></p>
+<details> <summary><em>Expand here to see past versions of unnamed-chunk-41-1.png:</em></summary>
+<table style="border-collapse:separate; border-spacing:5px;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Version
+</th>
+<th style="text-align:left;">
+Author
+</th>
+<th style="text-align:left;">
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<a href="https://github.com/annakrystalli/intro-r-gis/blob/8a975bc813c1c2196785cb9a30ec849bb50c60dd/docs/figure/vector.Rmd/unnamed-chunk-41-1.png" target="_blank">8a975bc</a>
+</td>
+<td style="text-align:left;">
+annakrystalli
+</td>
+<td style="text-align:left;">
+2018-09-04
+</td>
+</tr>
+</tbody>
+</table>
+<p></details></p>
 </div>
 <div id="plotting-the-study-area-location" class="section level3">
 <h3>Plotting the study area location</h3>
@@ -1089,16 +1467,106 @@ proj4string:    +proj=longlat +datum=WGS84 +no_defs</code></pre>
     geom_sf(data = mx, colour = &quot;black&quot;, fill = &quot;lightgrey&quot;) +
     geom_sf(data = study_bbox, colour = &quot;black&quot;, fill = &quot;white&quot;)</code></pre>
 <p><img src="figure/vector.Rmd/unnamed-chunk-45-1.png" width="672" style="display: block; margin: auto;" /></p>
+<details> <summary><em>Expand here to see past versions of unnamed-chunk-45-1.png:</em></summary>
+<table style="border-collapse:separate; border-spacing:5px;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Version
+</th>
+<th style="text-align:left;">
+Author
+</th>
+<th style="text-align:left;">
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<a href="https://github.com/annakrystalli/intro-r-gis/blob/8a975bc813c1c2196785cb9a30ec849bb50c60dd/docs/figure/vector.Rmd/unnamed-chunk-45-1.png" target="_blank">8a975bc</a>
+</td>
+<td style="text-align:left;">
+annakrystalli
+</td>
+<td style="text-align:left;">
+2018-09-04
+</td>
+</tr>
+</tbody>
+</table>
+<p></details></p>
 <p>Still kinda ugly. Let’s try making the panel background a light blue.</p>
 <pre class="r"><code>p &lt;- ggplot() + 
     theme(panel.background = 
               element_rect(fill = &quot;lightblue&quot;))
 p</code></pre>
 <p><img src="figure/vector.Rmd/unnamed-chunk-46-1.png" width="672" style="display: block; margin: auto;" /></p>
+<details> <summary><em>Expand here to see past versions of unnamed-chunk-46-1.png:</em></summary>
+<table style="border-collapse:separate; border-spacing:5px;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Version
+</th>
+<th style="text-align:left;">
+Author
+</th>
+<th style="text-align:left;">
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<a href="https://github.com/annakrystalli/intro-r-gis/blob/8a975bc813c1c2196785cb9a30ec849bb50c60dd/docs/figure/vector.Rmd/unnamed-chunk-46-1.png" target="_blank">8a975bc</a>
+</td>
+<td style="text-align:left;">
+annakrystalli
+</td>
+<td style="text-align:left;">
+2018-09-04
+</td>
+</tr>
+</tbody>
+</table>
+<p></details></p>
 <pre class="r"><code>p + 
     geom_sf(data = mx, colour = &quot;black&quot;, fill = &quot;lightgrey&quot;) +
     geom_sf(data = study_bbox, colour = &quot;black&quot;, fill = &quot;white&quot;) </code></pre>
 <p><img src="figure/vector.Rmd/unnamed-chunk-47-1.png" width="672" style="display: block; margin: auto;" /></p>
+<details> <summary><em>Expand here to see past versions of unnamed-chunk-47-1.png:</em></summary>
+<table style="border-collapse:separate; border-spacing:5px;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Version
+</th>
+<th style="text-align:left;">
+Author
+</th>
+<th style="text-align:left;">
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<a href="https://github.com/annakrystalli/intro-r-gis/blob/8a975bc813c1c2196785cb9a30ec849bb50c60dd/docs/figure/vector.Rmd/unnamed-chunk-47-1.png" target="_blank">8a975bc</a>
+</td>
+<td style="text-align:left;">
+annakrystalli
+</td>
+<td style="text-align:left;">
+2018-09-04
+</td>
+</tr>
+</tbody>
+</table>
+<p></details></p>
 <p>in CRS <a href="https://epsg.io/4488">Mexico ITRF92 / UTM zone 15N</a></p>
 <pre class="r"><code>mx_utm15 &lt;- st_transform(mx, crs = 4488)
 
@@ -1106,38 +1574,128 @@ p +
     geom_sf(data = mx_utm15, colour = &quot;black&quot;, fill = &quot;lightgrey&quot;) +
     geom_sf(data = study_bbox, colour = &quot;black&quot;, fill = &quot;white&quot;) </code></pre>
 <p><img src="figure/vector.Rmd/unnamed-chunk-48-1.png" width="672" style="display: block; margin: auto;" /></p>
+<details> <summary><em>Expand here to see past versions of unnamed-chunk-48-1.png:</em></summary>
+<table style="border-collapse:separate; border-spacing:5px;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Version
+</th>
+<th style="text-align:left;">
+Author
+</th>
+<th style="text-align:left;">
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<a href="https://github.com/annakrystalli/intro-r-gis/blob/8a975bc813c1c2196785cb9a30ec849bb50c60dd/docs/figure/vector.Rmd/unnamed-chunk-48-1.png" target="_blank">8a975bc</a>
+</td>
+<td style="text-align:left;">
+annakrystalli
+</td>
+<td style="text-align:left;">
+2018-09-04
+</td>
+</tr>
+</tbody>
+</table>
+<p></details></p>
+<p>Before <code>sf_geom</code>, we could still plot geographic data. However, it took a lot more code to do so. Here’s what we’d need to code the first Mexico plot:</p>
 <pre class="r"><code>mx_coords &lt;- st_coordinates(mx) %&gt;% as.data.frame()
 bbox_coords &lt;- st_coordinates(study_bbox) %&gt;% as.data.frame()
 
 p + 
-    geom_polygon(data = mx_coords, aes(x = X, y = Y), colour = &quot;black&quot;, fill = &quot;lightgrey&quot;) +
-    geom_polygon(data = bbox_coords, aes(x = X, y = Y), colour = &quot;black&quot;, fill = &quot;white&quot;) +
+    geom_polygon(data = mx_coords, aes(x = X, y = Y), 
+                 colour = &quot;black&quot;, fill = &quot;lightgrey&quot;) +
+    geom_polygon(data = bbox_coords, aes(x = X, y = Y), 
+                 colour = &quot;black&quot;, fill = &quot;white&quot;) +
     coord_quickmap()</code></pre>
 <p><img src="figure/vector.Rmd/unnamed-chunk-49-1.png" width="672" style="display: block; margin: auto;" /></p>
+<details> <summary><em>Expand here to see past versions of unnamed-chunk-49-1.png:</em></summary>
+<table style="border-collapse:separate; border-spacing:5px;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Version
+</th>
+<th style="text-align:left;">
+Author
+</th>
+<th style="text-align:left;">
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<a href="https://github.com/annakrystalli/intro-r-gis/blob/8a975bc813c1c2196785cb9a30ec849bb50c60dd/docs/figure/vector.Rmd/unnamed-chunk-49-1.png" target="_blank">8a975bc</a>
+</td>
+<td style="text-align:left;">
+annakrystalli
+</td>
+<td style="text-align:left;">
+2018-09-04
+</td>
+</tr>
+</tbody>
+</table>
+<p></details></p>
+<p>So, firstly we needed our data to be in a data.frame with a column for each of the x and y coordinates. Then we would need to use the appropriate <code>geom_*()</code> function according to the shape we are trying to plot (in this case <code>geom_polygon()</code>. If we wanted to plot points we would use <code>geom_point()</code>). We need to specify the columns that contain the x &amp; y coordinates and finally, we also need to include <code>coord_quickmap()</code> which projects our points geographically.</p>
+<p>That’s a lot more work that’s handled automatically by <code>geom_sf</code>. Most importantly, when overlaying shapes, <strong><code>ggplot2</code> has no idea about projections!</strong></p>
+<p>If you remember, in our previous UTM 15 example, we only transformed the first layer we plotted (ie <code>mx</code> to <code>mx_utm15</code>). When <code>study_bbox</code> was plotted subsequently, it’s CRS was automatically transformed to that of the <code>mx_utm15</code>.</p>
+<p>If we try the same with <code>geom_polygon</code>, the coordinates for the two layers are now in completely different CRSs and the study bounding box does not even show up on the map!</p>
 <pre class="r"><code>mx_utm15_coords &lt;- st_coordinates(mx_utm15) %&gt;% as.data.frame()
 bbox_coords &lt;- st_coordinates(study_bbox) %&gt;% as.data.frame()
 
 p + 
-    geom_polygon(data = mx_utm15_coords, aes(x = X, y = Y), colour = &quot;black&quot;, fill = &quot;lightgrey&quot;) +
-    geom_polygon(data = bbox_coords, aes(x = X, y = Y), colour = &quot;black&quot;, fill = &quot;white&quot;) +
+    geom_polygon(data = mx_utm15_coords, 
+                 aes(x = X, y = Y), colour = &quot;black&quot;, fill = &quot;lightgrey&quot;) +
+    geom_polygon(data = bbox_coords, 
+                 aes(x = X, y = Y), colour = &quot;black&quot;, fill = &quot;white&quot;) +
     coord_quickmap()</code></pre>
 <p><img src="figure/vector.Rmd/unnamed-chunk-50-1.png" width="672" style="display: block; margin: auto;" /></p>
-</div>
-</div>
-<div id="geom_sf-vs-geom_polygon-summary" class="section level3">
-<h3><code>geom_sf</code> vs <code>geom_polygon</code> summary</h3>
-<ul>
-<li>When using <code>geom_sf</code> ggplot2 <strong>automatically converts all objects in a plot to the CRS of the first plot layes</strong>. This is <strong>not the case with <code>geom_polygon</code></strong> so need to make sure coordinates of data from different sources are in the same CRS.</li>
-<li>Without <code>coord_quickmap()</code>, ggplot will not automatically adjust the window to reflect the mapped geography allowing for potential distortion.</li>
-</ul>
+<details> <summary><em>Expand here to see past versions of unnamed-chunk-50-1.png:</em></summary>
+<table style="border-collapse:separate; border-spacing:5px;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Version
+</th>
+<th style="text-align:left;">
+Author
+</th>
+<th style="text-align:left;">
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<a href="https://github.com/annakrystalli/intro-r-gis/blob/8a975bc813c1c2196785cb9a30ec849bb50c60dd/docs/figure/vector.Rmd/unnamed-chunk-50-1.png" target="_blank">8a975bc</a>
+</td>
+<td style="text-align:left;">
+annakrystalli
+</td>
+<td style="text-align:left;">
+2018-09-04
+</td>
+</tr>
+</tbody>
+</table>
+<p></details></p>
+<p>Also, the axis units… yuk!</p>
 </div>
 </div>
 <div id="saving-sf-objects" class="section level2">
 <h2>Saving <code>sf</code> objects</h2>
 <p>Let’s first create a new folder to save our <code>sf</code>.</p>
 <pre class="r"><code>dir.create(here::here(&quot;data&quot;, &quot;sf&quot;))</code></pre>
-<pre><code>Warning in dir.create(here::here(&quot;data&quot;, &quot;sf&quot;)): &#39;/Users/Anna/Documents/
-workflows/workshops/intro-r-gis/data/sf&#39; already exists</code></pre>
 <p>Let’s now save our file in the most popular geospatial vector data format, the <a href="https://en.wikipedia.org/wiki/Shapefile">shapefile(<code>.shp</code>)</a>. It is developed and regulated by Esri as a (mostly) open specification for data interoperability among Esri and other GIS software products.</p>
 <pre class="r"><code>write_sf(mol_sf, here::here(&quot;data&quot;, &quot;sf&quot;, &quot;salamander.shp&quot;))</code></pre>
 <pre><code>Warning in abbreviate_shapefile_names(obj): Field names abbreviated for
@@ -1183,9 +1741,6 @@ proj4string:    +proj=longlat +datum=WGS84 +no_defs
 <p>Gah!! What’s happened to the column names?! This is in fact a well known problem with the shapefile format which cannot handle field (column) names longer than 7 characters. When your column names are longer than that, <code>write_sf()</code> quietly runs <code>base::abbreviate()</code> on them before writing the files out. This does not sit well with me in terms of good data provenance tracking and reproducibility. So let’s try a different format instead.</p>
 <p><a href="https://en.wikipedia.org/wiki/GeoJSON">GeoJSON</a> is an open standard format designed for representing simple geographical features, along with their non-spatial attributes. It differs from other GIS standards in that it was written and is maintained not by a formal standards organization, but by an Internet working group of developers. As such, it does not play well with Esri products like ArcGIS (although they can be converted to formats that will). However, if you are not planning to use your data with Esri products, this format is fine.</p>
 <pre class="r"><code>write_sf(mol_sf, here::here(&quot;data&quot;, &quot;sf&quot;, &quot;salamander.geojson&quot;))</code></pre>
-<pre><code>Dataset /Users/Anna/Documents/workflows/workshops/intro-r-gis/data/sf/salamander.geojson already exists: remove first, use update=TRUE to append,
-delete_layer=TRUE to delete layer, or delete_dsn=TRUE to remove the entire data source before writing.</code></pre>
-<pre><code>Error in CPL_write_ogr(obj, dsn, layer, driver, as.character(dataset_options), : Dataset already exists.</code></pre>
 <p>Let’s read it back in and check it:</p>
 <pre class="r"><code>read_sf(here::here(&quot;data&quot;, &quot;sf&quot;, &quot;salamander.geojson&quot;))</code></pre>
 <pre><code>Simple feature collection with 15 features and 9 fields
@@ -1214,11 +1769,6 @@ proj4string:    +proj=longlat +datum=WGS84 +no_defs
 15    19 Vigas         48 Cofre de Perote  North… 11.8  0.660  5.75 1.31  
 # ... with 1 more variable: geometry &lt;POINT [°]&gt;</code></pre>
 <p>Beautiful! The file is accurately reproduced with all column names intact 💪, so no need to go updating your data README or attribute metadata table.</p>
-<p>Let’s also write out our study bounding box for use in the next section.</p>
-<pre class="r"><code>write_sf(study_bbox, here::here(&quot;data&quot;, &quot;sf&quot;, &quot;study_bbox.geojson&quot;))</code></pre>
-<pre><code>Dataset /Users/Anna/Documents/workflows/workshops/intro-r-gis/data/sf/study_bbox.geojson already exists: remove first, use update=TRUE to append,
-delete_layer=TRUE to delete layer, or delete_dsn=TRUE to remove the entire data source before writing.</code></pre>
-<pre><code>Error in CPL_write_ogr(obj, dsn, layer, driver, as.character(dataset_options), : Dataset already exists.</code></pre>
 </div>
 <div id="session-information" class="section level2">
 <h2>Session information</h2>
