@@ -1,0 +1,144 @@
+---
+title: "exercise solutions"
+output: html_document
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, error = TRUE, message = F)
+```
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+library(raster)  
+library(rasterVis)
+library(sf)
+library(dplyr)
+library(ggplot2)
+library(spData)
+
+points <- st_multipoint(x = matrix(c(0, 0, 2, 0), ncol = 2, byrow = T))
+
+line <- st_linestring(x = matrix(c(-1, -2, -0.5, -3, 2.5, -3, 3, -2), 
+                                 ncol = 2, byrow = T))
+```
+
+
+
+## Vector spatial data
+
+#### 1) add a nose!
+
+Create a nose geometry, combine all the shapes into a single `sf` and then plot the face.
+
+```{r}
+nose <- st_linestring(x = matrix(c(1, -1, 1, -2), ncol = 2, byrow = T))
+sfc <- st_sfc(points, line, nose)
+face <- st_sf(data.frame(shape = c("eyes", "mouth", "nose"), geom = sfc))
+plot(face)
+```
+
+
+
+#### 2) What are the coordinates for the 10th point in the Mexico polygon?
+
+```{r}
+mx_coords <- world %>% filter(iso_a2 == "MX") %>% st_coordinates() 
+
+mx_coords[10, c("X", "Y")]
+```
+
+
+#### 3) How about in CRS [Mexico ITRF92 / UTM zone 15N](https://epsg.io/4488)
+
+(hint: use `st_transform` to change the projection first)
+
+```{r}
+mx_utm15 <- world %>% 
+    st_transform(crs = 4488) 
+
+mx_coords <- mx_utm15 %>%
+    filter(iso_a2 == "MX") %>% 
+    st_coordinates() 
+
+mx_coords[10, c("X", "Y")]
+```
+
+#### 4) Are these coordinates projected or not? Can you tell by just looking at the CRS in the transformed `sf` object?
+
+```{r}
+mx_utm15
+```
+
+We've already talked about UTM being projected CRSs but there is also a hint in the `proj4string`, in particular `+units=m` indicating that the units are linear (m). 
+
+We can also extract the units from an `sf`s crs using function `sf::st_crs()` and accessing the units 
+
+```{r}
+st_crs(mx_utm15)$units
+```
+
+
+
+## Raster spatial data
+
+#### 1) Create and plot a new `rasterLayer` of rough mean temperature in degrees C 
+
+(rough because it would be much better to use more data at higher temporal resolution, eg at least monthly, not extremes).
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+library(rasterVis)
+rough_mean <- raster(here::here("data", "raster", "rough_mean.tif"))
+```
+
+We can do this using a simple mean calculation:
+
+```{r, eval=FALSE}
+rough_mean <- ((full_stack[["mx.bio_5"]] + full_stack[["mx.bio_6"]])/2)/10
+```
+
+But we can even use r functions, in this case `mean()`
+
+```{r eval=FALSE}
+rough_mean <- mean(full_stack[["mx.bio_5"]], full_stack[["mx.bio_6"]])/10
+```
+
+```{r}
+rough_mean
+```
+
+```{r}
+levelplot(rough_mean, margin = F)
+```
+
+
+
+
+#### 2) Calculate mean precipitation seasonality for the study bounding box area. What is the value?
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+mol_env_sf <- read_sf(here::here("data", "sf", "env_salamander.geojson"))
+env_stack <- stack(here::here("data", "raster", "env_stack.grd"))
+study_bbox <- read_sf(here::here("data", "sf", "study_bbox.geojson")) %>% st_buffer(dist = 1)
+
+```
+
+
+```{r}
+mean_prec_seasonality <- raster::extract(env_stack[["prec_seasonality"]], 
+                study_bbox,
+                fun = mean,
+                na.rm = T)
+
+mean_prec_seasonality
+```
+
+#### 3) Add a column indicating whether data points are greater than (`TRUE`) or less than (`FALSE`) study area mean precipipation seasonality.
+
+```{r}
+mol_env_sf <- mol_env_sf %>% 
+    mutate(greater_mean_ps = 
+               prec_seasonality > as.vector(mean_prec_seasonality))
+
+mol_env_sf %>% select(localty, greater_mean_ps)
+```
+
+
+
