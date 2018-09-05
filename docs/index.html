@@ -15,32 +15,15 @@
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="site_libs/bootstrap-3.3.5/css/simplex.min.css" rel="stylesheet" />
+<link href="site_libs/bootstrap-3.3.5/css/cerulean.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
-<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
-<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
 <link href="site_libs/font-awesome-5.0.13/css/fa-svg-with-js.css" rel="stylesheet" />
 <script src="site_libs/font-awesome-5.0.13/js/fontawesome-all.min.js"></script>
 <script src="site_libs/font-awesome-5.0.13/js/fa-v4-shims.min.js"></script>
 
-<style type="text/css">code{white-space: pre;}</style>
-<style type="text/css">
-  pre:not([class]) {
-    background-color: white;
-  }
-</style>
-<script type="text/javascript">
-if (window.hljs) {
-  hljs.configure({languages: []});
-  hljs.initHighlightingOnLoad();
-  if (document.readyState && document.readyState === "complete") {
-    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
-  }
-}
-</script>
 
 
 
@@ -189,12 +172,43 @@ $(document).ready(function () {
 <li>
   <a href="setup.html">Setup</a>
 </li>
-<li>
-  <a href="license.html">License</a>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="fa fa-gear"></span>
+     
+    Handouts
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">Workshop Sections</li>
+    <li>
+      <a href="intro.html">Welcome</a>
+    </li>
+    <li>
+      <a href="gis.html">Introduction to GIS</a>
+    </li>
+    <li>
+      <a href="vector.html">Working with Vector Data</a>
+    </li>
+    <li>
+      <a href="raster.html">Working with Raster Data</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="exercise_solutions.html">Exrecise solutions</a>
+    </li>
+  </ul>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
+  <a href="further_resources.html">Further Resources</a>
+</li>
+<li>
+  <a href="https://github.com/annakrystalli/gis-workshop/archive/master.zip">Get Workshop Data</a>
+</li>
+<li>
   <a href="https://github.com/annakrystalli/intro-r-gis">
     <span class="fa fa-github"></span>
      
@@ -221,7 +235,7 @@ div.section {
 </div>
 
 
-<p><strong>Last updated:</strong> 2018-09-04</p>
+<p><strong>Last updated:</strong> 2018-09-05</p>
 <strong>workflowr checks:</strong> <small>(Click a bullet for more information)</small>
 <ul>
 <li>
@@ -230,25 +244,28 @@ div.section {
 </details>
 </li>
 <li>
-<p><details> <summary> <strong style="color:blue;">✔</strong> <strong>Repository version:</strong> <a href="https://github.com/annakrystalli/intro-r-gis/tree/cd03abf04b710067c8c874f821fb5add1c53291c" target="_blank">cd03abf</a> </summary></p>
+<p><details> <summary> <strong style="color:blue;">✔</strong> <strong>Repository version:</strong> <a href="https://github.com/annakrystalli/intro-r-gis/tree/fd226bff65ae2fecfbe662ab8e64b8a8201d21fd" target="_blank">fd226bf</a> </summary></p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility. The version displayed above was the version of the Git repository at the time these results were generated. <br><br> Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
 <pre><code>
 Ignored files:
     Ignored:    .DS_Store
     Ignored:    .Rhistory
     Ignored:    .Rproj.user/
-    Ignored:    data/.DS_Store
+    Ignored:    analysis/.DS_Store
+    Ignored:    analysis/assets/
+    Ignored:    data-raw/
+    Ignored:    data/csv/
+    Ignored:    data/raster/
+    Ignored:    data/sf/
+    Ignored:    docs/.DS_Store
 
 Untracked files:
     Untracked:  .Rbuildignore
     Untracked:  analysis/mapping.Rmd
-    Untracked:  data-raw/
-    Untracked:  data/csv/
-    Untracked:  data/raster/
-    Untracked:  data/sf/
 
 Unstaged changes:
-    Modified:   analysis/intro.Rmd
+    Modified:   .gitignore
+    Modified:   analysis/_site.yml
 
 </code></pre>
 Note that any generated files, e.g. HTML, png, CSS, etc., are not included in this status report because it is ok for generated content to have uncommitted changes. </details>
@@ -277,6 +294,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td style="text-align:left;">
+Rmd
+</td>
+<td style="text-align:left;">
+<a href="https://github.com/annakrystalli/intro-r-gis/blob/fd226bff65ae2fecfbe662ab8e64b8a8201d21fd/analysis/index.Rmd" target="_blank">fd226bf</a>
+</td>
+<td style="text-align:left;">
+annakrystalli
+</td>
+<td style="text-align:left;">
+2018-09-05
+</td>
+<td style="text-align:left;">
+workflowr::wflow_publish(c(“analysis/intro.Rmd”, “analysis/index.Rmd”,
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+html
+</td>
+<td style="text-align:left;">
+<a href="https://cdn.rawgit.com/annakrystalli/intro-r-gis/83b814b70ab0ddb04b5790e72d27df93fcb69b24/docs/index.html" target="_blank">83b814b</a>
+</td>
+<td style="text-align:left;">
+annakrystalli
+</td>
+<td style="text-align:left;">
+2018-09-04
+</td>
+<td style="text-align:left;">
+Build site.
+</td>
+</tr>
 <tr>
 <td style="text-align:left;">
 Rmd
@@ -461,6 +512,8 @@ Start workflowr project.
 <h2><strong>Workshop Materials</strong></h2>
 <p>Data: <a href="https://github.com/annakrystalli/gis-workshop" class="uri">https://github.com/annakrystalli/gis-workshop</a></p>
 <p>Handouts: <a href="http://annakrystalli.me/intro-r-gis/" class="uri">http://annakrystalli.me/intro-r-gis/</a></p>
+<hr />
+<p><a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Introduction to GIS in R</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://annakrystalli.me/intro-r-gis/" property="cc:attributionName" rel="cc:attributionURL">Anna Krystalli</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.<br />Based on a work at <a xmlns:dct="http://purl.org/dc/terms/" href="https://github.com/annakrystalli/intro-r-gis" rel="dct:source">https://github.com/annakrystalli/intro-r-gis</a>.</p>
 </div>
 
 <!-- Adjust MathJax settings so that all math formulae are shown using

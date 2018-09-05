@@ -15,7 +15,7 @@
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="site_libs/bootstrap-3.3.5/css/simplex.min.css" rel="stylesheet" />
+<link href="site_libs/bootstrap-3.3.5/css/cerulean.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
@@ -23,28 +23,54 @@
 <link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
 <script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
-<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
-<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
 <link href="site_libs/font-awesome-5.0.13/css/fa-svg-with-js.css" rel="stylesheet" />
 <script src="site_libs/font-awesome-5.0.13/js/fontawesome-all.min.js"></script>
 <script src="site_libs/font-awesome-5.0.13/js/fa-v4-shims.min.js"></script>
 
+
 <style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; background-color: #f8f8f8; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+pre, code { background-color: #f8f8f8; }
+code > span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code > span.dt { color: #204a87; } /* DataType */
+code > span.dv { color: #0000cf; } /* DecVal */
+code > span.bn { color: #0000cf; } /* BaseN */
+code > span.fl { color: #0000cf; } /* Float */
+code > span.ch { color: #4e9a06; } /* Char */
+code > span.st { color: #4e9a06; } /* String */
+code > span.co { color: #8f5902; font-style: italic; } /* Comment */
+code > span.ot { color: #8f5902; } /* Other */
+code > span.al { color: #ef2929; } /* Alert */
+code > span.fu { color: #000000; } /* Function */
+code > span.er { color: #a40000; font-weight: bold; } /* Error */
+code > span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #000000; } /* Constant */
+code > span.sc { color: #000000; } /* SpecialChar */
+code > span.vs { color: #4e9a06; } /* VerbatimString */
+code > span.ss { color: #4e9a06; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #000000; } /* Variable */
+code > span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code > span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code > span.ex { } /* Extension */
+code > span.at { color: #c4a000; } /* Attribute */
+code > span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code > span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+</style>
 <style type="text/css">
   pre:not([class]) {
     background-color: white;
   }
 </style>
-<script type="text/javascript">
-if (window.hljs) {
-  hljs.configure({languages: []});
-  hljs.initHighlightingOnLoad();
-  if (document.readyState && document.readyState === "complete") {
-    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
-  }
-}
-</script>
-
 
 
 <style type="text/css">
@@ -315,12 +341,15 @@ div.tocify {
     </li>
   </ul>
 </li>
-<li>
-  <a href="further_resources.html">Further Resources</a>
-</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
+  <a href="further_resources.html">Further Resources</a>
+</li>
+<li>
+  <a href="https://github.com/annakrystalli/gis-workshop/archive/master.zip">Get Workshop Data</a>
+</li>
+<li>
   <a href="https://github.com/annakrystalli/intro-r-gis">
     <span class="fa fa-github"></span>
      
@@ -371,7 +400,7 @@ div.section {
 </details>
 </li>
 <li>
-<p><details> <summary> <strong style="color:blue;">✔</strong> <strong>Repository version:</strong> <a href="https://github.com/annakrystalli/intro-r-gis/tree/372c5e6a05da3b7d854a24135306e99e3b93821b" target="_blank">372c5e6</a> </summary></p>
+<p><details> <summary> <strong style="color:blue;">✔</strong> <strong>Repository version:</strong> <a href="https://github.com/annakrystalli/intro-r-gis/tree/fd226bff65ae2fecfbe662ab8e64b8a8201d21fd" target="_blank">fd226bf</a> </summary></p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility. The version displayed above was the version of the Git repository at the time these results were generated. <br><br> Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
 <pre><code>
 Ignored files:
@@ -393,7 +422,6 @@ Untracked files:
 Unstaged changes:
     Modified:   .gitignore
     Modified:   analysis/_site.yml
-    Modified:   analysis/index.Rmd
 
 </code></pre>
 Note that any generated files, e.g. HTML, png, CSS, etc., are not included in this status report because it is ok for generated content to have uncommitted changes. </details>
@@ -422,6 +450,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td style="text-align:left;">
+Rmd
+</td>
+<td style="text-align:left;">
+<a href="https://github.com/annakrystalli/intro-r-gis/blob/fd226bff65ae2fecfbe662ab8e64b8a8201d21fd/analysis/intro.Rmd" target="_blank">fd226bf</a>
+</td>
+<td style="text-align:left;">
+annakrystalli
+</td>
+<td style="text-align:left;">
+2018-09-05
+</td>
+<td style="text-align:left;">
+workflowr::wflow_publish(c(“analysis/intro.Rmd”, “analysis/index.Rmd”,
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+html
+</td>
+<td style="text-align:left;">
+<a href="https://cdn.rawgit.com/annakrystalli/intro-r-gis/12437d64b6e994ba9c6d2f200407fb650c97dadb/docs/intro.html" target="_blank">12437d6</a>
+</td>
+<td style="text-align:left;">
+annakrystalli
+</td>
+<td style="text-align:left;">
+2018-09-05
+</td>
+<td style="text-align:left;">
+Build site.
+</td>
+</tr>
 <tr>
 <td style="text-align:left;">
 Rmd
@@ -621,22 +683,22 @@ workflowr::wflow_publish(c(“analysis/index.Rmd”,
 <h1>Workshop approach</h1>
 <div id="rstudio" class="section level2">
 <h2>Rstudio</h2>
-<p>We will be working in an Rstudio project. I recommend this workflow for all your projects because it keeps your work portable and self contained</p>
-<p>We will also be using Rmd notebooks. I like them because you can see the outputs of code as you write. You can also make notes around your code using markdown. <em>See further resources for more details.</em></p>
+<p>We will be <strong>working in an Rstudio project</strong>. I recommend this workflow for all your projects because it keeps your work <a href="https://www.tidyverse.org/articles/2017/12/workflow-vs-script/"><strong>portable and self contained</strong></a>.</p>
+<p>We will also be using <a href="https://rmarkdown.rstudio.com/r_notebooks"><strong>Rmd notebooks</strong></a>. I like them because you can <strong>see the outputs of code as you write</strong>. You can also <strong>make notes</strong> around your code using markdown. <em>See further resources for more details.</em></p>
 </div>
 <div id="live-coding" class="section level2">
 <h2>Live coding</h2>
-<p>The majority of the workshop I will be live coding 😨 so that you can follow along. You will get a lot more out of the workshop if you do.</p>
+<p>The majority of the workshop I will be <strong>live coding</strong> 😨 so that you can follow along. You will get a lot more out of the workshop if you do.</p>
 <hr />
 </div>
 </div>
 <div id="workshop-aims-and-objectives" class="section level1">
 <h1>Workshop aims and objectives</h1>
 <ul>
-<li>Understand the basics of GIS</li>
-<li>Understand spatial data types and formats</li>
-<li>Be able to work with, manipulate, combine and extract spatial data in R</li>
-<li>Be able to plot spatial</li>
+<li><h3 id="understand-the-basics-of-gis">Understand the basics of GIS</h3></li>
+<li><h3 id="understand-spatial-data-types-and-formats">Understand spatial data types and formats</h3></li>
+<li><h3 id="be-able-to-work-with-manipulate-combine-and-extract-spatial-data-in-r">Be able to work with, manipulate, combine and extract spatial data in R</h3></li>
+<li><h3 id="be-able-to-plot-geospatial-data">Be able to plot geospatial data</h3></li>
 </ul>
 <hr />
 <div id="why-gis-in-r" class="section level2">
@@ -653,7 +715,7 @@ workflowr::wflow_publish(c(“analysis/index.Rmd”,
 </div>
 <div id="session-information" class="section level2">
 <h2>Session information</h2>
-<pre class="r"><code>sessionInfo()</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sessionInfo</span>()</code></pre></div>
 <pre><code>R version 3.4.4 (2018-03-15)
 Platform: x86_64-apple-darwin15.6.0 (64-bit)
 Running under: macOS High Sierra 10.13.3
