@@ -343,7 +343,7 @@ div.section {
 </details>
 </li>
 <li>
-<p><details> <summary> <strong style="color:blue;">✔</strong> <strong>Repository version:</strong> <a href="https://github.com/annakrystalli/intro-r-gis/tree/496feae2a6e69ae3fdcd80240b7e90d638875c1d" target="_blank">496feae</a> </summary></p>
+<p><details> <summary> <strong style="color:blue;">✔</strong> <strong>Repository version:</strong> <a href="https://github.com/annakrystalli/intro-r-gis/tree/eb179607e5b120631a13bded733b137e8663b6f9" target="_blank">eb17960</a> </summary></p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility. The version displayed above was the version of the Git repository at the time these results were generated. <br><br> Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
 <pre><code>
 Ignored files:
@@ -390,6 +390,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td style="text-align:left;">
+Rmd
+</td>
+<td style="text-align:left;">
+<a href="https://github.com/annakrystalli/intro-r-gis/blob/eb179607e5b120631a13bded733b137e8663b6f9/analysis/gis.Rmd" target="_blank">eb17960</a>
+</td>
+<td style="text-align:left;">
+annakrystalli
+</td>
+<td style="text-align:left;">
+2018-09-05
+</td>
+<td style="text-align:left;">
+workflowr::wflow_publish(“analysis/gis.Rmd”)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+html
+</td>
+<td style="text-align:left;">
+<a href="https://cdn.rawgit.com/annakrystalli/intro-r-gis/4c6e18dcfb5e6de9da47ed8713f824613916bea5/docs/gis.html" target="_blank">4c6e18d</a>
+</td>
+<td style="text-align:left;">
+annakrystalli
+</td>
+<td style="text-align:left;">
+2018-09-05
+</td>
+<td style="text-align:left;">
+Build site.
+</td>
+</tr>
 <tr>
 <td style="text-align:left;">
 Rmd
@@ -652,7 +686,7 @@ workflowr::wflow_publish(“analysis/gis.Rmd”)
 <img src="https://www.ibm.com/support/knowledgecenter/SSEPEK_11.0.0/spatl/src/art/0sbp5003.gif" />
 
 </div>
-<p>When a lat/lon CRS is flattened, the implicit flattening function used is the Plate Carree Flattening Function, one of the simplest functions that simply turns the globe into a cylinder and then unwraps it, resulting in increasing distortion of features as one approaches the poles.</p>
+<p>When a lat/lon CRS is flattened, the implicit flattening function used is the <a href="Equirectangular%20projection">Plate Carree</a> Function, one of the simplest functions that simply turns the globe into a cylinder and then unwraps it, resulting in increasing distortion of features as one approaches the poles.</p>
 </div>
 <div id="q-why-do-the-three-projected-maps-differ-from-each-other" class="section level4">
 <h4>Q: Why do the three projected maps differ from each other?</h4>
@@ -725,6 +759,7 @@ workflowr::wflow_publish(“analysis/gis.Rmd”)
 <ul>
 <li><a href="https://github.com/MicheleTobias/R-Projections-Workshop">R Projections Workshop</a> by Michele Tobias</li>
 <li><a href="http://www.nickeubank.com/wp-content/uploads/2018/02/CoordinateSystems_And_Projections.pdf">How Computers Relate x-y Coordinates to Real Locations on Earth</a>: by Nick Eubank</li>
+<li><a href="https://geocompr.robinlovelace.net/spatial-class.html#vector-data">Geocomputation in R</a></li>
 </ul>
 </div>
 <div id="more-advice-from-twitter-experts" class="section level3">
