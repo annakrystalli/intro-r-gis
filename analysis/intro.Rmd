@@ -42,23 +42,23 @@ On github: <https://github.com/annakrystalli/gis-workshop>
     
 ## Rstudio
 
-We will be working in an Rstudio project. I recommend this workflow for all your projects because it keeps your work portable and self contained
+We will be **working in an Rstudio project**. I recommend this workflow for all your projects because it keeps your work [**portable and self contained**](https://www.tidyverse.org/articles/2017/12/workflow-vs-script/).
 
-We will also be using Rmd notebooks. I like them because you can see the outputs of code as you write. You can also make notes around your code using markdown. _See further resources for more details._ 
+We will also be using [**Rmd notebooks**](https://rmarkdown.rstudio.com/r_notebooks). I like them because you can **see the outputs of code as you write**. You can also **make notes** around your code using markdown. _See further resources for more details._ 
 
 ## Live coding
 
-The majority of the workshop I will be live coding `r emo::ji("fearful")` so that you can follow along. You will get a lot more out of the workshop if you do.
+The majority of the workshop I will be **live coding** `r emo::ji("fearful")` so that you can follow along. You will get a lot more out of the workshop if you do.
 
 
 ---
 
 # Workshop aims and objectives
 
-- Understand the basics of GIS
-- Understand spatial data types and formats
-- Be able to work with, manipulate, combine and extract spatial data in R
-- Be able to plot spatial
+- ### Understand the basics of GIS
+- ### Understand spatial data types and formats
+- ### Be able to work with, manipulate, combine and extract spatial data in R
+- ### Be able to plot geospatial data
 
 ---
 
