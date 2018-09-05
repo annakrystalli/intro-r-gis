@@ -146,7 +146,7 @@ Latitude lines are concentric circles that become smaller near the poles. They f
 
 ![](https://www.ibm.com/support/knowledgecenter/SSEPEK_11.0.0/spatl/src/art/0sbp5003.gif)
 
-When a lat/lon CRS is flattened, the implicit flattening function used is the  Plate Carree Flattening Function, one of the simplest functions that simply turns the globe into a cylinder and then unwraps it, resulting in increasing distortion of features as one approaches the poles.
+When a lat/lon CRS is flattened, the implicit flattening function used is the  [Plate Carree](Equirectangular projection) Function, one of the simplest functions that simply turns the globe into a cylinder and then unwraps it, resulting in increasing distortion of features as one approaches the poles.
 
 #### Q: Why do the three projected maps differ from each other?
 
@@ -224,6 +224,7 @@ The location of BNG’s origin, in the sea beyond South West Peninsular, ensures
 
 - [R Projections Workshop](https://github.com/MicheleTobias/R-Projections-Workshop) by Michele Tobias
 - [How Computers Relate x-y Coordinates to Real Locations on Earth](http://www.nickeubank.com/wp-content/uploads/2018/02/CoordinateSystems_And_Projections.pdf): by Nick Eubank
+- [Geocomputation in R](https://geocompr.robinlovelace.net/spatial-class.html#vector-data)
 
 ### more advice from twitter experts
 
