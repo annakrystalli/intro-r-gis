@@ -400,7 +400,7 @@ div.section {
 </details>
 </li>
 <li>
-<p><details> <summary> <strong style="color:blue;">✔</strong> <strong>Repository version:</strong> <a href="https://github.com/annakrystalli/intro-r-gis/tree/9dd6ff79fcb120ffb6a977a35d9422cf6e8f4c76" target="_blank">9dd6ff7</a> </summary></p>
+<p><details> <summary> <strong style="color:blue;">✔</strong> <strong>Repository version:</strong> <a href="https://github.com/annakrystalli/intro-r-gis/tree/5b425e1702224fa07d5ef7ab090dbb5ff32f8e21" target="_blank">5b425e1</a> </summary></p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility. The version displayed above was the version of the Git repository at the time these results were generated. <br><br> Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
 <pre><code>
 Ignored files:
@@ -451,6 +451,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td style="text-align:left;">
+Rmd
+</td>
+<td style="text-align:left;">
+<a href="https://github.com/annakrystalli/intro-r-gis/blob/5b425e1702224fa07d5ef7ab090dbb5ff32f8e21/analysis/raster.Rmd" target="_blank">5b425e1</a>
+</td>
+<td style="text-align:left;">
+annakrystalli
+</td>
+<td style="text-align:left;">
+2018-09-05
+</td>
+<td style="text-align:left;">
+workflowr::wflow_publish(c(“analysis/raster.Rmd”))
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+html
+</td>
+<td style="text-align:left;">
+<a href="https://cdn.rawgit.com/annakrystalli/intro-r-gis/c91966eb061c8c7b7d8dbec843e427d1d673013d/docs/raster.html" target="_blank">c91966e</a>
+</td>
+<td style="text-align:left;">
+annakrystalli
+</td>
+<td style="text-align:left;">
+2018-09-05
+</td>
+<td style="text-align:left;">
+Build site.
+</td>
+</tr>
 <tr>
 <td style="text-align:left;">
 Rmd
@@ -1558,8 +1592,8 @@ min values  :                  1.0,                       41.0,                 
 max values  :                 22.0,                      117.0,                 27.2,                     3387.0 </code></pre>
 </div>
 </div>
-<div id="extracting-raster-data" class="section level1">
-<h1>extracting raster data</h1>
+<div id="extracting-and-summarising-raster-data" class="section level1">
+<h1>Extracting and summarising raster data</h1>
 <div id="extracting-points" class="section level3">
 <h3>extracting points</h3>
 <p>We can extract data underlying an <code>sf</code> from a raster using function <code>raster::extract()</code>. The output in the case of points is a single value for each point. This is returned as a vector for a single layer or a matrix for multiple layers, as is our case.</p>
@@ -1625,6 +1659,36 @@ proj4string:    +proj=longlat +datum=WGS84 +no_defs
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(mol_env_sf, <span class="kw">aes</span>(<span class="dt">x =</span> temp_range, <span class="dt">y =</span> na, <span class="dt">colour =</span> region)) <span class="op">+</span>
 <span class="st">    </span><span class="kw">geom_point</span>()</code></pre></div>
 <p><img src="figure/raster.Rmd/unnamed-chunk-44-1.png" width="672" style="display: block; margin: auto;" /></p>
+<details> <summary><em>Expand here to see past versions of unnamed-chunk-44-1.png:</em></summary>
+<table style="border-collapse:separate; border-spacing:5px;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Version
+</th>
+<th style="text-align:left;">
+Author
+</th>
+<th style="text-align:left;">
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<a href="https://github.com/annakrystalli/intro-r-gis/blob/c91966eb061c8c7b7d8dbec843e427d1d673013d/docs/figure/raster.Rmd/unnamed-chunk-44-1.png" target="_blank">c91966e</a>
+</td>
+<td style="text-align:left;">
+annakrystalli
+</td>
+<td style="text-align:left;">
+2018-09-05
+</td>
+</tr>
+</tbody>
+</table>
+<p></details></p>
 </div>
 <div id="extracting-and-summarising-raster-data-using-polygons" class="section level3">
 <h3>extracting and summarising raster data using polygons</h3>
