@@ -308,7 +308,9 @@ levelplot(lc, par.settings = mapTheme)
 
 The function takes a vector of colours to produce a colour gradient that is then mapped to raster values. It has a numer of in-built colour vectors to choose from and you can even provide your own custom vectors of functions (which is what we would probably want to do in our case to make the colour more reflective of the vegetation type).  
 
+
 ## stacking `rasterLayers`
+
 ```{r}
 stack(st, lc)
 ```
@@ -415,9 +417,18 @@ levelplot(env_stack, layers = "temp_seasonality")
 
 For more details on how to plot several `rasterLayers` with different legends (including different data types) in the `rasterVis` package [FAQs]( https://oscarperpinan.github.io/rastervis/FAQ.html#several_rasters). It would also solve the problem we had earlier with plotting multiple layers using the same scale.
 
+# Saving raster data
+
+A number of drivers are available to write raster data to a number of gridded geospatial file types:
+
+```{r}
+raster::writeFormats() %>% knitr::kable()
+```
+
+
 ### Save `rasterStack`
 
-Finally, let's save our raster stack as a binary 'Native' `raster` package `.grd` file format using function `raster::writeRaster()`. We'll do that to preserve the layer names in the `rasterStack`. It also allows us to combine categorical and numeric layers in one file.
+So let's finally save our raster stack as a binary 'Native' `raster` package `.grd` file format using function `raster::writeRaster()`. We'll do that to preserve the layer names in the `rasterStack`. It also allows us to combine categorical and numeric layers in one file.
 
 ```{r, eval = F}
 writeRaster(env_stack, filename = here::here("data", "raster", "env_stack.grd"))
@@ -443,7 +454,7 @@ stack(list.files(here::here("data", "raster" , "processed"),
 ```
 
 
-## extract environmental data
+# extracting raster data
 
 ### extracting points
 
