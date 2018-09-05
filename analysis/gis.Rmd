@@ -23,7 +23,7 @@ In science, GIS allow us to examine spatial realationships, patterns and process
 Applied to a broad range of phenomena: from physical, biological to cultural and demographic.
 
 
-# Geospatial
+# Geospatial Data
 ## Geospatial data types
 
 Most common spatial data types:
