@@ -94,7 +94,7 @@ Simple feature objects are hierarchically organised as follows:
 `sfg`: **simple feature geometry**. a single simple feature geometry
 
 
-## creating vector data
+# Creating vector data
 
 `sf` provides a number of function for creating simple feature geometries, bringing multiple geometries together in a simple feature column.
 
@@ -417,7 +417,7 @@ mol_sf <- sf::st_as_sf(mol_df, coords = c("longitude", "latitude"),
 mol_sf
 ```
 
-## Plotting `sf` with `ggplot2`
+# Plotting `sf` with `ggplot2`
 
 Another great new feature of `sf` is that `ggplot2` provides a dedicated function, `ggplot2::geom_sf()`, for mapping `sf`.
 
@@ -561,13 +561,23 @@ Also, the axis units... yuk!
 
 
 
-## Saving `sf` objects
+# Saving `sf` objects
+
+Package `sf` provides a variety of drivers allowing us to write geospatial vector data to a number of file formats:
+
+```{r}
+sf::st_drivers() %>% DT::datatable()
+```
+
+
 
 Let's first create a new folder to save our `sf`.
 
 ```{r, eval = F}
 dir.create(here::here("data", "sf"))
 ```
+
+## shapefiles (`.shp`)
 
 Let's now save our file in the most popular geospatial vector data format, the [shapefile(`.shp`)](https://en.wikipedia.org/wiki/Shapefile). It is developed and regulated by Esri as a (mostly) open specification for data interoperability among Esri and other GIS software products. 
 
@@ -599,6 +609,7 @@ read_sf(here::here("data", "sf", "salamander.shp"))
 
 Gah!! What's happened to the column names?! This is in fact a well known problem with the shapefile format which cannot handle field (column) names longer than 7 characters. When your column names are longer than that, `write_sf()` quietly runs `base::abbreviate()` on them before writing the files out. This does not sit well with me in terms of good data provenance tracking and reproducibility. So let's try a different format instead.
 
+## GeoJSON (`.geojson`)
 
 [GeoJSON](https://en.wikipedia.org/wiki/GeoJSON) is an open standard format designed for representing simple geographical features, along with their non-spatial attributes. It differs from other GIS standards in that it was written and is maintained not by a formal standards organization, but by an Internet working group of developers. As such, it does not play well with Esri products like ArcGIS (although they can be converted to formats that will). However, if you are not planning to use your data with Esri products, this format is fine. 
 
