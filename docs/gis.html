@@ -343,7 +343,7 @@ div.section {
 </details>
 </li>
 <li>
-<p><details> <summary> <strong style="color:blue;">✔</strong> <strong>Repository version:</strong> <a href="https://github.com/annakrystalli/intro-r-gis/tree/7403f6b924bb1c953d6d06b39024da38bb96a955" target="_blank">7403f6b</a> </summary></p>
+<p><details> <summary> <strong style="color:blue;">✔</strong> <strong>Repository version:</strong> <a href="https://github.com/annakrystalli/intro-r-gis/tree/06f17926f315fa10e4479484e8d5bc9ecc5c5da9" target="_blank">06f1792</a> </summary></p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility. The version displayed above was the version of the Git repository at the time these results were generated. <br><br> Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
 <pre><code>
 Ignored files:
@@ -390,6 +390,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td style="text-align:left;">
+Rmd
+</td>
+<td style="text-align:left;">
+<a href="https://github.com/annakrystalli/intro-r-gis/blob/06f17926f315fa10e4479484e8d5bc9ecc5c5da9/analysis/gis.Rmd" target="_blank">06f1792</a>
+</td>
+<td style="text-align:left;">
+annakrystalli
+</td>
+<td style="text-align:left;">
+2018-09-05
+</td>
+<td style="text-align:left;">
+workflowr::wflow_publish(“analysis/gis.Rmd”)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+html
+</td>
+<td style="text-align:left;">
+<a href="https://cdn.rawgit.com/annakrystalli/intro-r-gis/f22d555a6f1e5b7e115d27e14c3c434979b3b96e/docs/gis.html" target="_blank">f22d555</a>
+</td>
+<td style="text-align:left;">
+annakrystalli
+</td>
+<td style="text-align:left;">
+2018-09-05
+</td>
+<td style="text-align:left;">
+Build site.
+</td>
+</tr>
 <tr>
 <td style="text-align:left;">
 Rmd
@@ -464,8 +498,10 @@ workflowr::wflow_publish(“analysis/gis.Rmd”)
 <p>In science, GIS allow us to examine spatial realationships, patterns and processes.</p>
 <p>Applied to a broad range of phenomena: from physical, biological to cultural and demographic.</p>
 </div>
-<div id="spatial-data-types" class="section level1">
-<h1>spatial data types</h1>
+<div id="geospatial" class="section level1">
+<h1>Geospatial</h1>
+<div id="geospatial-data-types" class="section level2">
+<h2>Geospatial data types</h2>
 <p>Most common spatial data types:</p>
 <ul>
 <li><strong>raster:</strong> gridded data</li>
@@ -476,13 +512,14 @@ workflowr::wflow_publish(“analysis/gis.Rmd”)
 <li>polygons</li>
 </ul></li>
 </ul>
-<p>Vector data tends to dominate the social sciences because human settlements tend to have discrete borders.</p>
-<p>Raster often dominates in environmental sciences because of the reliance on remote sensing data.</p>
-<p>There is much overlap in some fields and raster and vector datasets can be used side-by-side: ecologists and demographers, for example, commonly use both vector and raster data.</p>
-<div id="data-spatial-metadata" class="section level2">
-<h2>data + spatial metadata</h2>
+<p><strong>Vector data</strong> tends to dominate the <strong>social sciences</strong> because human settlements tend to have <strong>discrete borders</strong>.</p>
+<p><strong>Raster</strong> often dominates in <strong>environmental sciences</strong> because of the reliance on <strong>remote sensing</strong> data.</p>
+<p>There is much overlap in some fields and <strong>raster and vector datasets can be used side-by-side</strong>: ecologists and demographers, for example, commonly use both vector and raster data.</p>
+<div id="geospatial-data-data-spatial-metadata" class="section level3">
+<h3>Geospatial data = data + spatial metadata</h3>
 <p>Ultimately they are just <strong>data with geographic metadata attached</strong> to it in a structured way that both locates the data and also makes it interoperable. One of the most important aspects of this georgraphic metadata is the <strong>Coordinate Reference System</strong> being used.</p>
 <hr />
+</div>
 </div>
 </div>
 <div id="coordinate-reference-systems" class="section level1">
@@ -541,10 +578,10 @@ workflowr::wflow_publish(“analysis/gis.Rmd”)
 <li><a href="https://en.wikipedia.org/wiki/World_Geodetic_System"><strong>WGS 84 - the World Geodetic System of 1984:</strong></a> The WGS 84 datum is the only world referencing system in place today. WGS 84 is the default standard datum for coordinates stored in recreational and commercial GPS units.</li>
 <li><a href="https://en.wikipedia.org/wiki/North_American_Datum"><strong>NAD 83 - The North American Datum of 1983:</strong></a> is the datum now used to define the geodetic network in North America</li>
 </ul>
-<div id="geographic-datum-transformations" class="section level4">
-<h4>Geographic (datum) transformations</h4>
-<p>To change between geographic coordinate system, you may need to perform a <strong>geographic (datum) transformation</strong>. This is a well-defined mathematical method to convert coordinates between two geographic coordinate systems.</p>
 </div>
+<div id="geographic-datum-transformations" class="section level3">
+<h3>Geographic (datum) transformations</h3>
+<p>To change between geographic coordinate system, you may need to perform a <strong>geographic (datum) transformation</strong>. This is a well-defined mathematical method to convert coordinates between two geographic coordinate systems.</p>
 </div>
 </div>
 <div id="projected-coordinate-systems-pcs" class="section level2">
@@ -577,11 +614,11 @@ workflowr::wflow_publish(“analysis/gis.Rmd”)
 <div id="q-why-is-wgs-84-so-different-to-other-three-projected-maps" class="section level4">
 <h4>Q: Why is WGS 84 so different to other three projected maps?</h4>
 <p>Latitude lines are concentric circles that become smaller near the poles. They form a single point at the poles.</p>
-<p>When a lat/lon CRS is flattened, the implicit flattening function used is the Plate Carree Flattening Function, one of the simplest functions that simply turns the globe into a cylinder and then unwraps it, resulting in increasing distortion of features as one approaches the poles.</p>
 <div class="figure">
 <img src="https://www.ibm.com/support/knowledgecenter/SSEPEK_11.0.0/spatl/src/art/0sbp5003.gif" />
 
 </div>
+<p>When a lat/lon CRS is flattened, the implicit flattening function used is the Plate Carree Flattening Function, one of the simplest functions that simply turns the globe into a cylinder and then unwraps it, resulting in increasing distortion of features as one approaches the poles.</p>
 </div>
 <div id="q-why-do-the-three-projected-maps-differ-from-each-other" class="section level4">
 <h4>Q: Why do the three projected maps differ from each other?</h4>
