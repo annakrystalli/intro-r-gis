@@ -41,7 +41,7 @@ output: html_document
 
 - Pebesma, Edzer. 2018. [“Simple Features for R: Standardized Support for Spatial Vector Data.” The R Journal.](https://journal.r-project.org/archive/2018/RJ-2018-009/RJ-2018-009.pdf)
 
-### Blog posts
+## Blog posts
 
 - [Introduction to GIS with R](https://www.jessesadler.com/post/gis-with-r-intro/): by Jesse Sadler
 - [Introduction to mapping with `sf` & Co](https://statnmap.com/2018-07-14-introduction-to-mapping-with-sf-and-co/): by Sébastien Rochette
@@ -60,7 +60,7 @@ output: html_document
 
 - [Wiki.GIS.com - The GIS Encyclopedia](http://wiki.gis.com/wiki/index.php/Main_Page)
 
-## R markdown
+# R markdown
 
 - [R markdown introductory material](https://rmarkdown.rstudio.com/)
 - [R markdown: the Definitive Guide](https://bookdown.org/yihui/rmarkdown/)
