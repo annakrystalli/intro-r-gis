@@ -408,7 +408,7 @@ div.section {
 </details>
 </li>
 <li>
-<p><details> <summary> <strong style="color:blue;">✔</strong> <strong>Repository version:</strong> <a href="https://github.com/annakrystalli/intro-r-gis/tree/df988dcd2f505883a5474cb616b78edd885aa306" target="_blank">df988dc</a> </summary></p>
+<p><details> <summary> <strong style="color:blue;">✔</strong> <strong>Repository version:</strong> <a href="https://github.com/annakrystalli/intro-r-gis/tree/19dc48e8cf3a8e3adbc9f1861353f42d3111ced5" target="_blank">19dc48e</a> </summary></p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility. The version displayed above was the version of the Git repository at the time these results were generated. <br><br> Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
 <pre><code>
 Ignored files:
@@ -458,6 +458,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td style="text-align:left;">
+Rmd
+</td>
+<td style="text-align:left;">
+<a href="https://github.com/annakrystalli/intro-r-gis/blob/19dc48e8cf3a8e3adbc9f1861353f42d3111ced5/analysis/vector.Rmd" target="_blank">19dc48e</a>
+</td>
+<td style="text-align:left;">
+annakrystalli
+</td>
+<td style="text-align:left;">
+2018-09-05
+</td>
+<td style="text-align:left;">
+add initial CRS examination
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+html
+</td>
+<td style="text-align:left;">
+<a href="https://cdn.rawgit.com/annakrystalli/intro-r-gis/b495fc8b69df35c969ad9ec749556082cb3c526b/docs/vector.html" target="_blank">b495fc8</a>
+</td>
+<td style="text-align:left;">
+annakrystalli
+</td>
+<td style="text-align:left;">
+2018-09-05
+</td>
+<td style="text-align:left;">
+Build site.
+</td>
+</tr>
 <tr>
 <td style="text-align:left;">
 Rmd
@@ -717,10 +751,10 @@ Of 68 geometry types supported by the specification, <strong>only 7 are used in 
 <h2>simple feature anatomy</h2>
 <p>Simple feature objects are hierarchically organised as follows:</p>
 <ul>
-<li><code>sf</code>: <strong>simple feature</strong>, data.frame with <strong>spatial list-column</strong> (<code>geom</code> or <code>geometry</code>) as well as additional data associated with the spatial geometries.</li>
+<li><p><code>sf</code>: <strong>simple feature</strong>, data.frame with <strong>spatial list-column</strong> (<code>geom</code> or <code>geometry</code>) as well as additional data associated with the spatial geometries.</p></li>
+<li><p><code>sfc</code>: <strong>simple feature column</strong>. A list-column containing <strong>multiple geometries</strong> + information about the coordinate reference system.</p></li>
+<li><p><code>sfg</code>: <strong>simple feature geometry</strong>. a single simple feature geometry</p></li>
 </ul>
-<p><code>sfc</code>: <strong>simple feature column</strong>. A list-column containing <strong>multiple geometries</strong> + information about the coordinate reference system.</p>
-<p><code>sfg</code>: <strong>simple feature geometry</strong>. a single simple feature geometry</p>
 </div>
 </div>
 <div id="creating-sf-vector-data" class="section level1">
@@ -734,8 +768,8 @@ Of 68 geometry types supported by the specification, <strong>only 7 are used in 
 <div id="multiple-point-feature" class="section level3">
 <h3>multiple point feature</h3>
 <p>For <strong>multiple points in a single geometry</strong>, we can use function <code>sf::st_multipoint()</code> and supply a <strong>two column numeric matrix</strong> with <strong>x &amp; y coordinates of points in rows</strong>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">st_multipoint</span>(<span class="dt">x =</span> <span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>), <span class="dt">ncol =</span> <span class="dv">2</span>, <span class="dt">byrow =</span> T))</code></pre></div>
-<p>Let’s assign this to an object.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">st_multipoint</span>(<span class="dt">x =</span> <span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">0</span>), <span class="dt">ncol =</span> <span class="dv">2</span>, <span class="dt">byrow =</span> T))</code></pre></div>
+<p>Let’s assign this to an object:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">points &lt;-<span class="st"> </span><span class="kw">st_multipoint</span>(<span class="dt">x =</span> <span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">0</span>), <span class="dt">ncol =</span> <span class="dv">2</span>, <span class="dt">byrow =</span> T))</code></pre></div>
 <p>We can check the class of the points we just created:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">class</span>(points)</code></pre></div>
@@ -915,8 +949,10 @@ annakrystalli
 <div id="world-dataset-in-pkg-spdata" class="section level2">
 <h2><code>world</code> dataset in pkg <code>spData</code></h2>
 <p>Package <a href="https://github.com/Nowosad/spData"><code>spData</code></a> provides spatial datasets in a variety of formats, including a number of <code>sf</code> data.</p>
-<p>One of these is the <code>world</code> data set, containing the current boundaries of countries and including additional demographic, geographic <strong>attribute</strong> data</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(spData)</code></pre></div>
+<p>One of these is the <code>spData::world</code> data set, containing the current boundaries of countries and including additional demographic, geographic <strong>attribute</strong> data</p>
+<p>We can get more information on the data containing through r help</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">?world</code></pre></div>
+<p>Let’s have a look at the data</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">world</code></pre></div>
 <pre><code>Simple feature collection with 177 features and 10 fields
 geometry type:  MULTIPOLYGON
@@ -958,9 +994,12 @@ First 10 features:
 8  MULTIPOLYGON (((141.0002 -2...
 9  MULTIPOLYGON (((141.0002 -2...
 10 MULTIPOLYGON (((-68.63401 -...</code></pre>
-<p>Country polygons from the <code>world</code> dataset</p>
-<p>We can get more information on the data containing through r help</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">?world</code></pre></div>
+<p>Looks like a normal <code>data.frame</code> right? Well it is, apart from it’s got a CRS attached to it and an extra (<code>geom</code>) column containing the geometries.</p>
+<p>Let’s have a look at it with function <code>sf::st_crs()</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">st_crs</span>(world)</code></pre></div>
+<pre><code>Coordinate Reference System:
+  EPSG: 4326 
+  proj4string: &quot;+proj=longlat +datum=WGS84 +no_defs&quot;</code></pre>
 </div>
 <div id="manipulating-sf-objects" class="section level2">
 <h2>Manipulating <code>sf</code> objects</h2>
