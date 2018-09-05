@@ -15,7 +15,7 @@
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="site_libs/bootstrap-3.3.5/css/simplex.min.css" rel="stylesheet" />
+<link href="site_libs/bootstrap-3.3.5/css/cerulean.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
@@ -23,28 +23,54 @@
 <link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
 <script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
-<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
-<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
 <link href="site_libs/font-awesome-5.0.13/css/fa-svg-with-js.css" rel="stylesheet" />
 <script src="site_libs/font-awesome-5.0.13/js/fontawesome-all.min.js"></script>
 <script src="site_libs/font-awesome-5.0.13/js/fa-v4-shims.min.js"></script>
 
+
 <style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; background-color: #f8f8f8; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+pre, code { background-color: #f8f8f8; }
+code > span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code > span.dt { color: #204a87; } /* DataType */
+code > span.dv { color: #0000cf; } /* DecVal */
+code > span.bn { color: #0000cf; } /* BaseN */
+code > span.fl { color: #0000cf; } /* Float */
+code > span.ch { color: #4e9a06; } /* Char */
+code > span.st { color: #4e9a06; } /* String */
+code > span.co { color: #8f5902; font-style: italic; } /* Comment */
+code > span.ot { color: #8f5902; } /* Other */
+code > span.al { color: #ef2929; } /* Alert */
+code > span.fu { color: #000000; } /* Function */
+code > span.er { color: #a40000; font-weight: bold; } /* Error */
+code > span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #000000; } /* Constant */
+code > span.sc { color: #000000; } /* SpecialChar */
+code > span.vs { color: #4e9a06; } /* VerbatimString */
+code > span.ss { color: #4e9a06; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #000000; } /* Variable */
+code > span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code > span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code > span.ex { } /* Extension */
+code > span.at { color: #c4a000; } /* Attribute */
+code > span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code > span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+</style>
 <style type="text/css">
   pre:not([class]) {
     background-color: white;
   }
 </style>
-<script type="text/javascript">
-if (window.hljs) {
-  hljs.configure({languages: []});
-  hljs.initHighlightingOnLoad();
-  if (document.readyState && document.readyState === "complete") {
-    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
-  }
-}
-</script>
-
 
 
 <style type="text/css">
@@ -287,12 +313,43 @@ div.tocify {
 <li>
   <a href="setup.html">Setup</a>
 </li>
-<li>
-  <a href="license.html">License</a>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="fa fa-gear"></span>
+     
+    Handouts
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">Workshop Sections</li>
+    <li>
+      <a href="intro.html">Welcome</a>
+    </li>
+    <li>
+      <a href="gis.html">Introduction to GIS</a>
+    </li>
+    <li>
+      <a href="vector.html">Working with Vector Data</a>
+    </li>
+    <li>
+      <a href="raster.html">Working with Raster Data</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="exercise_solutions.html">Exrecise solutions</a>
+    </li>
+  </ul>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
+  <a href="further_resources.html">Further Resources</a>
+</li>
+<li>
+  <a href="https://github.com/annakrystalli/gis-workshop/archive/master.zip">Get Workshop Data</a>
+</li>
+<li>
   <a href="https://github.com/annakrystalli/intro-r-gis">
     <span class="fa fa-github"></span>
      
@@ -319,7 +376,7 @@ div.section {
 </div>
 
 
-<p><strong>Last updated:</strong> 2018-09-04</p>
+<p><strong>Last updated:</strong> 2018-09-05</p>
 <strong>workflowr checks:</strong> <small>(Click a bullet for more information)</small>
 <ul>
 <li>
@@ -343,26 +400,28 @@ div.section {
 </details>
 </li>
 <li>
-<p><details> <summary> <strong style="color:blue;">✔</strong> <strong>Repository version:</strong> <a href="https://github.com/annakrystalli/intro-r-gis/tree/33607af14ab2423a323b06a0ac0a5fa679aee131" target="_blank">33607af</a> </summary></p>
+<p><details> <summary> <strong style="color:blue;">✔</strong> <strong>Repository version:</strong> <a href="https://github.com/annakrystalli/intro-r-gis/tree/513b4fb0743237f39de1f67d0bf0a880932f2601" target="_blank">513b4fb</a> </summary></p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility. The version displayed above was the version of the Git repository at the time these results were generated. <br><br> Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
 <pre><code>
 Ignored files:
     Ignored:    .DS_Store
     Ignored:    .Rhistory
     Ignored:    .Rproj.user/
-    Ignored:    data/.DS_Store
+    Ignored:    analysis/.DS_Store
+    Ignored:    analysis/assets/
+    Ignored:    data-raw/
+    Ignored:    data/csv/
+    Ignored:    data/raster/
+    Ignored:    data/sf/
+    Ignored:    docs/.DS_Store
 
 Untracked files:
     Untracked:  .Rbuildignore
     Untracked:  analysis/mapping.Rmd
-    Untracked:  data-raw/
-    Untracked:  data/csv/
-    Untracked:  data/raster/
-    Untracked:  data/sf/
 
 Unstaged changes:
-    Modified:   analysis/index.Rmd
-    Modified:   analysis/vector.Rmd
+    Modified:   .gitignore
+    Modified:   analysis/_site.yml
 
 </code></pre>
 Note that any generated files, e.g. HTML, png, CSS, etc., are not included in this status report because it is ok for generated content to have uncommitted changes. </details>
@@ -391,6 +450,23 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td style="text-align:left;">
+html
+</td>
+<td style="text-align:left;">
+<a href="https://cdn.rawgit.com/annakrystalli/intro-r-gis/ed98c23d29b24587c7a8fac69fe77f03c3df2666/docs/exercise_solutions.html" target="_blank">ed98c23</a>
+</td>
+<td style="text-align:left;">
+annakrystalli
+</td>
+<td style="text-align:left;">
+2018-09-04
+</td>
+<td style="text-align:left;">
+Build site.
+</td>
+</tr>
 <tr>
 <td style="text-align:left;">
 Rmd
@@ -452,10 +528,10 @@ workflowr::wflow_publish(c(“analysis/exercise_solutions.Rmd”))
 <div id="add-a-nose" class="section level4">
 <h4>1) add a nose!</h4>
 <p>Create a nose geometry, combine all the shapes into a single <code>sf</code> and then plot the face.</p>
-<pre class="r"><code>nose &lt;- st_linestring(x = matrix(c(1, -1, 1, -2), ncol = 2, byrow = T))
-sfc &lt;- st_sfc(points, line, nose)
-face &lt;- st_sf(data.frame(shape = c(&quot;eyes&quot;, &quot;mouth&quot;, &quot;nose&quot;), geom = sfc))
-plot(face)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nose &lt;-<span class="st"> </span><span class="kw">st_linestring</span>(<span class="dt">x =</span> <span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>, <span class="op">-</span><span class="dv">2</span>), <span class="dt">ncol =</span> <span class="dv">2</span>, <span class="dt">byrow =</span> T))
+sfc &lt;-<span class="st"> </span><span class="kw">st_sfc</span>(points, line, nose)
+face &lt;-<span class="st"> </span><span class="kw">st_sf</span>(<span class="kw">data.frame</span>(<span class="dt">shape =</span> <span class="kw">c</span>(<span class="st">&quot;eyes&quot;</span>, <span class="st">&quot;mouth&quot;</span>, <span class="st">&quot;nose&quot;</span>), <span class="dt">geom =</span> sfc))
+<span class="kw">plot</span>(face)</code></pre></div>
 <p><img src="figure/exercise_solutions.Rmd/unnamed-chunk-2-1.png" width="672" style="display: block; margin: auto;" /></p>
 <details> <summary><em>Expand here to see past versions of unnamed-chunk-2-1.png:</em></summary>
 <table style="border-collapse:separate; border-spacing:5px;">
@@ -490,29 +566,29 @@ annakrystalli
 </div>
 <div id="what-are-the-coordinates-for-the-10th-point-in-the-mexico-polygon" class="section level4">
 <h4>2) What are the coordinates for the 10th point in the Mexico polygon?</h4>
-<pre class="r"><code>mx_coords &lt;- world %&gt;% filter(iso_a2 == &quot;MX&quot;) %&gt;% st_coordinates() 
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mx_coords &lt;-<span class="st"> </span>world <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(iso_a2 <span class="op">==</span><span class="st"> &quot;MX&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">st_coordinates</span>() 
 
-mx_coords[10, c(&quot;X&quot;, &quot;Y&quot;)]</code></pre>
+mx_coords[<span class="dv">10</span>, <span class="kw">c</span>(<span class="st">&quot;X&quot;</span>, <span class="st">&quot;Y&quot;</span>)]</code></pre></div>
 <pre><code>         X          Y 
 -106.50759   31.75452 </code></pre>
 </div>
 <div id="how-about-in-crs-mexico-itrf92-utm-zone-15n" class="section level4">
 <h4>3) How about in CRS <a href="https://epsg.io/4488">Mexico ITRF92 / UTM zone 15N</a></h4>
 <p>(hint: use <code>st_transform</code> to change the projection first)</p>
-<pre class="r"><code>mx_utm15 &lt;- world %&gt;% 
-    st_transform(crs = 4488) 
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mx_utm15 &lt;-<span class="st"> </span>world <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">st_transform</span>(<span class="dt">crs =</span> <span class="dv">4488</span>) 
 
-mx_coords &lt;- mx_utm15 %&gt;%
-    filter(iso_a2 == &quot;MX&quot;) %&gt;% 
-    st_coordinates() 
+mx_coords &lt;-<span class="st"> </span>mx_utm15 <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">filter</span>(iso_a2 <span class="op">==</span><span class="st"> &quot;MX&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">st_coordinates</span>() 
 
-mx_coords[10, c(&quot;X&quot;, &quot;Y&quot;)]</code></pre>
+mx_coords[<span class="dv">10</span>, <span class="kw">c</span>(<span class="st">&quot;X&quot;</span>, <span class="st">&quot;Y&quot;</span>)]</code></pre></div>
 <pre><code>        X         Y 
 -784546.6 3593838.9 </code></pre>
 </div>
 <div id="are-these-coordinates-projected-or-not-can-you-tell-by-just-looking-at-the-crs-in-the-transformed-sf-object" class="section level4">
 <h4>4) Are these coordinates projected or not? Can you tell by just looking at the CRS in the transformed <code>sf</code> object?</h4>
-<pre class="r"><code>mx_utm15</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mx_utm15</code></pre></div>
 <pre><code>Simple feature collection with 177 features and 10 fields
 geometry type:  MULTIPOLYGON
 dimension:      XY
@@ -555,7 +631,7 @@ First 10 features:
 10 MULTIPOLYGON (((2134436 -61...</code></pre>
 <p>We’ve already talked about UTM being projected CRSs but there is also a hint in the <code>proj4string</code>, in particular <code>+units=m</code> indicating that the units are linear (m).</p>
 <p>We can also extract the units from an <code>sf</code>s crs using function <code>sf::st_crs()</code> and accessing the units</p>
-<pre class="r"><code>st_crs(mx_utm15)$units</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">st_crs</span>(mx_utm15)<span class="op">$</span>units</code></pre></div>
 <pre><code>[1] &quot;m&quot;</code></pre>
 </div>
 </div>
@@ -565,10 +641,10 @@ First 10 features:
 <h4>1) Create and plot a new <code>rasterLayer</code> of rough mean temperature in degrees C</h4>
 <p>(rough because it would be much better to use more data at higher temporal resolution, eg at least monthly, not extremes).</p>
 <p>We can do this using a simple mean calculation:</p>
-<pre class="r"><code>rough_mean &lt;- ((full_stack[[&quot;mx.bio_5&quot;]] + full_stack[[&quot;mx.bio_6&quot;]])/2)/10</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">rough_mean &lt;-<span class="st"> </span>((full_stack[[<span class="st">&quot;mx.bio_5&quot;</span>]] <span class="op">+</span><span class="st"> </span>full_stack[[<span class="st">&quot;mx.bio_6&quot;</span>]])<span class="op">/</span><span class="dv">2</span>)<span class="op">/</span><span class="dv">10</span></code></pre></div>
 <p>But we can even use r functions, in this case <code>mean()</code></p>
-<pre class="r"><code>rough_mean &lt;- mean(full_stack[[&quot;mx.bio_5&quot;]], full_stack[[&quot;mx.bio_6&quot;]])/10</code></pre>
-<pre class="r"><code>rough_mean</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">rough_mean &lt;-<span class="st"> </span><span class="kw">mean</span>(full_stack[[<span class="st">&quot;mx.bio_5&quot;</span>]], full_stack[[<span class="st">&quot;mx.bio_6&quot;</span>]])<span class="op">/</span><span class="dv">10</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">rough_mean</code></pre></div>
 <pre><code>class       : RasterLayer 
 dimensions  : 563, 811, 456593  (nrow, ncol, ncell)
 resolution  : 0.008333333, 0.008333333  (x, y)
@@ -577,7 +653,7 @@ coord. ref. : +proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0
 data source : /Users/Anna/Documents/workflows/workshops/intro-r-gis/data/raster/rough_mean.tif 
 names       : rough_mean 
 values      : -1.45, 29.6  (min, max)</code></pre>
-<pre class="r"><code>levelplot(rough_mean, margin = F)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">levelplot</span>(rough_mean, <span class="dt">margin =</span> F)</code></pre></div>
 <p><img src="figure/exercise_solutions.Rmd/unnamed-chunk-11-1.png" width="672" style="display: block; margin: auto;" /></p>
 <details> <summary><em>Expand here to see past versions of unnamed-chunk-11-1.png:</em></summary>
 <table style="border-collapse:separate; border-spacing:5px;">
@@ -612,22 +688,22 @@ annakrystalli
 </div>
 <div id="calculate-mean-precipitation-seasonality-for-the-extraction-bounding-box-area.-what-is-the-value" class="section level4">
 <h4>2) Calculate mean precipitation seasonality for the <strong>extraction bounding box area</strong>. What is the value?</h4>
-<pre class="r"><code>mean_prec_seasonality &lt;- extract(env_stack[[&quot;prec_seasonality&quot;]], 
-                as_Spatial(extract_bbox),
-                fun = mean,
-                na.rm = T)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mean_prec_seasonality &lt;-<span class="st"> </span><span class="kw">extract</span>(env_stack[[<span class="st">&quot;prec_seasonality&quot;</span>]], 
+                <span class="kw">as_Spatial</span>(extract_bbox),
+                <span class="dt">fun =</span> mean,
+                <span class="dt">na.rm =</span> T)
 
-mean_prec_seasonality</code></pre>
+mean_prec_seasonality</code></pre></div>
 <pre><code>         [,1]
 [1,] 87.78957</code></pre>
 </div>
 <div id="add-a-column-indicating-whether-data-points-are-greater-than-true-or-less-than-false-extraction-area-mean-precipitation-seasonality." class="section level4">
 <h4>3) Add a column indicating whether data points are greater than (<code>TRUE</code>) or less than (<code>FALSE</code>) extraction area mean precipitation seasonality.</h4>
-<pre class="r"><code>mol_env_sf &lt;- mol_env_sf %&gt;% 
-    mutate(greater_mean_ps = 
-               prec_seasonality &gt; as.vector(mean_prec_seasonality))
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mol_env_sf &lt;-<span class="st"> </span>mol_env_sf <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">mutate</span>(<span class="dt">greater_mean_ps =</span> 
+               prec_seasonality <span class="op">&gt;</span><span class="st"> </span><span class="kw">as.vector</span>(mean_prec_seasonality))
 
-mol_env_sf %&gt;% select(locality, greater_mean_ps)</code></pre>
+mol_env_sf <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(locality, greater_mean_ps)</code></pre></div>
 <pre><code>Simple feature collection with 15 features and 2 fields
 geometry type:  POINT
 dimension:      XY
@@ -656,7 +732,7 @@ proj4string:    +proj=longlat +datum=WGS84 +no_defs
 </div>
 <div id="session-information" class="section level2">
 <h2>Session information</h2>
-<pre class="r"><code>sessionInfo()</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sessionInfo</span>()</code></pre></div>
 <pre><code>R version 3.4.4 (2018-03-15)
 Platform: x86_64-apple-darwin15.6.0 (64-bit)
 Running under: macOS High Sierra 10.13.3

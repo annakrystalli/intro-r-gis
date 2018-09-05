@@ -15,7 +15,7 @@
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="site_libs/bootstrap-3.3.5/css/simplex.min.css" rel="stylesheet" />
+<link href="site_libs/bootstrap-3.3.5/css/cerulean.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
@@ -23,28 +23,54 @@
 <link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
 <script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
-<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
-<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
 <link href="site_libs/font-awesome-5.0.13/css/fa-svg-with-js.css" rel="stylesheet" />
 <script src="site_libs/font-awesome-5.0.13/js/fontawesome-all.min.js"></script>
 <script src="site_libs/font-awesome-5.0.13/js/fa-v4-shims.min.js"></script>
 
+
 <style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; background-color: #f8f8f8; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+pre, code { background-color: #f8f8f8; }
+code > span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code > span.dt { color: #204a87; } /* DataType */
+code > span.dv { color: #0000cf; } /* DecVal */
+code > span.bn { color: #0000cf; } /* BaseN */
+code > span.fl { color: #0000cf; } /* Float */
+code > span.ch { color: #4e9a06; } /* Char */
+code > span.st { color: #4e9a06; } /* String */
+code > span.co { color: #8f5902; font-style: italic; } /* Comment */
+code > span.ot { color: #8f5902; } /* Other */
+code > span.al { color: #ef2929; } /* Alert */
+code > span.fu { color: #000000; } /* Function */
+code > span.er { color: #a40000; font-weight: bold; } /* Error */
+code > span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #000000; } /* Constant */
+code > span.sc { color: #000000; } /* SpecialChar */
+code > span.vs { color: #4e9a06; } /* VerbatimString */
+code > span.ss { color: #4e9a06; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #000000; } /* Variable */
+code > span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code > span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code > span.ex { } /* Extension */
+code > span.at { color: #c4a000; } /* Attribute */
+code > span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code > span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+</style>
 <style type="text/css">
   pre:not([class]) {
     background-color: white;
   }
 </style>
-<script type="text/javascript">
-if (window.hljs) {
-  hljs.configure({languages: []});
-  hljs.initHighlightingOnLoad();
-  if (document.readyState && document.readyState === "complete") {
-    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
-  }
-}
-</script>
-
 
 
 <style type="text/css">
@@ -287,12 +313,43 @@ div.tocify {
 <li>
   <a href="setup.html">Setup</a>
 </li>
-<li>
-  <a href="license.html">License</a>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="fa fa-gear"></span>
+     
+    Handouts
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">Workshop Sections</li>
+    <li>
+      <a href="intro.html">Welcome</a>
+    </li>
+    <li>
+      <a href="gis.html">Introduction to GIS</a>
+    </li>
+    <li>
+      <a href="vector.html">Working with Vector Data</a>
+    </li>
+    <li>
+      <a href="raster.html">Working with Raster Data</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="exercise_solutions.html">Exrecise solutions</a>
+    </li>
+  </ul>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
+  <a href="further_resources.html">Further Resources</a>
+</li>
+<li>
+  <a href="https://github.com/annakrystalli/gis-workshop/archive/master.zip">Get Workshop Data</a>
+</li>
+<li>
   <a href="https://github.com/annakrystalli/intro-r-gis">
     <span class="fa fa-github"></span>
      
@@ -319,7 +376,7 @@ div.section {
 </div>
 
 
-<p><strong>Last updated:</strong> 2018-09-04</p>
+<p><strong>Last updated:</strong> 2018-09-05</p>
 <strong>workflowr checks:</strong> <small>(Click a bullet for more information)</small>
 <ul>
 <li>
@@ -343,27 +400,28 @@ div.section {
 </details>
 </li>
 <li>
-<p><details> <summary> <strong style="color:blue;">✔</strong> <strong>Repository version:</strong> <a href="https://github.com/annakrystalli/intro-r-gis/tree/8f5c11c5f7dbbb8751e64903a53e815ba3dd7870" target="_blank">8f5c11c</a> </summary></p>
+<p><details> <summary> <strong style="color:blue;">✔</strong> <strong>Repository version:</strong> <a href="https://github.com/annakrystalli/intro-r-gis/tree/513b4fb0743237f39de1f67d0bf0a880932f2601" target="_blank">513b4fb</a> </summary></p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility. The version displayed above was the version of the Git repository at the time these results were generated. <br><br> Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
 <pre><code>
 Ignored files:
     Ignored:    .DS_Store
     Ignored:    .Rhistory
     Ignored:    .Rproj.user/
-    Ignored:    data/.DS_Store
+    Ignored:    analysis/.DS_Store
+    Ignored:    analysis/assets/
+    Ignored:    data-raw/
+    Ignored:    data/csv/
+    Ignored:    data/raster/
+    Ignored:    data/sf/
+    Ignored:    docs/.DS_Store
 
 Untracked files:
     Untracked:  .Rbuildignore
     Untracked:  analysis/mapping.Rmd
-    Untracked:  data-raw/
-    Untracked:  data/csv/
-    Untracked:  data/raster/
-    Untracked:  data/sf/
 
 Unstaged changes:
-    Modified:   analysis/exercise_solutions.Rmd
-    Modified:   analysis/index.Rmd
-    Modified:   analysis/vector.Rmd
+    Modified:   .gitignore
+    Modified:   analysis/_site.yml
 
 </code></pre>
 Note that any generated files, e.g. HTML, png, CSS, etc., are not included in this status report because it is ok for generated content to have uncommitted changes. </details>
@@ -392,6 +450,23 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td style="text-align:left;">
+html
+</td>
+<td style="text-align:left;">
+<a href="https://cdn.rawgit.com/annakrystalli/intro-r-gis/42bd442c8a66face3bd1cd70b42915f6cba40983/docs/raster.html" target="_blank">42bd442</a>
+</td>
+<td style="text-align:left;">
+annakrystalli
+</td>
+<td style="text-align:left;">
+2018-09-04
+</td>
+<td style="text-align:left;">
+Build site.
+</td>
+</tr>
 <tr>
 <td style="text-align:left;">
 Rmd
@@ -461,11 +536,11 @@ workflowr::wflow_publish(c(“analysis/raster.Rmd”))
 <div id="load-libraries" class="section level3">
 <h3>Load libraries</h3>
 <p>Load the libraries we’ll be using for this section of the workshop</p>
-<pre class="r"><code>library(raster)  
-library(rasterVis)
-library(sf)
-library(dplyr)
-library(ggplot2)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(raster)  
+<span class="kw">library</span>(rasterVis)
+<span class="kw">library</span>(sf)
+<span class="kw">library</span>(dplyr)
+<span class="kw">library</span>(ggplot2)</code></pre></div>
 </div>
 </div>
 <div id="elements-of-raster-data" class="section level1">
@@ -497,8 +572,8 @@ library(ggplot2)</code></pre>
 <div id="create-rasters" class="section level2">
 <h2>Create rasters</h2>
 <p>Rasters can be thought of as matrices appended with additional environmental metadata.</p>
-<pre class="r"><code>myRaster1 &lt;- raster(nrow=4, ncol=4)
-myRaster1</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">myRaster1 &lt;-<span class="st"> </span><span class="kw">raster</span>(<span class="dt">nrow=</span><span class="dv">4</span>, <span class="dt">ncol=</span><span class="dv">4</span>)
+myRaster1</code></pre></div>
 <pre><code>class       : RasterLayer 
 dimensions  : 4, 4, 16  (nrow, ncol, ncell)
 resolution  : 90, 45  (x, y)
@@ -512,8 +587,8 @@ coord. ref. : +proj=longlat +datum=WGS84 +ellps=WGS84 +towgs84=0,0,0 </code></pr
 </ul>
 <p>Q: What’s been defined?</p>
 <p>Let’s give it some values</p>
-<pre class="r"><code>myRaster1[] &lt;-1:16
-plot(myRaster1)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">myRaster1[] &lt;-<span class="dv">1</span><span class="op">:</span><span class="dv">16</span>
+<span class="kw">plot</span>(myRaster1)</code></pre></div>
 <p><img src="figure/raster.Rmd/unnamed-chunk-3-1.png" width="672" style="display: block; margin: auto;" /></p>
 <details> <summary><em>Expand here to see past versions of unnamed-chunk-3-1.png:</em></summary>
 <table style="border-collapse:separate; border-spacing:5px;">
@@ -603,17 +678,17 @@ annakrystalli
 </ul>
 <p>I’ve selected a few of the variables used in the original paper to fit a Species Distribution Model.</p>
 <p>The data is in the <code>data/raster/mx-worldclim_30s</code> folder.</p>
-<pre class="r"><code>wc_files &lt;- list.files(here::here(&quot;data&quot;, &quot;raster&quot;, &quot;mx-worldclim_30s&quot;),
-                       full.names = T)
-wc_files</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">wc_files &lt;-<span class="st"> </span><span class="kw">list.files</span>(here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;raster&quot;</span>, <span class="st">&quot;mx-worldclim_30s&quot;</span>),
+                       <span class="dt">full.names =</span> T)
+wc_files</code></pre></div>
 <pre><code>[1] &quot;/Users/Anna/Documents/workflows/workshops/intro-r-gis/data/raster/mx-worldclim_30s/mx-bio_15.tif&quot;
 [2] &quot;/Users/Anna/Documents/workflows/workshops/intro-r-gis/data/raster/mx-worldclim_30s/mx-bio_4.tif&quot; 
 [3] &quot;/Users/Anna/Documents/workflows/workshops/intro-r-gis/data/raster/mx-worldclim_30s/mx-bio_5.tif&quot; 
 [4] &quot;/Users/Anna/Documents/workflows/workshops/intro-r-gis/data/raster/mx-worldclim_30s/mx-bio_6.tif&quot; </code></pre>
 <p>These files are in <a href="https://en.wikipedia.org/wiki/GeoTIFF">GeoTIFF format</a>, a public domain metadata standard which allows georeferencing information to be embedded within a TIFF file.</p>
 <p>Let’s start with a single raster file, <code>mx.bio_5.tif</code> which corresponds to <strong>bioclimatic variable 5: Max Temperature of Warmest Month</strong>.</p>
-<pre class="r"><code>bio5 &lt;- raster(wc_files[3])
-bio5</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">bio5 &lt;-<span class="st"> </span><span class="kw">raster</span>(wc_files[<span class="dv">3</span>])
+bio5</code></pre></div>
 <pre><code>class       : RasterLayer 
 dimensions  : 2181, 3638, 7934478  (nrow, ncol, ncell)
 resolution  : 0.008333333, 0.008333333  (x, y)
@@ -625,8 +700,8 @@ values      : 54, 427  (min, max)</code></pre>
 <p>This creates a <code>RasterLayer</code> object.</p>
 <p>By having a look at the summary of the raster file when we simply print the object, straight away it looks like something funny is going on. It’s showing a <strong>range of values between 54 and 427</strong>. Now, Mexico can get hot…but not that hot! By checking the <a href="http://www.worldclim.org/formats1">documentation</a> for the WorldClim data, we can see that the data is stored as <strong>degrees C x 10</strong>. This is for storage efficiency (files are much smaller if numbers can be stored as integers) but it means we need to transform the data back to degrees C.</p>
 <p>Luckily we can easily manipulate rasters, just like any other matrix in R.</p>
-<pre class="r"><code>bio5 &lt;- bio5/10
-bio5</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">bio5 &lt;-<span class="st"> </span>bio5<span class="op">/</span><span class="dv">10</span>
+bio5</code></pre></div>
 <pre><code>class       : RasterLayer 
 dimensions  : 2181, 3638, 7934478  (nrow, ncol, ncell)
 resolution  : 0.008333333, 0.008333333  (x, y)
@@ -641,7 +716,7 @@ values      : 5.4, 42.7  (min, max)</code></pre>
 <div id="plotting-rasters" class="section level3">
 <h3>Plotting rasters</h3>
 <p>The <code>raster</code> pkg has native plotting functions which are again, ok for a quick check of the data.</p>
-<pre class="r"><code>plot(bio5)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(bio5)</code></pre></div>
 <p><img src="figure/raster.Rmd/unnamed-chunk-7-1.png" width="672" style="display: block; margin: auto;" /></p>
 <details> <summary><em>Expand here to see past versions of unnamed-chunk-7-1.png:</em></summary>
 <table style="border-collapse:separate; border-spacing:5px;">
@@ -674,7 +749,7 @@ annakrystalli
 </table>
 <p></details></p>
 <p>Package <code>rasterVis</code> offers much nicer options for plotting raster data, including much better colour palletes which are pretty, better represent data, are easier to read by those with colorblindness, and print well in grey scale. by default.</p>
-<pre class="r"><code>levelplot(bio5)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">levelplot</span>(bio5)</code></pre></div>
 <p><img src="figure/raster.Rmd/unnamed-chunk-8-1.png" width="672" style="display: block; margin: auto;" /></p>
 <details> <summary><em>Expand here to see past versions of unnamed-chunk-8-1.png:</em></summary>
 <table style="border-collapse:separate; border-spacing:5px;">
@@ -707,7 +782,7 @@ annakrystalli
 </table>
 <p></details></p>
 <p>For numeric data it plots the distribution of the data along each axis in the plot margins. We can suppress that default behaviour by using argument <code>margin=FALSE</code>.</p>
-<pre class="r"><code>levelplot(bio5, margin=FALSE)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">levelplot</span>(bio5, <span class="dt">margin=</span><span class="ot">FALSE</span>)</code></pre></div>
 <p><img src="figure/raster.Rmd/unnamed-chunk-9-1.png" width="672" style="display: block; margin: auto;" /></p>
 <details> <summary><em>Expand here to see past versions of unnamed-chunk-9-1.png:</em></summary>
 <table style="border-collapse:separate; border-spacing:5px;">
@@ -745,9 +820,9 @@ annakrystalli
 <h3>Raster Stacks</h3>
 <p>A <code>RasterStack</code> is a <strong>collection of RasterLayer objects with the same spatial extent and resolution</strong>. A RasterStack can be created from <code>RasterLayer</code> objects, or from raster files, or both.</p>
 <p>We can read and stack raster files in one go using function <code>raster::stack</code>! And this is where the list of file names comes in handy.</p>
-<pre class="r"><code>st &lt;- stack(wc_files) 
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">st &lt;-<span class="st"> </span><span class="kw">stack</span>(wc_files) 
 
-st</code></pre>
+st</code></pre></div>
 <pre><code>class       : RasterStack 
 dimensions  : 2181, 3638, 7934478, 4  (nrow, ncol, ncell, nlayers)
 resolution  : 0.008333333, 0.008333333  (x, y)
@@ -757,7 +832,7 @@ names       : mx.bio_15, mx.bio_4, mx.bio_5, mx.bio_6
 min values  :        10,      199,       54,      -85 
 max values  :       140,     8136,      427,      218 </code></pre>
 <p>We can still extract individual layers using function <code>raster::subset()</code>.</p>
-<pre class="r"><code>subset(st, &quot;mx.bio_5&quot;)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">subset</span>(st, <span class="st">&quot;mx.bio_5&quot;</span>)</code></pre></div>
 <pre><code>class       : RasterLayer 
 dimensions  : 2181, 3638, 7934478  (nrow, ncol, ncell)
 resolution  : 0.008333333, 0.008333333  (x, y)
@@ -767,7 +842,7 @@ data source : /Users/Anna/Documents/workflows/workshops/intro-r-gis/data/raster/
 names       : mx.bio_5 
 values      : 54, 427  (min, max)</code></pre>
 <p>Because a <code>rasterStack</code> is effectively a list, we can also subset it as we would any other list in R</p>
-<pre class="r"><code>st[[&quot;mx.bio_5&quot;]]</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">st[[<span class="st">&quot;mx.bio_5&quot;</span>]]</code></pre></div>
 <pre><code>class       : RasterLayer 
 dimensions  : 2181, 3638, 7934478  (nrow, ncol, ncell)
 resolution  : 0.008333333, 0.008333333  (x, y)
@@ -776,7 +851,7 @@ coord. ref. : +proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0
 data source : /Users/Anna/Documents/workflows/workshops/intro-r-gis/data/raster/mx-worldclim_30s/mx-bio_5.tif 
 names       : mx.bio_5 
 values      : 54, 427  (min, max)</code></pre>
-<pre class="r"><code>st[[3]]</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">st[[<span class="dv">3</span>]]</code></pre></div>
 <pre><code>class       : RasterLayer 
 dimensions  : 2181, 3638, 7934478  (nrow, ncol, ncell)
 resolution  : 0.008333333, 0.008333333  (x, y)
@@ -787,7 +862,7 @@ names       : mx.bio_5
 values      : 54, 427  (min, max)</code></pre>
 <p>Note that we are back to having incorrect temperature values. We will deal with the layers that need correcting a bit later so just ignore that for now.</p>
 <p>Both the native <code>plot</code> method and <code>rasterVis::levelplot</code> can handle <code>rasterStack</code>s</p>
-<pre class="r"><code>plot(st)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(st)</code></pre></div>
 <p><img src="figure/raster.Rmd/unnamed-chunk-14-1.png" width="672" style="display: block; margin: auto;" /></p>
 <details> <summary><em>Expand here to see past versions of unnamed-chunk-14-1.png:</em></summary>
 <table style="border-collapse:separate; border-spacing:5px;">
@@ -819,7 +894,7 @@ annakrystalli
 </tbody>
 </table>
 <p></details></p>
-<pre class="r"><code>levelplot(st)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">levelplot</span>(st)</code></pre></div>
 <p><img src="figure/raster.Rmd/unnamed-chunk-15-1.png" width="672" style="display: block; margin: auto;" /></p>
 <details> <summary><em>Expand here to see past versions of unnamed-chunk-15-1.png:</em></summary>
 <table style="border-collapse:separate; border-spacing:5px;">
@@ -856,10 +931,10 @@ annakrystalli
 <div id="landcover-data" class="section level3">
 <h3>Landcover data</h3>
 <p>Land cover, original data resampled onto a 30 seconds grid sourced from <a href="http://www.diva-gis.org/gdata">DIVA GIS</a>. DIVA-GIS is a free computer program for mapping and geographic data analysis (a geographic information system (GIS) which also provide free global spatial data.</p>
-<pre class="r"><code>lc_files &lt;- list.files(here::here(&quot;data&quot;, &quot;raster&quot;, &quot;MEX_msk_cov&quot;),
-                       full.names = T)</code></pre>
-<pre class="r"><code>lc &lt;- raster(lc_files[1])
-lc</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lc_files &lt;-<span class="st"> </span><span class="kw">list.files</span>(here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;raster&quot;</span>, <span class="st">&quot;MEX_msk_cov&quot;</span>),
+                       <span class="dt">full.names =</span> T)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lc &lt;-<span class="st"> </span><span class="kw">raster</span>(lc_files[<span class="dv">1</span>])
+lc</code></pre></div>
 <pre><code>class       : RasterLayer 
 dimensions  : 2208, 3696, 8160768  (nrow, ncol, ncell)
 resolution  : 0.008333333, 0.008333333  (x, y)
@@ -869,7 +944,7 @@ data source : /Users/Anna/Documents/workflows/workshops/intro-r-gis/data/raster/
 names       : MEX_msk_cov 
 values      : 1, 22  (min, max)</code></pre>
 <p>Let’s plot this again to have a look at it.</p>
-<pre class="r"><code>levelplot(lc)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">levelplot</span>(lc)</code></pre></div>
 <p><img src="figure/raster.Rmd/unnamed-chunk-18-1.png" width="672" style="display: block; margin: auto;" /></p>
 <details> <summary><em>Expand here to see past versions of unnamed-chunk-18-1.png:</em></summary>
 <table style="border-collapse:separate; border-spacing:5px;">
@@ -902,8 +977,8 @@ annakrystalli
 </table>
 <p></details></p>
 <p>This raster contains categorical data, so the scales used as well as the inclusion of distributions along the margins do not see appropriate. Such data can be better defined using the <code>rasteVis::ratify</code> function.</p>
-<pre class="r"><code>lc &lt;- ratify(lc)
-lc</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lc &lt;-<span class="st"> </span><span class="kw">ratify</span>(lc)
+lc</code></pre></div>
 <pre><code>class       : RasterLayer 
 dimensions  : 2208, 3696, 8160768  (nrow, ncol, ncell)
 resolution  : 0.008333333, 0.008333333  (x, y)
@@ -917,7 +992,7 @@ attributes  :
  from:  1
  to  : 22</code></pre>
 <p>Now we see that rather than a <code>values: 1, 22  (min, max)</code> we have an <code>attributes:</code> field containing a table summarising the levels with <code>from:</code> for the first and <code>to:</code> for the last entry. The actual levels are stored in what is known as a <strong>“Raster Attribute Table” (RAT)</strong>. This can be accessed through the <code>levels()</code> function.</p>
-<pre class="r"><code>levels(lc)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">levels</span>(lc)</code></pre></div>
 <pre><code>[[1]]
    ID
 1   1
@@ -934,28 +1009,28 @@ attributes  :
 12 20
 13 22</code></pre>
 <p>Let’s try and plot again.</p>
-<pre class="r"><code>levelplot(lc)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">levelplot</span>(lc)</code></pre></div>
 <pre><code>Error in `[.data.frame`(rat, , att): undefined columns selected</code></pre>
 <p>This time, plotting fails. This is because there are no descriptions associated with the levels.</p>
 <p>We can define this defined with more informative descriptions. As I forgot to save them as <code>.csv</code> as part of the workshop materials, here is a snippet of code that can be copied and pasted to create a data.frame of factor levels and their associated descriptions.</p>
 <p>(or go to <a href="http://bit.ly/lc_levels" class="uri">http://bit.ly/lc_levels</a>, click on raw and copy the code snippet from there)</p>
-<pre class="r"><code>lc_levels &lt;- structure(list(level = 1:22, descr = c(&quot;Tree Cover, broadleaved, evergreen&quot;, 
-&quot;Tree Cover, broadleaved, deciduous, closed&quot;, &quot;Tree Cover, broadleaved, deciduous, open&quot;, 
-&quot;Tree Cover, needle-leaved, evergreen&quot;, &quot;Tree Cover, needle-leaved, deciduous&quot;, 
-&quot;Tree Cover, mixed leaf type&quot;, &quot;Tree Cover, regularly flooded, fresh  water&quot;, 
-&quot;Tree Cover, regularly flooded, saline water&quot;, &quot;Mosaic: Tree cover / Other natural vegetation&quot;, 
-&quot;Tree Cover, burnt&quot;, &quot;Shrub Cover, closed-open, evergreen&quot;, &quot;Shrub Cover, closed-open, deciduous&quot;, 
-&quot;Herbaceous Cover, closed-open&quot;, &quot;Sparse Herbaceous or sparse Shrub Cover&quot;, 
-&quot;Regularly flooded Shrub and/or Herbaceous Cover&quot;, &quot;Cultivated and managed areas&quot;, 
-&quot;Mosaic: Cropland / Tree Cover / Other natural vegetation&quot;, &quot;Mosaic: Cropland / Shrub or Grass Cover&quot;, 
-&quot;Bare Areas&quot;, &quot;Water Bodies&quot;, &quot;Snow and Ice&quot;, &quot;Artificial surfaces and associated areas&quot;
-)), class = &quot;data.frame&quot;, .Names = c(&quot;level&quot;, &quot;descr&quot;), row.names = c(NA, 
--22L))</code></pre>
-<pre class="r"><code>rat &lt;- levels(lc)[[1]]
-rat &lt;- rat %&gt;% left_join(lc_levels, by = c(&quot;ID&quot; = &quot;level&quot;))
-levels(lc) &lt;- rat</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lc_levels &lt;-<span class="st"> </span><span class="kw">structure</span>(<span class="kw">list</span>(<span class="dt">level =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">22</span>, <span class="dt">descr =</span> <span class="kw">c</span>(<span class="st">&quot;Tree Cover, broadleaved, evergreen&quot;</span>, 
+<span class="st">&quot;Tree Cover, broadleaved, deciduous, closed&quot;</span>, <span class="st">&quot;Tree Cover, broadleaved, deciduous, open&quot;</span>, 
+<span class="st">&quot;Tree Cover, needle-leaved, evergreen&quot;</span>, <span class="st">&quot;Tree Cover, needle-leaved, deciduous&quot;</span>, 
+<span class="st">&quot;Tree Cover, mixed leaf type&quot;</span>, <span class="st">&quot;Tree Cover, regularly flooded, fresh  water&quot;</span>, 
+<span class="st">&quot;Tree Cover, regularly flooded, saline water&quot;</span>, <span class="st">&quot;Mosaic: Tree cover / Other natural vegetation&quot;</span>, 
+<span class="st">&quot;Tree Cover, burnt&quot;</span>, <span class="st">&quot;Shrub Cover, closed-open, evergreen&quot;</span>, <span class="st">&quot;Shrub Cover, closed-open, deciduous&quot;</span>, 
+<span class="st">&quot;Herbaceous Cover, closed-open&quot;</span>, <span class="st">&quot;Sparse Herbaceous or sparse Shrub Cover&quot;</span>, 
+<span class="st">&quot;Regularly flooded Shrub and/or Herbaceous Cover&quot;</span>, <span class="st">&quot;Cultivated and managed areas&quot;</span>, 
+<span class="st">&quot;Mosaic: Cropland / Tree Cover / Other natural vegetation&quot;</span>, <span class="st">&quot;Mosaic: Cropland / Shrub or Grass Cover&quot;</span>, 
+<span class="st">&quot;Bare Areas&quot;</span>, <span class="st">&quot;Water Bodies&quot;</span>, <span class="st">&quot;Snow and Ice&quot;</span>, <span class="st">&quot;Artificial surfaces and associated areas&quot;</span>
+)), <span class="dt">class =</span> <span class="st">&quot;data.frame&quot;</span>, <span class="dt">.Names =</span> <span class="kw">c</span>(<span class="st">&quot;level&quot;</span>, <span class="st">&quot;descr&quot;</span>), <span class="dt">row.names =</span> <span class="kw">c</span>(<span class="ot">NA</span>, 
+<span class="op">-</span>22L))</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">rat &lt;-<span class="st"> </span><span class="kw">levels</span>(lc)[[<span class="dv">1</span>]]
+rat &lt;-<span class="st"> </span>rat <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">left_join</span>(lc_levels, <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">&quot;ID&quot;</span> =<span class="st"> &quot;level&quot;</span>))
+<span class="kw">levels</span>(lc) &lt;-<span class="st"> </span>rat</code></pre></div>
 <p>Let’s have a look at our land cover raster</p>
-<pre class="r"><code>lc</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lc</code></pre></div>
 <pre><code>class       : RasterLayer 
 dimensions  : 2208, 3696, 8160768  (nrow, ncol, ncell)
 resolution  : 0.008333333, 0.008333333  (x, y)
@@ -969,7 +1044,7 @@ attributes  :
  from:  1       Tree Cover, broadleaved, evergreen
  to  : 22 Artificial surfaces and associated areas</code></pre>
 <p>Let’s plot again</p>
-<pre class="r"><code>levelplot(lc)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">levelplot</span>(lc)</code></pre></div>
 <p><img src="figure/raster.Rmd/unnamed-chunk-25-1.png" width="672" style="display: block; margin: auto;" /></p>
 <details> <summary><em>Expand here to see past versions of unnamed-chunk-25-1.png:</em></summary>
 <table style="border-collapse:separate; border-spacing:5px;">
@@ -1003,8 +1078,8 @@ annakrystalli
 <p></details></p>
 <p>Success!</p>
 <p>And seeing as we’re dealing with primarily vegetation, let’s create a new map theme (colour palette) using function <code>rasterVis::rasterTheme</code> and <a href="http://colorbrewer2.org/#type=sequential&amp;scheme=YlGn&amp;n=9">colour brewer palette Yellow &amp; Greens (“YlGn”)</a>.</p>
-<pre class="r"><code>mapTheme &lt;- rasterTheme(region = rev(brewer.pal(9,&quot;YlGn&quot;)))
-levelplot(lc, par.settings = mapTheme)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mapTheme &lt;-<span class="st"> </span><span class="kw">rasterTheme</span>(<span class="dt">region =</span> <span class="kw">rev</span>(<span class="kw">brewer.pal</span>(<span class="dv">9</span>,<span class="st">&quot;YlGn&quot;</span>)))
+<span class="kw">levelplot</span>(lc, <span class="dt">par.settings =</span> mapTheme)</code></pre></div>
 <p><img src="figure/raster.Rmd/unnamed-chunk-26-1.png" width="672" style="display: block; margin: auto;" /></p>
 <details> <summary><em>Expand here to see past versions of unnamed-chunk-26-1.png:</em></summary>
 <table style="border-collapse:separate; border-spacing:5px;">
@@ -1041,18 +1116,18 @@ annakrystalli
 </div>
 <div id="stacking-rasterlayers" class="section level2">
 <h2>stacking <code>rasterLayers</code></h2>
-<pre class="r"><code>stack(st, lc)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">stack</span>(st, lc)</code></pre></div>
 <pre><code>Error in compareRaster(x): different extent</code></pre>
 <p>This doesn’t work, notifying us that there is a problem with mismatching extents. We don’t really need the whole extent of data anyways so let’s try croping everything to the same extent, that of the study area bounding box we defined in our vector workflow</p>
 <p>So let’s load the molecular data that we have converted to an <code>sf</code> using function <code>sf::read_sf</code> and recreate a bounding box.</p>
-<pre class="r"><code>mol_sf &lt;- read_sf(here::here(&quot;data&quot;, &quot;sf&quot;, &quot;salamander.geojson&quot;))
-study_bbox &lt;- mol_sf %&gt;% st_bbox() %&gt;% st_as_sfc()</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mol_sf &lt;-<span class="st"> </span><span class="kw">read_sf</span>(here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;sf&quot;</span>, <span class="st">&quot;salamander.geojson&quot;</span>))
+study_bbox &lt;-<span class="st"> </span>mol_sf <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">st_bbox</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">st_as_sfc</span>()</code></pre></div>
 <p>This bounding box is really tight around our data points. To ensure our raster data contain the locations of all our data points, let’s give this extraction bounding box some space around our points using function <code>sf::st_buffer</code>.</p>
 <p><em>Looking at the help file for this function using <code>?st_buffer</code> gives us information on a whole suite of useful functions to perform geometric operations on simple feature geometry sets.</em></p>
-<pre class="r"><code>extract_bbox &lt;- study_bbox %&gt;% st_buffer(dist = 1)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">extract_bbox &lt;-<span class="st"> </span>study_bbox <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">st_buffer</span>(<span class="dt">dist =</span> <span class="dv">1</span>)</code></pre></div>
 <pre><code>Warning in st_buffer.sfc(., dist = 1): st_buffer does not correctly buffer
 longitude/latitude data</code></pre>
-<pre class="r"><code>extract_bbox</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">extract_bbox</code></pre></div>
 <pre><code>Geometry set for 1 feature 
 geometry type:  POLYGON
 dimension:      XY
@@ -1061,17 +1136,17 @@ epsg (SRID):    4326
 proj4string:    +proj=longlat +datum=WGS84 +no_defs</code></pre>
 <p>To crop a raster we use function <code>raster::crop</code> which will returns a geographic subset of the raster as specified either by an <code>Extent</code> object or an object from which an extent object can be extracted/created.</p>
 <p>In our case, we’ll use the <code>extract_bbox</code> <code>sf</code> we just created. So let’s try and crop <code>lc</code> first.</p>
-<pre class="r"><code>crop(lc, extract_bbox)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">crop</span>(lc, extract_bbox)</code></pre></div>
 <pre><code>Error in .local(x, y, ...): Cannot get an Extent object from argument y</code></pre>
 <p>Ooops! That throws an error! That’s because of current <code>sf</code> and <code>raster</code> compatibility issues. All we need to do though is convert our <code>sf</code> to an <code>sp</code> spatial class object which <code>raster</code> is designed to work with. We can do this with function <code>sf::as_Spatial</code>.</p>
-<pre class="r"><code>sp_extract_bbox &lt;- as_Spatial(extract_bbox)
-sp_extract_bbox</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sp_extract_bbox &lt;-<span class="st"> </span><span class="kw">as_Spatial</span>(extract_bbox)
+sp_extract_bbox</code></pre></div>
 <pre><code>class       : SpatialPolygons 
 features    : 1 
 extent      : -100.8481, -96.09056, 17.94194, 20.63083  (xmin, xmax, ymin, ymax)
 coord. ref. : +proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0 </code></pre>
 <p>Let’s try now.</p>
-<pre class="r"><code>crop(lc, sp_extract_bbox)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">crop</span>(lc, sp_extract_bbox)</code></pre></div>
 <pre><code>class       : RasterLayer 
 dimensions  : 323, 571, 184433  (nrow, ncol, ncell)
 resolution  : 0.008333333, 0.008333333  (x, y)
@@ -1086,12 +1161,12 @@ attributes  :
  to  : 22 Artificial surfaces and associated areas</code></pre>
 <p>Success! This works.</p>
 <p>So let’s stack and crop all in one go:</p>
-<pre class="r"><code>full_stack &lt;- stack(
-crop(lc, sp_extract_bbox),
-crop(st, sp_extract_bbox)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">full_stack &lt;-<span class="st"> </span><span class="kw">stack</span>(
+<span class="kw">crop</span>(lc, sp_extract_bbox),
+<span class="kw">crop</span>(st, sp_extract_bbox)
 )
 
-full_stack</code></pre>
+full_stack</code></pre></div>
 <pre><code>class       : RasterStack 
 dimensions  : 323, 571, 184433, 5  (nrow, ncol, ncell, nlayers)
 resolution  : 0.008333333, 0.008333333  (x, y)
@@ -1106,13 +1181,13 @@ max values  :          22,       117,     3387,      411,      180 </code></pre>
 <li>We also still need to address the fact that our <strong>temperature data is currrently in degrees C x 10</strong>.</li>
 </ol>
 <p>So let’s try and address this by creating a new <code>rasterStack</code> from the layers in our <code>full_stack</code>. We use function <code>raster::stack()</code> again.</p>
-<pre class="r"><code>env_stack &lt;- stack(
-    (full_stack[[&quot;mx.bio_5&quot;]] - full_stack[[&quot;mx.bio_6&quot;]])/10,
-    full_stack[[&quot;mx.bio_4&quot;]], 
-    full_stack[[&quot;mx.bio_15&quot;]],
-    full_stack[[&quot;MEX_msk_cov&quot;]])
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">env_stack &lt;-<span class="st"> </span><span class="kw">stack</span>(
+    (full_stack[[<span class="st">&quot;mx.bio_5&quot;</span>]] <span class="op">-</span><span class="st"> </span>full_stack[[<span class="st">&quot;mx.bio_6&quot;</span>]])<span class="op">/</span><span class="dv">10</span>,
+    full_stack[[<span class="st">&quot;mx.bio_4&quot;</span>]], 
+    full_stack[[<span class="st">&quot;mx.bio_15&quot;</span>]],
+    full_stack[[<span class="st">&quot;MEX_msk_cov&quot;</span>]])
 
-env_stack</code></pre>
+env_stack</code></pre></div>
 <pre><code>class       : RasterStack 
 dimensions  : 323, 571, 184433, 4  (nrow, ncol, ncell, nlayers)
 resolution  : 0.008333333, 0.008333333  (x, y)
@@ -1122,9 +1197,9 @@ names       :  layer, mx.bio_4, mx.bio_15, MEX_msk_cov
 min values  :   13.7,    655.0,      41.0,         1.0 
 max values  :   27.2,   3387.0,     117.0,        22.0 </code></pre>
 <p>Let’s give our layers better names. This is easily achieved with function <code>names()</code></p>
-<pre class="r"><code>names(env_stack) &lt;- c(&quot;temp_range&quot;,&quot;temp_seasonality&quot;, 
-                     &quot;prec_seasonality&quot;, &quot;land_cover&quot;)
-env_stack</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">names</span>(env_stack) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;temp_range&quot;</span>,<span class="st">&quot;temp_seasonality&quot;</span>, 
+                     <span class="st">&quot;prec_seasonality&quot;</span>, <span class="st">&quot;land_cover&quot;</span>)
+env_stack</code></pre></div>
 <pre><code>class       : RasterStack 
 dimensions  : 323, 571, 184433, 4  (nrow, ncol, ncell, nlayers)
 resolution  : 0.008333333, 0.008333333  (x, y)
@@ -1143,11 +1218,11 @@ max values  :       27.2,           3387.0,            117.0,       22.0 </code>
 <div id="plotting-our-rasterstack" class="section level3">
 <h3>plotting our <code>rasterStack</code></h3>
 <p>Let’s try and plot our new environmental stack.</p>
-<pre class="r"><code>levelplot(env_stack)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">levelplot</span>(env_stack)</code></pre></div>
 <pre><code>Error in .checkLevels(levs[[j]], value[[j]]): new raster attributes (factor values) should be in a data.frame (inside a list)</code></pre>
 <p>This doesn’t work now because we are trying to mix displaying factor and numeric data.</p>
 <p>We can still extract and plot individual layers though.</p>
-<pre class="r"><code>levelplot(env_stack, layers = &quot;temp_seasonality&quot;)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">levelplot</span>(env_stack, <span class="dt">layers =</span> <span class="st">&quot;temp_seasonality&quot;</span>)</code></pre></div>
 <p><img src="figure/raster.Rmd/unnamed-chunk-37-1.png" width="672" style="display: block; margin: auto;" /></p>
 <details> <summary><em>Expand here to see past versions of unnamed-chunk-37-1.png:</em></summary>
 <table style="border-collapse:separate; border-spacing:5px;">
@@ -1184,18 +1259,18 @@ annakrystalli
 <div id="save-rasterstack" class="section level3">
 <h3>Save <code>rasterStack</code></h3>
 <p>Finally, let’s save our raster stack as a binary ‘Native’ <code>raster</code> package <code>.grd</code> file format using function <code>raster::writeRaster()</code>. We’ll do that to preserve the layer names in the <code>rasterStack</code>. It also allows us to combine categorical and numeric layers in one file.</p>
-<pre class="r"><code>writeRaster(env_stack, filename = here::here(&quot;data&quot;, &quot;raster&quot;, &quot;env_stack.grd&quot;))</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">writeRaster</span>(env_stack, <span class="dt">filename =</span> here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;raster&quot;</span>, <span class="st">&quot;env_stack.grd&quot;</span>))</code></pre></div>
 <p>However, these files are not compressed. If the size of the files is an issue, we can save each file as an individual GeoTiff file and reimport them all together into a stack later on.</p>
-<pre class="r"><code>dir.create(here::here(&quot;data&quot;, &quot;raster&quot;, &quot;processed&quot;))
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dir.create</span>(here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;raster&quot;</span>, <span class="st">&quot;processed&quot;</span>))
 
-writeRaster(env_stack, 
-            filename=here::here(&quot;data&quot;, &quot;raster&quot; , 
-                                &quot;processed&quot;, &quot;env_stack.tif&quot;),
-            bylayer = T, suffix = names(env_stack))</code></pre>
+<span class="kw">writeRaster</span>(env_stack, 
+            <span class="dt">filename=</span>here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;raster&quot;</span> , 
+                                <span class="st">&quot;processed&quot;</span>, <span class="st">&quot;env_stack.tif&quot;</span>),
+            <span class="dt">bylayer =</span> T, <span class="dt">suffix =</span> <span class="kw">names</span>(env_stack))</code></pre></div>
 <p>The following code lists all the files in the <code>processed</code> folder, matching only those files that end with <code>.tiff</code> (ignoring the <code>env_land_cover.tif.aux.xml</code> file which contains the RAT and would throw an error), reads and stacks them!</p>
-<pre class="r"><code>stack(list.files(here::here(&quot;data&quot;, &quot;raster&quot; , &quot;processed&quot;),
-                 pattern = &quot;.tif$&quot;,
-                 full.names = T))</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">stack</span>(<span class="kw">list.files</span>(here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;raster&quot;</span> , <span class="st">&quot;processed&quot;</span>),
+                 <span class="dt">pattern =</span> <span class="st">&quot;.tif$&quot;</span>,
+                 <span class="dt">full.names =</span> T))</code></pre></div>
 <pre><code>class       : RasterStack 
 dimensions  : 323, 571, 184433, 4  (nrow, ncol, ncell, nlayers)
 resolution  : 0.008333333, 0.008333333  (x, y)
@@ -1212,7 +1287,7 @@ max values  :                 22.0,                      117.0,                 
 <h3>extracting points</h3>
 <p>We can extract data underlying an <code>sf</code> from a raster using function <code>raster::extract()</code>. The output in the case of points is a single value for each point. This is returned as a vector for a single layer or a matrix for multiple layers, as is our case.</p>
 <p>Let’s have a look at our data again</p>
-<pre class="r"><code>mol_sf</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mol_sf</code></pre></div>
 <pre><code>Simple feature collection with 15 features and 9 fields
 geometry type:  POINT
 dimension:      XY
@@ -1239,10 +1314,10 @@ proj4string:    +proj=longlat +datum=WGS84 +no_defs
 15    19 Vigas         48 Cofre de Perote  North… 11.8  0.660  5.75 1.31  
 # ... with 1 more variable: geometry &lt;POINT [°]&gt;</code></pre>
 <p>Because we want to combine it with our previous data in <code>mol_sf</code> we’ll pipe the resulting matrix into <code>as.data.frame</code> so we can easily bind our extracted environmental data to our molecular data.</p>
-<pre class="r"><code>env_points &lt;- extract(env_stack, as_Spatial(mol_sf)) %&gt;% as.data.frame()
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">env_points &lt;-<span class="st"> </span><span class="kw">extract</span>(env_stack, <span class="kw">as_Spatial</span>(mol_sf)) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">as.data.frame</span>()
 
-mol_env_sf &lt;- bind_cols(mol_sf, env_points)
-mol_env_sf</code></pre>
+mol_env_sf &lt;-<span class="st"> </span><span class="kw">bind_cols</span>(mol_sf, env_points)
+mol_env_sf</code></pre></div>
 <pre><code>Simple feature collection with 15 features and 13 fields
 geometry type:  POINT
 dimension:      XY
@@ -1270,8 +1345,8 @@ proj4string:    +proj=longlat +datum=WGS84 +no_defs
 # ... with 5 more variables: geometry &lt;POINT [°]&gt;, temp_range &lt;dbl&gt;,
 #   temp_seasonality &lt;dbl&gt;, prec_seasonality &lt;dbl&gt;, land_cover &lt;dbl&gt;</code></pre>
 <p>Our new <code>sf</code> is now ready to use for species distribution modelling. But we can also start visualising the relationships between our molecular and environmental variables</p>
-<pre class="r"><code>ggplot(mol_env_sf, aes(x = temp_range, y = na, colour = region)) +
-    geom_point()</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(mol_env_sf, <span class="kw">aes</span>(<span class="dt">x =</span> temp_range, <span class="dt">y =</span> na, <span class="dt">colour =</span> region)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_point</span>()</code></pre></div>
 <p><img src="figure/raster.Rmd/unnamed-chunk-43-1.png" width="672" style="display: block; margin: auto;" /></p>
 <details> <summary><em>Expand here to see past versions of unnamed-chunk-43-1.png:</em></summary>
 <table style="border-collapse:separate; border-spacing:5px;">
@@ -1307,18 +1382,18 @@ annakrystalli
 <div id="extracting-and-summarising-raster-data-using-polygons" class="section level3">
 <h3>extracting and summarising raster data using polygons</h3>
 <p>We can also extract and summarise data over an area represented by a polygon using using the <code>raster::extract()</code> function. If we want a summarising function to be applied to the pixel values returned by the extraction, we can supply it to argument <code>fun</code>. Let’s calculate the <strong>mean <code>temp_range</code> across the <code>study_bbox</code> area</strong>.</p>
-<pre class="r"><code>mean_temp_range &lt;- extract(env_stack[[&quot;temp_range&quot;]], 
-                as_Spatial(study_bbox),
-                fun = mean,
-                na.rm = T)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mean_temp_range &lt;-<span class="st"> </span><span class="kw">extract</span>(env_stack[[<span class="st">&quot;temp_range&quot;</span>]], 
+                <span class="kw">as_Spatial</span>(study_bbox),
+                <span class="dt">fun =</span> mean,
+                <span class="dt">na.rm =</span> T)
 
-mean_temp_range</code></pre>
+mean_temp_range</code></pre></div>
 <pre><code>         [,1]
 [1,] 22.21228</code></pre>
 <p>Let’s use this to calculate the deviation of each of our data points from the study box mean we just calculated. We can use <code>dplyr::mutate</code> to manipulate attribute data in our <code>sf</code> just like any other data.frame.</p>
-<pre class="r"><code>mol_env_sf &lt;- mol_env_sf %&gt;% 
-    mutate(dev_temp_range = temp_range - as.vector(mean_temp_range))</code></pre>
-<pre class="r"><code>mol_env_sf %&gt;% select(locality, dev_temp_range)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mol_env_sf &lt;-<span class="st"> </span>mol_env_sf <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">mutate</span>(<span class="dt">dev_temp_range =</span> temp_range <span class="op">-</span><span class="st"> </span><span class="kw">as.vector</span>(mean_temp_range))</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mol_env_sf <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(locality, dev_temp_range)</code></pre></div>
 <pre><code>Simple feature collection with 15 features and 2 fields
 geometry type:  POINT
 dimension:      XY
@@ -1344,7 +1419,7 @@ proj4string:    +proj=longlat +datum=WGS84 +no_defs
 14 Xometla                        -1.31    (-97.19056 18.975)
 15 Vigas                          -3.51  (-97.09056 19.63083)</code></pre>
 <p>Let’s save our final <code>sf</code> now containing the environmental data we extracted</p>
-<pre class="r"><code>write_sf(mol_env_sf, here::here(&quot;data&quot;, &quot;sf&quot;, &quot;env_salamander.geojson&quot;))</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">write_sf</span>(mol_env_sf, here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;sf&quot;</span>, <span class="st">&quot;env_salamander.geojson&quot;</span>))</code></pre></div>
 <pre><code>Dataset /Users/Anna/Documents/workflows/workshops/intro-r-gis/data/sf/env_salamander.geojson already exists: remove first, use update=TRUE to append,
 delete_layer=TRUE to delete layer, or delete_dsn=TRUE to remove the entire data source before writing.</code></pre>
 <pre><code>Error in CPL_write_ogr(obj, dsn, layer, driver, as.character(dataset_options), : Dataset already exists.</code></pre>
@@ -1373,7 +1448,7 @@ delete_layer=TRUE to delete layer, or delete_dsn=TRUE to remove the entire data 
 </div>
 <div id="session-information" class="section level2">
 <h2>Session information</h2>
-<pre class="r"><code>sessionInfo()</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sessionInfo</span>()</code></pre></div>
 <pre><code>R version 3.4.4 (2018-03-15)
 Platform: x86_64-apple-darwin15.6.0 (64-bit)
 Running under: macOS High Sierra 10.13.3
