@@ -9,14 +9,31 @@ navbar:
       href: index.html
     - text: "Setup"
       href: setup.html
-    - text: "License"
-      href: license.html
+    - text: "Handouts"
+      icon: fa-gear
+      menu:
+        - text: "Workshop Sections"
+        - text: "Welcome"
+          href: intro.html
+        - text: "Introduction to GIS"
+          href: gis.html
+        - text: "Working with Vector Data"
+          href: vector.html 
+        - text: "Working with Raster Data"
+          href: raster.html   
+        - text: "---------"
+        - text: "Exrecise solutions"
+          href: exercise_solutions.html
   right:
+    - text: "Further Resources"
+      href: further_resources.html
+    - text: "Get Workshop Data"
+      href: https://github.com/annakrystalli/gis-workshop/archive/master.zip
     - icon: fa-github
       href: https://github.com/annakrystalli/intro-r-gis
 output:
   workflowr::wflow_html:
     toc: true
     toc_float: true
-    theme: simplex
-    highlight: textmate
+    theme: cerulean
+    highlight: tango
