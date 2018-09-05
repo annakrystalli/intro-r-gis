@@ -32,7 +32,7 @@ library(dplyr)
 library(spData)
 ```
 
-# Vector data:
+# Vector data
 
 Geographic vector data model is based on **points**, usually located within a coordinate reference system (CRS). 
   
