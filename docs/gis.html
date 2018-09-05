@@ -319,7 +319,7 @@ div.section {
 </div>
 
 
-<p><strong>Last updated:</strong> 2018-09-04</p>
+<p><strong>Last updated:</strong> 2018-09-05</p>
 <strong>workflowr checks:</strong> <small>(Click a bullet for more information)</small>
 <ul>
 <li>
@@ -343,28 +343,25 @@ div.section {
 </details>
 </li>
 <li>
-<p><details> <summary> <strong style="color:blue;">✔</strong> <strong>Repository version:</strong> <a href="https://github.com/annakrystalli/intro-r-gis/tree/1a58bc55705301bb4854f92c5ec05239080a5477" target="_blank">1a58bc5</a> </summary></p>
+<p><details> <summary> <strong style="color:blue;">✔</strong> <strong>Repository version:</strong> <a href="https://github.com/annakrystalli/intro-r-gis/tree/7403f6b924bb1c953d6d06b39024da38bb96a955" target="_blank">7403f6b</a> </summary></p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility. The version displayed above was the version of the Git repository at the time these results were generated. <br><br> Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
 <pre><code>
 Ignored files:
     Ignored:    .DS_Store
     Ignored:    .Rhistory
     Ignored:    .Rproj.user/
+    Ignored:    analysis/.DS_Store
     Ignored:    data/.DS_Store
+    Ignored:    docs/.DS_Store
 
 Untracked files:
     Untracked:  .Rbuildignore
+    Untracked:  analysis/assets/
     Untracked:  analysis/mapping.Rmd
     Untracked:  data-raw/
     Untracked:  data/csv/
     Untracked:  data/raster/
     Untracked:  data/sf/
-
-Unstaged changes:
-    Modified:   analysis/exercise_solutions.Rmd
-    Modified:   analysis/index.Rmd
-    Modified:   analysis/raster.Rmd
-    Modified:   analysis/vector.Rmd
 
 </code></pre>
 Note that any generated files, e.g. HTML, png, CSS, etc., are not included in this status report because it is ok for generated content to have uncommitted changes. </details>
@@ -393,6 +390,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td style="text-align:left;">
+Rmd
+</td>
+<td style="text-align:left;">
+<a href="https://github.com/annakrystalli/intro-r-gis/blob/7403f6b924bb1c953d6d06b39024da38bb96a955/analysis/gis.Rmd" target="_blank">7403f6b</a>
+</td>
+<td style="text-align:left;">
+annakrystalli
+</td>
+<td style="text-align:left;">
+2018-09-05
+</td>
+<td style="text-align:left;">
+workflowr::wflow_publish(“analysis/gis.Rmd”)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+html
+</td>
+<td style="text-align:left;">
+<a href="https://cdn.rawgit.com/annakrystalli/intro-r-gis/80b8fec4317bab0b0fd04d0c0df1a5d16ed8e175/docs/gis.html" target="_blank">80b8fec</a>
+</td>
+<td style="text-align:left;">
+annakrystalli
+</td>
+<td style="text-align:left;">
+2018-09-04
+</td>
+<td style="text-align:left;">
+Build site.
+</td>
+</tr>
 <tr>
 <td style="text-align:left;">
 Rmd
@@ -456,26 +487,25 @@ workflowr::wflow_publish(“analysis/gis.Rmd”)
 </div>
 <div id="coordinate-reference-systems" class="section level1">
 <h1>Coordinate Reference Systems</h1>
-<p>Coordinate reference systems (GCS) use a <strong>spheroid</strong> to approximate the surface of the earth and define locations on it.</p>
-<p>A spheroid is a three-dimensional shape created from a two-dimensional ellipse. The ellipse is an oval, with a major axis (the longer axis) and a minor axis (the shorter axis). Spheroid are used to and distinguished from another by the lengths of these two axes.</p>
+<p>Coordinate Reference Systems (CRS) provide a framework for defining real-world locations.</p>
+<p>The basis for any Coordinate reference system is a <strong>model of the earth (Globe Model)</strong> on which locations can be defined.</p>
+<p>We can think of the differences between Globe Models as being analogous to differences in globes you’ve actually seen in your life – some are perfect balls, while others are spheres with elevations, while others capture the full weirdness of the earth’s shape.</p>
 <div class="figure">
-<img src="http://www.geo.hunter.cuny.edu/~jochen/gtech201/lectures/lec6concepts/04%20-%20Understanding%20spheroids_files/image001.gif" />
+<img src="assets/globe_models.png" />
 
 </div>
-<p><em>Image source: <a href="http://www.geo.hunter.cuny.edu/~jochen/gtech201/lectures/lec6concepts/04%20-%20Understanding%20spheroids_files/image001.gif">http://www.geo.hunter.cuny.edu/~jochen/gtech201/lectures/lec6concepts/04%20-%20Understanding%20spheroids_files/image001.gif</a></em></p>
 <div id="types-of-common-coordinate-systems" class="section level2">
 <h2>Types of common coordinate systems</h2>
 <p>There are two types of Coordinate Reference Systems:</p>
 <ul>
 <li><strong>Geographic coordinate system (GCS)</strong>: A global or spherical coordinate system such as latitude-longitude.</li>
-<li><strong>Projected coordinate systems (PCS)</strong>: A projected coordinate system provide various mechanisms to project maps of the earth’s spherical surface onto a two-dimensional Cartesian coordinate plane. Projected coordinate systems are referred to as map projections.</li>
+<li><strong>Projected coordinate systems (PCS)</strong>: A projected coordinate system provides various mechanisms to project maps of the earth’s spherical surface onto a two-dimensional Cartesian coordinate plane. Projected coordinate systems are referred to as map projections.</li>
 </ul>
-<p>Coordinate systems (both geographic and projected) provide a framework for defining real-world locations.</p>
 </div>
 <div id="geographic-coordinate-system" class="section level2">
 <h2>Geographic Coordinate System</h2>
 <p>Geographic Coordinate Systems are defined by a <strong>Datum</strong></p>
-<p>A <strong>Datum</strong> is a particular model of the shape of the earth.</p>
+<p>A <strong>Datum</strong> essentially defines the Globe Model of the coordinate system.</p>
 <p>It has:</p>
 <ul>
 <li><strong>angular units (eg. degrees)</strong></li>
@@ -547,7 +577,7 @@ workflowr::wflow_publish(“analysis/gis.Rmd”)
 <div id="q-why-is-wgs-84-so-different-to-other-three-projected-maps" class="section level4">
 <h4>Q: Why is WGS 84 so different to other three projected maps?</h4>
 <p>Latitude lines are concentric circles that become smaller near the poles. They form a single point at the poles.</p>
-<p>When a lat/lon crs is flattened, it does not take this into accout, resulting in increasing distortion of features as one approaches the poles.</p>
+<p>When a lat/lon CRS is flattened, the implicit flattening function used is the Plate Carree Flattening Function, one of the simplest functions that simply turns the globe into a cylinder and then unwraps it, resulting in increasing distortion of features as one approaches the poles.</p>
 <div class="figure">
 <img src="https://www.ibm.com/support/knowledgecenter/SSEPEK_11.0.0/spatl/src/art/0sbp5003.gif" />
 
@@ -560,7 +590,8 @@ workflowr::wflow_publish(“analysis/gis.Rmd”)
 </div>
 <div id="map-reprojections" class="section level4">
 <h4>Map reprojections</h4>
-<p>To change between projected CRSs you need to <strong>reproject</strong> your data. This often involves unprojecting back to lat/lon, transforming the unprojected coordinates and then reprojecting. ___</p>
+<p>To change between projected CRSs you need to <strong>reproject</strong> your data. This often involves unprojecting back to lat/lon, transforming the unprojected coordinates and then reprojecting.</p>
+<hr />
 </div>
 </div>
 </div>
@@ -618,6 +649,13 @@ workflowr::wflow_publish(“analysis/gis.Rmd”)
 
 </div>
 </div>
+<div id="sources-and-inspiration-for-this-section" class="section level3">
+<h3>Sources and inspiration for this section:</h3>
+<ul>
+<li><a href="https://github.com/MicheleTobias/R-Projections-Workshop">R Projections Workshop</a> by Michele Tobias</li>
+<li><a href="http://www.nickeubank.com/wp-content/uploads/2018/02/CoordinateSystems_And_Projections.pdf">How Computers Relate x-y Coordinates to Real Locations on Earth</a>: by Nick Eubank</li>
+</ul>
+</div>
 <div id="more-advice-from-twitter-experts" class="section level3">
 <h3>more advice from twitter experts</h3>
 <blockquote class="twitter-tweet" data-lang="en">
@@ -627,7 +665,6 @@ What's the one thing you want people who are learning to handle projections for 
 — Dr. Michele M Tobias (<span class="citation">@MicheleTobias</span>) <a href="https://twitter.com/MicheleTobias/status/955861280174174208?ref_src=twsrc%5Etfw">January 23, 2018</a>
 </blockquote>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-<p>Source for this section:</p>
 </div>
 </div>
 <div id="session-information" class="section level2">
