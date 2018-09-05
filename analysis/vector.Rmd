@@ -94,7 +94,7 @@ Simple feature objects are hierarchically organised as follows:
 `sfg`: **simple feature geometry**. a single simple feature geometry
 
 
-# Creating vector data
+# Creating `sf` vector data
 
 `sf` provides a number of function for creating simple feature geometries, bringing multiple geometries together in a simple feature column.
 
@@ -189,7 +189,7 @@ plot(sf)
 
 Create a nose geometry, combine all the shapes into a single `sf` and then plot the face.
 
-# Working with simple feature vector data
+# Working with `sf` vector data
 
 ## `world` dataset in pkg `spData`
 
