@@ -454,7 +454,7 @@ stack(list.files(here::here("data", "raster" , "processed"),
 ```
 
 
-# extracting raster data
+# Extracting and summarising raster data
 
 ### extracting points
 
