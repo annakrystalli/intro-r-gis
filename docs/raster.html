@@ -400,7 +400,7 @@ div.section {
 </details>
 </li>
 <li>
-<p><details> <summary> <strong style="color:blue;">✔</strong> <strong>Repository version:</strong> <a href="https://github.com/annakrystalli/intro-r-gis/tree/a7080b8b1e1a1a2cb8c769c6defc04dc534f560f" target="_blank">a7080b8</a> </summary></p>
+<p><details> <summary> <strong style="color:blue;">✔</strong> <strong>Repository version:</strong> <a href="https://github.com/annakrystalli/intro-r-gis/tree/9dd6ff79fcb120ffb6a977a35d9422cf6e8f4c76" target="_blank">9dd6ff7</a> </summary></p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility. The version displayed above was the version of the Git repository at the time these results were generated. <br><br> Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
 <pre><code>
 Ignored files:
@@ -422,6 +422,7 @@ Untracked files:
 Unstaged changes:
     Modified:   .gitignore
     Modified:   analysis/_site.yml
+    Modified:   analysis/vector.Rmd
 
 </code></pre>
 Note that any generated files, e.g. HTML, png, CSS, etc., are not included in this status report because it is ok for generated content to have uncommitted changes. </details>
@@ -450,6 +451,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td style="text-align:left;">
+Rmd
+</td>
+<td style="text-align:left;">
+<a href="https://github.com/annakrystalli/intro-r-gis/blob/9dd6ff79fcb120ffb6a977a35d9422cf6e8f4c76/analysis/raster.Rmd" target="_blank">9dd6ff7</a>
+</td>
+<td style="text-align:left;">
+annakrystalli
+</td>
+<td style="text-align:left;">
+2018-09-05
+</td>
+<td style="text-align:left;">
+workflowr::wflow_publish(c(“analysis/raster.Rmd”))
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+html
+</td>
+<td style="text-align:left;">
+<a href="https://cdn.rawgit.com/annakrystalli/intro-r-gis/0eb5925518bbc0ffb44e39ceb769d8bf7605b994/docs/raster.html" target="_blank">0eb5925</a>
+</td>
+<td style="text-align:left;">
+annakrystalli
+</td>
+<td style="text-align:left;">
+2018-09-05
+</td>
+<td style="text-align:left;">
+Build site.
+</td>
+</tr>
 <tr>
 <td style="text-align:left;">
 Rmd
@@ -1290,9 +1325,217 @@ annakrystalli
 <p></details></p>
 <p>For more details on how to plot several <code>rasterLayers</code> with different legends (including different data types) in the <code>rasterVis</code> package <a href="https://oscarperpinan.github.io/rastervis/FAQ.html#several_rasters">FAQs</a>. It would also solve the problem we had earlier with plotting multiple layers using the same scale.</p>
 </div>
+</div>
+</div>
+<div id="saving-raster-data" class="section level1">
+<h1>Saving raster data</h1>
+<p>A number of drivers are available to write raster data to a number of gridded geospatial file types:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">raster<span class="op">::</span><span class="kw">writeFormats</span>() <span class="op">%&gt;%</span><span class="st"> </span>knitr<span class="op">::</span><span class="kw">kable</span>()</code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left">name</th>
+<th align="left">long_name</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">raster</td>
+<td align="left">R-raster</td>
+</tr>
+<tr class="even">
+<td align="left">SAGA</td>
+<td align="left">SAGA GIS</td>
+</tr>
+<tr class="odd">
+<td align="left">IDRISI</td>
+<td align="left">IDRISI</td>
+</tr>
+<tr class="even">
+<td align="left">IDRISIold</td>
+<td align="left">IDRISI (img/doc)</td>
+</tr>
+<tr class="odd">
+<td align="left">BIL</td>
+<td align="left">Band by Line</td>
+</tr>
+<tr class="even">
+<td align="left">BSQ</td>
+<td align="left">Band Sequential</td>
+</tr>
+<tr class="odd">
+<td align="left">BIP</td>
+<td align="left">Band by Pixel</td>
+</tr>
+<tr class="even">
+<td align="left">ascii</td>
+<td align="left">Arc ASCII</td>
+</tr>
+<tr class="odd">
+<td align="left">CDF</td>
+<td align="left">NetCDF</td>
+</tr>
+<tr class="even">
+<td align="left">big</td>
+<td align="left">big.matrix</td>
+</tr>
+<tr class="odd">
+<td align="left">ADRG</td>
+<td align="left">ARC Digitized Raster Graphics</td>
+</tr>
+<tr class="even">
+<td align="left">BMP</td>
+<td align="left">MS Windows Device Independent Bitmap</td>
+</tr>
+<tr class="odd">
+<td align="left">BT</td>
+<td align="left">VTP .bt (Binary Terrain) 1.3 Format</td>
+</tr>
+<tr class="even">
+<td align="left">CTable2</td>
+<td align="left">CTable2 Datum Grid Shift</td>
+</tr>
+<tr class="odd">
+<td align="left">EHdr</td>
+<td align="left">ESRI .hdr Labelled</td>
+</tr>
+<tr class="even">
+<td align="left">ELAS</td>
+<td align="left">ELAS</td>
+</tr>
+<tr class="odd">
+<td align="left">ENVI</td>
+<td align="left">ENVI .hdr Labelled</td>
+</tr>
+<tr class="even">
+<td align="left">ERS</td>
+<td align="left">ERMapper .ers Labelled</td>
+</tr>
+<tr class="odd">
+<td align="left">GPKG</td>
+<td align="left">GeoPackage</td>
+</tr>
+<tr class="even">
+<td align="left">GS7BG</td>
+<td align="left">Golden Software 7 Binary Grid (.grd)</td>
+</tr>
+<tr class="odd">
+<td align="left">GSBG</td>
+<td align="left">Golden Software Binary Grid (.grd)</td>
+</tr>
+<tr class="even">
+<td align="left">GTiff</td>
+<td align="left">GeoTIFF</td>
+</tr>
+<tr class="odd">
+<td align="left">GTX</td>
+<td align="left">NOAA Vertical Datum .GTX</td>
+</tr>
+<tr class="even">
+<td align="left">HFA</td>
+<td align="left">Erdas Imagine Images (.img)</td>
+</tr>
+<tr class="odd">
+<td align="left">IDA</td>
+<td align="left">Image Data and Analysis</td>
+</tr>
+<tr class="even">
+<td align="left">ILWIS</td>
+<td align="left">ILWIS Raster Map</td>
+</tr>
+<tr class="odd">
+<td align="left">INGR</td>
+<td align="left">Intergraph Raster</td>
+</tr>
+<tr class="even">
+<td align="left">ISCE</td>
+<td align="left">ISCE raster</td>
+</tr>
+<tr class="odd">
+<td align="left">ISIS2</td>
+<td align="left">USGS Astrogeology ISIS cube (Version 2)</td>
+</tr>
+<tr class="even">
+<td align="left">KRO</td>
+<td align="left">KOLOR Raw</td>
+</tr>
+<tr class="odd">
+<td align="left">LAN</td>
+<td align="left">Erdas .LAN/.GIS</td>
+</tr>
+<tr class="even">
+<td align="left">Leveller</td>
+<td align="left">Leveller heightfield</td>
+</tr>
+<tr class="odd">
+<td align="left">MBTiles</td>
+<td align="left">MBTiles</td>
+</tr>
+<tr class="even">
+<td align="left">MRF</td>
+<td align="left">Meta Raster Format</td>
+</tr>
+<tr class="odd">
+<td align="left">netCDF</td>
+<td align="left">Network Common Data Format</td>
+</tr>
+<tr class="even">
+<td align="left">NITF</td>
+<td align="left">National Imagery Transmission Format</td>
+</tr>
+<tr class="odd">
+<td align="left">NTv2</td>
+<td align="left">NTv2 Datum Grid Shift</td>
+</tr>
+<tr class="even">
+<td align="left">PAux</td>
+<td align="left">PCI .aux Labelled</td>
+</tr>
+<tr class="odd">
+<td align="left">PCIDSK</td>
+<td align="left">PCIDSK Database File</td>
+</tr>
+<tr class="even">
+<td align="left">PCRaster</td>
+<td align="left">PCRaster Raster File</td>
+</tr>
+<tr class="odd">
+<td align="left">PDF</td>
+<td align="left">Geospatial PDF</td>
+</tr>
+<tr class="even">
+<td align="left">PNM</td>
+<td align="left">Portable Pixmap Format (netpbm)</td>
+</tr>
+<tr class="odd">
+<td align="left">RMF</td>
+<td align="left">Raster Matrix Format</td>
+</tr>
+<tr class="even">
+<td align="left">ROI_PAC</td>
+<td align="left">ROI_PAC raster</td>
+</tr>
+<tr class="odd">
+<td align="left">RST</td>
+<td align="left">Idrisi Raster A.1</td>
+</tr>
+<tr class="even">
+<td align="left">SAGA</td>
+<td align="left">SAGA GIS Binary Grid (.sdat)</td>
+</tr>
+<tr class="odd">
+<td align="left">SGI</td>
+<td align="left">SGI Image File Format 1.0</td>
+</tr>
+<tr class="even">
+<td align="left">Terragen</td>
+<td align="left">Terragen heightfield</td>
+</tr>
+</tbody>
+</table>
 <div id="save-rasterstack" class="section level3">
 <h3>Save <code>rasterStack</code></h3>
-<p>Finally, let’s save our raster stack as a binary ‘Native’ <code>raster</code> package <code>.grd</code> file format using function <code>raster::writeRaster()</code>. We’ll do that to preserve the layer names in the <code>rasterStack</code>. It also allows us to combine categorical and numeric layers in one file.</p>
+<p>So let’s finally save our raster stack as a binary ‘Native’ <code>raster</code> package <code>.grd</code> file format using function <code>raster::writeRaster()</code>. We’ll do that to preserve the layer names in the <code>rasterStack</code>. It also allows us to combine categorical and numeric layers in one file.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">writeRaster</span>(env_stack, <span class="dt">filename =</span> here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;raster&quot;</span>, <span class="st">&quot;env_stack.grd&quot;</span>))</code></pre></div>
 <p>However, these files are not compressed. If the size of the files is an issue, we can save each file as an individual GeoTiff file and reimport them all together into a stack later on.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dir.create</span>(here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;raster&quot;</span>, <span class="st">&quot;processed&quot;</span>))
@@ -1315,8 +1558,8 @@ min values  :                  1.0,                       41.0,                 
 max values  :                 22.0,                      117.0,                 27.2,                     3387.0 </code></pre>
 </div>
 </div>
-<div id="extract-environmental-data" class="section level2">
-<h2>extract environmental data</h2>
+<div id="extracting-raster-data" class="section level1">
+<h1>extracting raster data</h1>
 <div id="extracting-points" class="section level3">
 <h3>extracting points</h3>
 <p>We can extract data underlying an <code>sf</code> from a raster using function <code>raster::extract()</code>. The output in the case of points is a single value for each point. This is returned as a vector for a single layer or a matrix for multiple layers, as is our case.</p>
@@ -1381,37 +1624,7 @@ proj4string:    +proj=longlat +datum=WGS84 +no_defs
 <p>Our new <code>sf</code> is now ready to use for species distribution modelling. But we can also start visualising the relationships between our molecular and environmental variables</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(mol_env_sf, <span class="kw">aes</span>(<span class="dt">x =</span> temp_range, <span class="dt">y =</span> na, <span class="dt">colour =</span> region)) <span class="op">+</span>
 <span class="st">    </span><span class="kw">geom_point</span>()</code></pre></div>
-<p><img src="figure/raster.Rmd/unnamed-chunk-43-1.png" width="672" style="display: block; margin: auto;" /></p>
-<details> <summary><em>Expand here to see past versions of unnamed-chunk-43-1.png:</em></summary>
-<table style="border-collapse:separate; border-spacing:5px;">
-<thead>
-<tr>
-<th style="text-align:left;">
-Version
-</th>
-<th style="text-align:left;">
-Author
-</th>
-<th style="text-align:left;">
-Date
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-<a href="https://github.com/annakrystalli/intro-r-gis/blob/f94df5ce59f87379087af9763c9e1b64f7e9c0f3/docs/figure/raster.Rmd/unnamed-chunk-43-1.png" target="_blank">f94df5c</a>
-</td>
-<td style="text-align:left;">
-annakrystalli
-</td>
-<td style="text-align:left;">
-2018-09-04
-</td>
-</tr>
-</tbody>
-</table>
-<p></details></p>
+<p><img src="figure/raster.Rmd/unnamed-chunk-44-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 <div id="extracting-and-summarising-raster-data-using-polygons" class="section level3">
 <h3>extracting and summarising raster data using polygons</h3>
@@ -1476,7 +1689,6 @@ proj4string:    +proj=longlat +datum=WGS84 +no_defs
 <li><code>projectRaster</code>: Project the values of a Raster* object to a new Raster* object with another projection (coordinate reference system, (CRS)).</li>
 </ul>
 </div>
-</div>
 <div id="session-information" class="section level2">
 <h2>Session information</h2>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sessionInfo</span>()</code></pre></div>
@@ -1511,15 +1723,15 @@ loaded via a namespace (and not attached):
 [22] munsell_0.5.0     gtable_0.2.0      workflowr_1.0.1  
 [25] R.methodsS3_1.7.1 evaluate_0.11     labeling_0.3     
 [28] knitr_1.20        parallel_3.4.4    class_7.3-14     
-[31] Rcpp_0.12.18      backports_1.1.2   scales_1.0.0     
-[34] classInt_0.1-24   digest_0.6.15     stringi_1.2.4    
-[37] grid_3.4.4        rprojroot_1.3-2   cli_1.0.0        
-[40] here_0.1          rgdal_1.3-4       tools_3.4.4      
-[43] magrittr_1.5      lazyeval_0.2.1    tibble_1.4.2     
-[46] crayon_1.3.4      whisker_0.3-2     pkgconfig_2.0.2  
-[49] lubridate_1.7.4   rstudioapi_0.7    assertthat_0.2.0 
-[52] rmarkdown_1.10    R6_2.2.2          units_0.6-0      
-[55] git2r_0.21.0      compiler_3.4.4   </code></pre>
+[31] highr_0.6         Rcpp_0.12.18      backports_1.1.2  
+[34] scales_1.0.0      classInt_0.1-24   digest_0.6.15    
+[37] stringi_1.2.4     grid_3.4.4        rprojroot_1.3-2  
+[40] cli_1.0.0         here_0.1          rgdal_1.3-4      
+[43] tools_3.4.4       magrittr_1.5      lazyeval_0.2.1   
+[46] tibble_1.4.2      crayon_1.3.4      whisker_0.3-2    
+[49] pkgconfig_2.0.2   lubridate_1.7.4   rstudioapi_0.7   
+[52] assertthat_0.2.0  rmarkdown_1.10    R6_2.2.2         
+[55] units_0.6-0       git2r_0.21.0      compiler_3.4.4   </code></pre>
 </div>
 </div>
 
