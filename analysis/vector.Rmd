@@ -89,9 +89,9 @@ Simple feature objects are hierarchically organised as follows:
 
 - `sf`: **simple feature**, data.frame with **spatial list-column** (`geom` or `geometry`) as well as additional data associated with the spatial geometries.
 
-`sfc`: **simple feature column**. A list-column containing **multiple geometries** + information about the coordinate reference system.
+- `sfc`: **simple feature column**. A list-column containing **multiple geometries** + information about the coordinate reference system.
 
-`sfg`: **simple feature geometry**. a single simple feature geometry
+- `sfg`: **simple feature geometry**. a single simple feature geometry
 
 
 # Creating `sf` vector data
@@ -111,10 +111,10 @@ st_point(x = c(0,0))
 For **multiple points in a single geometry**, we can use function `sf::st_multipoint()` and supply a **two column numeric matrix** with **x & y coordinates of points in rows**.
 
 ```{r}
-st_multipoint(x = matrix(c(0, 0, 1, 0), ncol = 2, byrow = T))
+st_multipoint(x = matrix(c(0, 0, 2, 0), ncol = 2, byrow = T))
 ```
 
-Let's assign this to an object.
+Let's assign this to an object:
 
 ```{r}
 points <- st_multipoint(x = matrix(c(0, 0, 2, 0), ncol = 2, byrow = T))
@@ -195,24 +195,28 @@ Create a nose geometry, combine all the shapes into a single `sf` and then plot 
 
 Package [`spData`](https://github.com/Nowosad/spData) provides spatial datasets in a variety of formats, including a number of `sf` data. 
 
-One of these is the `world` data set, containing the current boundaries of countries and including additional demographic, geographic **attribute** data 
-
-```{r}
-library(spData)
-```
-```{r}
-world
-```
-
-
-Country polygons from the `world` dataset
-
+One of these is the `spData::world` data set, containing the current boundaries of countries and including additional demographic, geographic **attribute** data 
 
 We can get more information on the data containing through r help
 
 ```{r}
 ?world
 ```
+
+Let's have a look at the data
+
+```{r}
+world
+```
+
+Looks like a normal `data.frame` right? Well it is, apart from it's got a CRS attached to it and an extra (`geom`) column containing the geometries.
+
+Let's have a look at it with function `sf::st_crs()`:
+
+```{r}
+st_crs(world)
+```
+
 
 ## Manipulating `sf` objects
 
