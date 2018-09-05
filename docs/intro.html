@@ -287,8 +287,36 @@ div.tocify {
 <li>
   <a href="setup.html">Setup</a>
 </li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="fa fa-gear"></span>
+     
+    Handouts
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">Workshop Sections</li>
+    <li>
+      <a href="intro.html">Welcome</a>
+    </li>
+    <li>
+      <a href="gis.html">Introduction to GIS</a>
+    </li>
+    <li>
+      <a href="vector.html">Working with Vector Data</a>
+    </li>
+    <li>
+      <a href="raster.html">Working with Raster Data</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="exercise_solutions.html">Exrecise solutions</a>
+    </li>
+  </ul>
+</li>
 <li>
-  <a href="license.html">License</a>
+  <a href="further_resources.html">Further Resources</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -319,7 +347,7 @@ div.section {
 </div>
 
 
-<p><strong>Last updated:</strong> 2018-09-04</p>
+<p><strong>Last updated:</strong> 2018-09-05</p>
 <strong>workflowr checks:</strong> <small>(Click a bullet for more information)</small>
 <ul>
 <li>
@@ -343,22 +371,29 @@ div.section {
 </details>
 </li>
 <li>
-<p><details> <summary> <strong style="color:blue;">✔</strong> <strong>Repository version:</strong> <a href="https://github.com/annakrystalli/intro-r-gis/tree/37ee1066edbfbb44dbda10b0451da4df77df3651" target="_blank">37ee106</a> </summary></p>
+<p><details> <summary> <strong style="color:blue;">✔</strong> <strong>Repository version:</strong> <a href="https://github.com/annakrystalli/intro-r-gis/tree/592790b6094e4d0c7a3f91ef31c93d578b55d8ba" target="_blank">592790b</a> </summary></p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility. The version displayed above was the version of the Git repository at the time these results were generated. <br><br> Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
 <pre><code>
 Ignored files:
     Ignored:    .DS_Store
     Ignored:    .Rhistory
     Ignored:    .Rproj.user/
-    Ignored:    data/.DS_Store
+    Ignored:    analysis/.DS_Store
+    Ignored:    analysis/assets/
+    Ignored:    data-raw/
+    Ignored:    data/csv/
+    Ignored:    data/raster/
+    Ignored:    data/sf/
+    Ignored:    docs/.DS_Store
 
 Untracked files:
     Untracked:  .Rbuildignore
     Untracked:  analysis/mapping.Rmd
-    Untracked:  data-raw/
-    Untracked:  data/csv/
-    Untracked:  data/raster/
-    Untracked:  data/sf/
+
+Unstaged changes:
+    Modified:   .gitignore
+    Modified:   analysis/_site.yml
+    Modified:   analysis/index.Rmd
 
 </code></pre>
 Note that any generated files, e.g. HTML, png, CSS, etc., are not included in this status report because it is ok for generated content to have uncommitted changes. </details>
@@ -387,6 +422,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td style="text-align:left;">
+Rmd
+</td>
+<td style="text-align:left;">
+<a href="https://github.com/annakrystalli/intro-r-gis/blob/592790b6094e4d0c7a3f91ef31c93d578b55d8ba/analysis/intro.Rmd" target="_blank">592790b</a>
+</td>
+<td style="text-align:left;">
+annakrystalli
+</td>
+<td style="text-align:left;">
+2018-09-05
+</td>
+<td style="text-align:left;">
+workflowr::wflow_publish(“analysis/intro.Rmd”)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+html
+</td>
+<td style="text-align:left;">
+<a href="https://cdn.rawgit.com/annakrystalli/intro-r-gis/acb823622c0ef15bdfd5b8465cd2ce1b77e3e645/docs/intro.html" target="_blank">acb8236</a>
+</td>
+<td style="text-align:left;">
+annakrystalli
+</td>
+<td style="text-align:left;">
+2018-09-04
+</td>
+<td style="text-align:left;">
+Build site.
+</td>
+</tr>
 <tr>
 <td style="text-align:left;">
 Rmd
@@ -479,40 +548,41 @@ workflowr::wflow_publish(c(“analysis/index.Rmd”,
 </ul>
 <hr />
 </div>
-<div id="workshop-materials" class="section level2">
-<h2>Workshop materials</h2>
-<div id="data" class="section level3">
-<h3>Data</h3>
+</div>
+<div id="workshop-materials" class="section level1">
+<h1>Workshop materials</h1>
+<div id="data" class="section level2">
+<h2>Data</h2>
 <p>On github: <a href="https://github.com/annakrystalli/gis-workshop" class="uri">https://github.com/annakrystalli/gis-workshop</a> + click on <strong>Clone or download</strong> + click on <strong>Download ZIP</strong> + Unzip the file</p>
 </div>
-<div id="handouts" class="section level3">
-<h3>Handouts:</h3>
+<div id="handouts" class="section level2">
+<h2>Handouts:</h2>
 <p><a href="http://annakrystalli.me/intro-r-gis/intro.html" class="uri">http://annakrystalli.me/intro-r-gis/intro.html</a></p>
 <hr />
 </div>
 </div>
-<div id="workshop-approach" class="section level2">
-<h2>Workshop approach</h2>
-<div id="rstudio" class="section level3">
-<h3>Rstudio</h3>
+<div id="workshop-approach" class="section level1">
+<h1>Workshop approach</h1>
+<div id="rstudio" class="section level2">
+<h2>Rstudio</h2>
 <p>We will be working in an Rstudio project. I recommend this workflow for all your projects because it keeps your work portable and self contained</p>
 <p>We will also be using Rmd notebooks. I like them because you can see the outputs of code as you write. You can also make notes around your code using markdown. <em>See further resources for more details.</em></p>
 </div>
-<div id="live-coding" class="section level3">
-<h3>Live coding</h3>
+<div id="live-coding" class="section level2">
+<h2>Live coding</h2>
 <p>The majority of the workshop I will be live coding 😨 so that you can follow along. You will get a lot more out of the workshop if you do.</p>
 <hr />
 </div>
 </div>
-<div id="workshop-aims-and-objectives" class="section level2">
-<h2>Workshop aims and objectives</h2>
+<div id="workshop-aims-and-objectives" class="section level1">
+<h1>Workshop aims and objectives</h1>
 <ul>
 <li>Understand the basics of GIS</li>
 <li>Understand spatial data types and formats</li>
 <li>Be able to work with, manipulate, combine and extract spatial data in R</li>
 <li>Be able to plot spatial</li>
 </ul>
-</div>
+<hr />
 <div id="why-gis-in-r" class="section level2">
 <h2>Why GIS in R</h2>
 <ol style="list-style-type: decimal">
@@ -521,9 +591,9 @@ workflowr::wflow_publish(c(“analysis/index.Rmd”,
 <li>It’s a scripted language so encourages reusable, reproducible workflows</li>
 <li>Recent additions to the R geospatial ecosystem (in particular package <code>sf</code>) have drastically simplified spatial data classes and workflows.</li>
 </ol>
-<div id="lets-dive-in" class="section level3">
-<h3>Let’s dive in!</h3>
 </div>
+<div id="lets-dive-in" class="section level2">
+<h2>Let’s dive in!</h2>
 </div>
 <div id="session-information" class="section level2">
 <h2>Session information</h2>
