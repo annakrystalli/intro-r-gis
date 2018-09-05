@@ -364,7 +364,7 @@ world %>% st_geometry() %>% plot()
 **2) What are the coordinates for the 10th point in the Mexico polygon?**
 
 
-**3) How about in CRS [Mexico ITRF92 / UTM zone 15N](https://epsg.io/4488)
+**3) How about in CRS [Mexico ITRF92 / UTM zone 15N](https://epsg.io/4488)**
 
 
 **4) Are these coordinates projected or not? Can you tell by just looking at the spatial information in the transformed `sf` object?**
