@@ -23,7 +23,8 @@ In science, GIS allow us to examine spatial realationships, patterns and process
 Applied to a broad range of phenomena: from physical, biological to cultural and demographic.
 
 
-# spatial data types
+# Geospatial
+## Geospatial data types
 
 Most common spatial data types:
 
@@ -33,13 +34,13 @@ Most common spatial data types:
     - lines
     - polygons
 
-Vector data tends to dominate the social sciences because human settlements tend to have discrete borders.
+**Vector data** tends to dominate the **social sciences** because human settlements tend to have **discrete borders**.
 
-Raster often dominates in environmental sciences because of the reliance on remote sensing data.
+**Raster** often dominates in **environmental sciences** because of the reliance on **remote sensing** data.
 
-There is much overlap in some fields and raster and vector datasets can be used side-by-side: ecologists and demographers, for example, commonly use both vector and raster data. 
+There is much overlap in some fields and **raster and vector datasets can be used side-by-side**: ecologists and demographers, for example, commonly use both vector and raster data. 
 
-## data + spatial metadata
+### Geospatial data = data + spatial metadata
 
 Ultimately they are just **data with geographic metadata attached** to it in a structured way that both locates the data and also makes it interoperable. 
 One of the most important aspects of this georgraphic metadata is the **Coordinate Reference System** being used.
@@ -102,7 +103,7 @@ _Image source: <https://farm3.staticflickr.com/2260/2508805118_500f5bba28_n.jpg>
 - [**NAD 83 - The North American Datum of 1983:**](https://en.wikipedia.org/wiki/North_American_Datum) is the datum now used to define the geodetic network in North America
 
 
-#### Geographic (datum) transformations
+### Geographic (datum) transformations
 
 To change between geographic coordinate system, you may need to perform a **geographic (datum) transformation**. This is a well-defined mathematical method to convert coordinates between two geographic coordinate systems. 
 
@@ -143,10 +144,9 @@ _Image source: <https://datacarpentry.org/r-raster-vector-geospatial/images/map_
 
 Latitude lines are concentric circles that become smaller near the poles. They form a single point at the poles.
 
-When a lat/lon CRS is flattened, the implicit flattening function used is the  Plate Carree Flattening Function, one of the simplest functions that simply turns the globe into a cylinder and then unwraps it, resulting in increasing distortion of features as one approaches the poles.
-
 ![](https://www.ibm.com/support/knowledgecenter/SSEPEK_11.0.0/spatl/src/art/0sbp5003.gif)
 
+When a lat/lon CRS is flattened, the implicit flattening function used is the  Plate Carree Flattening Function, one of the simplest functions that simply turns the globe into a cylinder and then unwraps it, resulting in increasing distortion of features as one approaches the poles.
 
 #### Q: Why do the three projected maps differ from each other?
 
