@@ -24,10 +24,13 @@ output: html_document
 
 ## Data
 
-On github: <https://github.com/annakrystalli/gis-workshop>
-    + click on **Clone or download**
-    + click on **Download ZIP**
-    + Unzip the file
+On github: <https://github.com/annakrystalli/gis-workshop>  
+
++ click on **Clone or download** 
+
++ click on **Download ZIP** 
+
++ Unzip the file 
 
 ## Handouts:
 
