@@ -515,7 +515,7 @@ p +
 
 ```
 
- in CRS [Mexico ITRF92 / UTM zone 15N](https://epsg.io/4488)
+ Let's replot now in projected CRS [Mexico ITRF92 / UTM zone 15N](https://epsg.io/4488)
 
 ```{r}
 mx_utm15 <- st_transform(mx, crs = 4488)
