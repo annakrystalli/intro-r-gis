@@ -57,6 +57,10 @@ We can think of the differences between Globe Models as being analogous to diffe
 
 ![](assets/globe_models.png)
 
+_Image source: <http://www.nickeubank.com/wp-content/uploads/2018/02/CoordinateSystems_And_Projections.pdf>_
+
+
+
 ## Types of common coordinate systems
 
 There are two types of Coordinate Reference Systems:
@@ -201,8 +205,6 @@ For more, check out [Proj4 FAQs](http://proj.maptools.org/faq.html)
 ### The most common mistake to beware of:
 
 You may find yourself in a situatation were you'll need to tell your GIS (in our case R) what the projection/CRS of your data should be.  In these cases, the GIS needs to know what the projection/CRS **currently** is, not what you would like it to be.  If you need to change a projection, you need to go through a different process, often called Re-project or Transform.
-
-
 
 
 ## A motivating example 
