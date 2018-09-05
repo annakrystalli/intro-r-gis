@@ -287,8 +287,36 @@ div.tocify {
 <li>
   <a href="setup.html">Setup</a>
 </li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="fa fa-gear"></span>
+     
+    Handouts
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">Workshop Sections</li>
+    <li>
+      <a href="intro.html">Welcome</a>
+    </li>
+    <li>
+      <a href="gis.html">Introduction to GIS</a>
+    </li>
+    <li>
+      <a href="vector.html">Working with Vector Data</a>
+    </li>
+    <li>
+      <a href="raster.html">Working with Raster Data</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="exercise_solutions.html">Exrecise solutions</a>
+    </li>
+  </ul>
+</li>
 <li>
-  <a href="license.html">License</a>
+  <a href="further_resources.html">Further Resources</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -343,7 +371,7 @@ div.section {
 </details>
 </li>
 <li>
-<p><details> <summary> <strong style="color:blue;">✔</strong> <strong>Repository version:</strong> <a href="https://github.com/annakrystalli/intro-r-gis/tree/da82ab83fc97126cee9a2ed0c977f65e4c259d5b" target="_blank">da82ab8</a> </summary></p>
+<p><details> <summary> <strong style="color:blue;">✔</strong> <strong>Repository version:</strong> <a href="https://github.com/annakrystalli/intro-r-gis/tree/837dbace8b8fab9c26f582c8f625634c8d11233c" target="_blank">837dbac</a> </summary></p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility. The version displayed above was the version of the Git repository at the time these results were generated. <br><br> Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
 <pre><code>
 Ignored files:
@@ -351,17 +379,21 @@ Ignored files:
     Ignored:    .Rhistory
     Ignored:    .Rproj.user/
     Ignored:    analysis/.DS_Store
-    Ignored:    data/.DS_Store
+    Ignored:    analysis/assets/
+    Ignored:    data-raw/
+    Ignored:    data/csv/
+    Ignored:    data/raster/
+    Ignored:    data/sf/
     Ignored:    docs/.DS_Store
 
 Untracked files:
     Untracked:  .Rbuildignore
-    Untracked:  analysis/assets/
     Untracked:  analysis/mapping.Rmd
-    Untracked:  data-raw/
-    Untracked:  data/csv/
-    Untracked:  data/raster/
-    Untracked:  data/sf/
+
+Unstaged changes:
+    Modified:   .gitignore
+    Modified:   analysis/_site.yml
+    Modified:   analysis/index.Rmd
 
 </code></pre>
 Note that any generated files, e.g. HTML, png, CSS, etc., are not included in this status report because it is ok for generated content to have uncommitted changes. </details>
@@ -390,6 +422,23 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td style="text-align:left;">
+html
+</td>
+<td style="text-align:left;">
+<a href="https://cdn.rawgit.com/annakrystalli/intro-r-gis/837dbace8b8fab9c26f582c8f625634c8d11233c/docs/gis.html" target="_blank">837dbac</a>
+</td>
+<td style="text-align:left;">
+annakrystalli
+</td>
+<td style="text-align:left;">
+2018-09-05
+</td>
+<td style="text-align:left;">
+Build site.
+</td>
+</tr>
 <tr>
 <td style="text-align:left;">
 Rmd
