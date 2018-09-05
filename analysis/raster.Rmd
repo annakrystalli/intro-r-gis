@@ -498,7 +498,7 @@ mol_env_sf %>% select(locality, dev_temp_range)
 
 Let's save our final `sf` now containing the environmental data we extracted
 
-```{r}
+```{r, eval=FALSE}
 write_sf(mol_env_sf, here::here("data", "sf", "env_salamander.geojson"))
 ```
 
