@@ -48,29 +48,27 @@ One of the most important aspects of this georgraphic metadata is the **Coordina
 
 # Coordinate Reference Systems
 
-Coordinate reference systems (GCS) use a **spheroid** to approximate the surface of the earth and define locations on it. 
+Coordinate Reference Systems (CRS) provide a framework for defining real-world locations.
 
-A spheroid is a three-dimensional shape created from a two-dimensional ellipse. The ellipse is an oval, with a major axis (the longer axis) and a minor axis (the shorter axis). Spheroid are used to and distinguished from another by the lengths of these two axes.
+The basis for any Coordinate reference system is a **model of the earth (Globe Model)** on which locations can be defined.
 
-![](http://www.geo.hunter.cuny.edu/~jochen/gtech201/lectures/lec6concepts/04%20-%20Understanding%20spheroids_files/image001.gif)
+We can think of the differences between Globe Models as being analogous to differences in globes you’ve actually seen in your life – some are perfect balls, while others are spheres with elevations, while others capture the full weirdness of the earth’s shape.
 
-_Image source: <http://www.geo.hunter.cuny.edu/~jochen/gtech201/lectures/lec6concepts/04%20-%20Understanding%20spheroids_files/image001.gif>_
+![](assets/globe_models.png)
 
 ## Types of common coordinate systems
 
 There are two types of Coordinate Reference Systems:
 
 - **Geographic coordinate system (GCS)**: A global or spherical coordinate system such as latitude-longitude. 
-- **Projected coordinate systems (PCS)**: A projected coordinate system provide various mechanisms to project maps of the earth's spherical surface onto a two-dimensional Cartesian coordinate plane. Projected coordinate systems are referred to as map projections.
-
-Coordinate systems (both geographic and projected) provide a framework for defining real-world locations.
+- **Projected coordinate systems (PCS)**: A projected coordinate system provides various mechanisms to project maps of the earth's spherical surface onto a two-dimensional Cartesian coordinate plane. Projected coordinate systems are referred to as map projections.
 
 
 ## Geographic Coordinate System
 
 Geographic Coordinate Systems are defined by a **Datum**
 
-A **Datum** is a particular model of the shape of the earth.
+A **Datum** essentially defines the Globe Model of the coordinate system.
 
 It has:  
 
@@ -145,7 +143,7 @@ _Image source: <https://datacarpentry.org/r-raster-vector-geospatial/images/map_
 
 Latitude lines are concentric circles that become smaller near the poles. They form a single point at the poles.
 
-When a lat/lon crs is flattened, it does not take this into accout, resulting in increasing distortion of features as one approaches the poles.
+When a lat/lon CRS is flattened, the implicit flattening function used is the  Plate Carree Flattening Function, one of the simplest functions that simply turns the globe into a cylinder and then unwraps it, resulting in increasing distortion of features as one approaches the poles.
 
 ![](https://www.ibm.com/support/knowledgecenter/SSEPEK_11.0.0/spatl/src/art/0sbp5003.gif)
 
@@ -159,6 +157,7 @@ Going back to the orange peel analogy, different projections use a different sta
 #### Map reprojections
 
 To change between projected CRSs you need to **reproject** your data. This often involves unprojecting back to lat/lon, transforming the unprojected coordinates and then reprojecting.
+
 ___
 
 
@@ -221,9 +220,12 @@ The location of BNG’s origin, in the sea beyond South West Peninsular, ensures
 ![](https://geocompr.robinlovelace.net/figures/vector_projected.png)
 
 
+### Sources and inspiration for this section:
+
+- [R Projections Workshop](https://github.com/MicheleTobias/R-Projections-Workshop) by Michele Tobias
+- [How Computers Relate x-y Coordinates to Real Locations on Earth](http://www.nickeubank.com/wp-content/uploads/2018/02/CoordinateSystems_And_Projections.pdf): by Nick Eubank
+
 ### more advice from twitter experts
 
 <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">What&#39;s the one thing you want people who are learning to handle projections for spatial data in <a href="https://twitter.com/hashtag/rstats?src=hash&amp;ref_src=twsrc%5Etfw">#rstats</a> (or in general) to know? <a href="https://twitter.com/hashtag/gistribe?src=hash&amp;ref_src=twsrc%5Etfw">#gistribe</a></p>&mdash; Dr. Michele M Tobias (@MicheleTobias) <a href="https://twitter.com/MicheleTobias/status/955861280174174208?ref_src=twsrc%5Etfw">January 23, 2018</a></blockquote>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-
-Source for this section:
